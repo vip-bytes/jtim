@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "cn.bytes.jtim.core.protocol.protobuf";
+option java_outer_classname = "TestProto";
+option java_multiple_files = false; //编译后会生成多个Message类，并没有被包含在HelloWorldServiceProto.java文件中,反之,生成单一HelloWorldServiceProto.java文件
+
+package onlytest;
+
+//服务
+service Greeter {
+    rpc test (TestRequest) returns (TestResponse) {
+    }
+}
+
+
+message TestRequest {
+    string name = 1;
+}
+
+message TestResponse {
+    string message = 1;
+}

@@ -1,0 +1,9 @@
+server:
+  port: 8989
+
+
+netty:
+  tcp:
+    port: 3333
+    enable: true
+
