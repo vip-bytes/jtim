@@ -83,12 +83,12 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_AuthRequest_descriptor;
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_AuthRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_AuthRequest_fieldAccessorTable
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_AuthRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cn.bytes.jtim.core.protocol.protobuf.AuthRequest.class, cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder.class);
   }
@@ -371,12 +371,12 @@ private static final long serialVersionUID = 0L;
       cn.bytes.jtim.core.protocol.protobuf.AuthRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_AuthRequest_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_AuthRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_AuthRequest_fieldAccessorTable
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_AuthRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cn.bytes.jtim.core.protocol.protobuf.AuthRequest.class, cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder.class);
     }
@@ -409,7 +409,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_AuthRequest_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_AuthRequest_descriptor;
     }
 
     public cn.bytes.jtim.core.protocol.protobuf.AuthRequest getDefaultInstanceForType() {

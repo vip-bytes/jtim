@@ -62,12 +62,12 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_LogoutResponse_descriptor;
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_LogoutResponse_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_LogoutResponse_fieldAccessorTable
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_LogoutResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.class, cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder.class);
   }
@@ -221,12 +221,12 @@ private static final long serialVersionUID = 0L;
       cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_LogoutResponse_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_LogoutResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_LogoutResponse_fieldAccessorTable
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_LogoutResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.class, cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder.class);
     }
@@ -253,7 +253,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_LogoutResponse_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_LogoutResponse_descriptor;
     }
 
     public cn.bytes.jtim.core.protocol.protobuf.LogoutResponse getDefaultInstanceForType() {

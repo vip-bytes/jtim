@@ -3,247 +3,3813 @@
 
 package cn.bytes.jtim.core.protocol.protobuf;
 
-public final class Message {
-  private Message() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+/**
+ * Protobuf type {@code Message}
+ */
+public  final class Message extends
+    com.google.protobuf.GeneratedMessageV3 implements
+    // @@protoc_insertion_point(message_implements:Message)
+    MessageOrBuilder {
+private static final long serialVersionUID = 0L;
+  // Use Message.newBuilder() to construct.
+  private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    super(builder);
+  }
+  private Message() {
+    cmd_ = 0;
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
   }
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_AuthRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_AuthRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_AuthResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_AuthResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_LogoutRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_LogoutRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_LogoutResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_LogoutResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_KichoutRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_KichoutRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_KichoutResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_KichoutResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HeartbeatRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_HeartbeatRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HeartbeatResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_HeartbeatResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2OSendRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2OSendRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2OSendResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2OSendResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2ODistributeRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2ODistributeRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2ODistributeResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2ODistributeResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2MSendRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2MSendRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2MSendResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2MSendResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2MDistributeRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2MDistributeRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_O2MDistributeResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_O2MDistributeResponse_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\rmessage.proto\"<\n\013AuthRequest\022\r\n\005token\030" +
-      "\001 \001(\t\022\013\n\003uid\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\"e\n" +
-      "\014AuthResponse\022\016\n\006status\030\001 \001(\005\022\020\n\010err_cod" +
-      "e\030\002 \001(\t\022\017\n\007err_msg\030\003 \001(\t\"\"\n\006Status\022\006\n\002OK" +
-      "\020\000\022\020\n\003ERR\020\377\377\377\377\377\377\377\377\377\001\">\n\rLogoutRequest\022\r\n" +
-      "\005token\030\001 \001(\t\022\013\n\003uid\030\002 \001(\t\022\021\n\ttimestamp\030\003" +
-      " \001(\003\"\020\n\016LogoutResponse\"=\n\016KichoutRequest" +
-      "\022\017\n\007reasion\030\001 \001(\005\"\032\n\007Reasion\022\017\n\013OTHER_LO" +
-      "GIN\020\000\"\021\n\017KichoutResponse\" \n\020HeartbeatReq" +
-      "uest\022\014\n\004ping\030\001 \001(\014\"!\n\021HeartbeatResponse\022" +
-      "\014\n\004pong\030\001 \001(\014\"p\n\016O2OSendRequest\022\016\n\006msgKe" +
-      "y\030\001 \001(\t\022\014\n\004from\030\002 \001(\t\022\020\n\010fromName\030\003 \001(\t\022" +
-      "\n\n\002to\030\004 \001(\t\022\017\n\007content\030\005 \001(\t\022\021\n\ttimestam" +
-      "p\030\006 \001(\003\"C\n\017O2OSendResponse\022\016\n\006msgKey\030\001 \001" +
-      "(\t\022\r\n\005msgId\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\"\205\001\n" +
-      "\024O2ODistributeRequest\022\r\n\005msgId\030\001 \001(\t\022\014\n\004" +
-      "from\030\002 \001(\t\022\020\n\010fromName\030\003 \001(\t\022\n\n\002to\030\004 \001(\t" +
-      "\022\017\n\007content\030\005 \001(\t\022\016\n\006msgKey\030\006 \001(\t\022\021\n\ttim" +
-      "estamp\030\007 \001(\003\"6\n\025O2ODistributeResponse\022\r\n" +
-      "\005msgId\030\001 \001(\t\022\016\n\006msgKey\030\002 \001(\t\"s\n\016O2MSendR" +
-      "equest\022\014\n\004from\030\001 \001(\t\022\020\n\010fromName\030\002 \001(\t\022\r" +
-      "\n\005group\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\016\n\006msgKey" +
-      "\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001(\003\"C\n\017O2MSendResp" +
-      "onse\022\r\n\005msgId\030\001 \001(\t\022\016\n\006msgKey\030\002 \001(\t\022\021\n\tt" +
-      "imestamp\030\003 \001(\003\"\210\001\n\024O2MDistributeRequest\022" +
-      "\r\n\005msgId\030\001 \001(\t\022\014\n\004from\030\002 \001(\t\022\020\n\010fromName" +
-      "\030\003 \001(\t\022\r\n\005group\030\004 \001(\t\022\017\n\007content\030\005 \001(\t\022\016" +
-      "\n\006msgKey\030\006 \001(\t\022\021\n\ttimestamp\030\007 \001(\003\"6\n\025O2M" +
-      "DistributeResponse\022\r\n\005msgId\030\001 \001(\t\022\016\n\006msg" +
-      "Key\030\002 \001(\tB1\n$cn.bytes.jtim.core.protocol" +
-      ".protobufB\007MessageP\001b\006proto3"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
+  private Message(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    int mutable_bitField0_ = 0;
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          default: {
+            if (!parseUnknownFieldProto3(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
           }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
-    internal_static_AuthRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_AuthRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_AuthRequest_descriptor,
-        new java.lang.String[] { "Token", "Uid", "Timestamp", });
-    internal_static_AuthResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_AuthResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_AuthResponse_descriptor,
-        new java.lang.String[] { "Status", "ErrCode", "ErrMsg", });
-    internal_static_LogoutRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_LogoutRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_LogoutRequest_descriptor,
-        new java.lang.String[] { "Token", "Uid", "Timestamp", });
-    internal_static_LogoutResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_LogoutResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_LogoutResponse_descriptor,
-        new java.lang.String[] { });
-    internal_static_KichoutRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_KichoutRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_KichoutRequest_descriptor,
-        new java.lang.String[] { "Reasion", });
-    internal_static_KichoutResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_KichoutResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_KichoutResponse_descriptor,
-        new java.lang.String[] { });
-    internal_static_HeartbeatRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_HeartbeatRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_HeartbeatRequest_descriptor,
-        new java.lang.String[] { "Ping", });
-    internal_static_HeartbeatResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_HeartbeatResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_HeartbeatResponse_descriptor,
-        new java.lang.String[] { "Pong", });
-    internal_static_O2OSendRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_O2OSendRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2OSendRequest_descriptor,
-        new java.lang.String[] { "MsgKey", "From", "FromName", "To", "Content", "Timestamp", });
-    internal_static_O2OSendResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_O2OSendResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2OSendResponse_descriptor,
-        new java.lang.String[] { "MsgKey", "MsgId", "Timestamp", });
-    internal_static_O2ODistributeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_O2ODistributeRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2ODistributeRequest_descriptor,
-        new java.lang.String[] { "MsgId", "From", "FromName", "To", "Content", "MsgKey", "Timestamp", });
-    internal_static_O2ODistributeResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_O2ODistributeResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2ODistributeResponse_descriptor,
-        new java.lang.String[] { "MsgId", "MsgKey", });
-    internal_static_O2MSendRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_O2MSendRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2MSendRequest_descriptor,
-        new java.lang.String[] { "From", "FromName", "Group", "Content", "MsgKey", "Timestamp", });
-    internal_static_O2MSendResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_O2MSendResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2MSendResponse_descriptor,
-        new java.lang.String[] { "MsgId", "MsgKey", "Timestamp", });
-    internal_static_O2MDistributeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_O2MDistributeRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2MDistributeRequest_descriptor,
-        new java.lang.String[] { "MsgId", "From", "FromName", "Group", "Content", "MsgKey", "Timestamp", });
-    internal_static_O2MDistributeResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_O2MDistributeResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_O2MDistributeResponse_descriptor,
-        new java.lang.String[] { "MsgId", "MsgKey", });
+          case 8: {
+            int rawValue = input.readEnum();
+
+            cmd_ = rawValue;
+            break;
+          }
+          case 18: {
+            cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder subBuilder = null;
+            if (bodyCase_ == 2) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.AuthRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 2;
+            break;
+          }
+          case 26: {
+            cn.bytes.jtim.core.protocol.protobuf.AuthResponse.Builder subBuilder = null;
+            if (bodyCase_ == 3) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.AuthResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 3;
+            break;
+          }
+          case 34: {
+            cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.Builder subBuilder = null;
+            if (bodyCase_ == 4) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 4;
+            break;
+          }
+          case 42: {
+            cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder subBuilder = null;
+            if (bodyCase_ == 5) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 5;
+            break;
+          }
+          case 50: {
+            cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder subBuilder = null;
+            if (bodyCase_ == 6) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 6;
+            break;
+          }
+          case 58: {
+            cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder subBuilder = null;
+            if (bodyCase_ == 7) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 7;
+            break;
+          }
+          case 66: {
+            cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder subBuilder = null;
+            if (bodyCase_ == 8) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 8;
+            break;
+          }
+          case 74: {
+            cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder subBuilder = null;
+            if (bodyCase_ == 9) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 9;
+            break;
+          }
+          case 82: {
+            cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder subBuilder = null;
+            if (bodyCase_ == 10) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 10;
+            break;
+          }
+          case 90: {
+            cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder subBuilder = null;
+            if (bodyCase_ == 11) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 11;
+            break;
+          }
+          case 98: {
+            cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder subBuilder = null;
+            if (bodyCase_ == 12) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 12;
+            break;
+          }
+          case 106: {
+            cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder subBuilder = null;
+            if (bodyCase_ == 13) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 13;
+            break;
+          }
+          case 114: {
+            cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder subBuilder = null;
+            if (bodyCase_ == 14) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 14;
+            break;
+          }
+          case 122: {
+            cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder subBuilder = null;
+            if (bodyCase_ == 15) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 15;
+            break;
+          }
+          case 130: {
+            cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder subBuilder = null;
+            if (bodyCase_ == 16) {
+              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_).toBuilder();
+            }
+            body_ =
+                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
+              body_ = subBuilder.buildPartial();
+            }
+            bodyCase_ = 16;
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_Message_descriptor;
   }
 
-  // @@protoc_insertion_point(outer_class_scope)
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_Message_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            cn.bytes.jtim.core.protocol.protobuf.Message.class, cn.bytes.jtim.core.protocol.protobuf.Message.Builder.class);
+  }
+
+  /**
+   * Protobuf enum {@code Message.Cmd}
+   */
+  public enum Cmd
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>AuthRequest = 0;</code>
+     */
+    AuthRequest(0),
+    /**
+     * <code>AuthResponse = 1;</code>
+     */
+    AuthResponse(1),
+    /**
+     * <code>LogoutRequest = 2;</code>
+     */
+    LogoutRequest(2),
+    /**
+     * <code>LogoutResponse = 3;</code>
+     */
+    LogoutResponse(3),
+    /**
+     * <code>KichoutRequest = 4;</code>
+     */
+    KichoutRequest(4),
+    /**
+     * <code>KichoutResponse = 5;</code>
+     */
+    KichoutResponse(5),
+    /**
+     * <code>HeartbeatRequest = 6;</code>
+     */
+    HeartbeatRequest(6),
+    /**
+     * <code>O2OSendRequest = 7;</code>
+     */
+    O2OSendRequest(7),
+    /**
+     * <code>O2OSendResponse = 8;</code>
+     */
+    O2OSendResponse(8),
+    /**
+     * <code>O2ODistributeRequest = 9;</code>
+     */
+    O2ODistributeRequest(9),
+    /**
+     * <code>O2ODistributeResponse = 10;</code>
+     */
+    O2ODistributeResponse(10),
+    /**
+     * <code>O2MSendRequest = 11;</code>
+     */
+    O2MSendRequest(11),
+    /**
+     * <code>O2MSendResponse = 12;</code>
+     */
+    O2MSendResponse(12),
+    /**
+     * <code>O2MDistributeRequest = 13;</code>
+     */
+    O2MDistributeRequest(13),
+    /**
+     * <code>O2MDistributeResponse = 14;</code>
+     */
+    O2MDistributeResponse(14),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>AuthRequest = 0;</code>
+     */
+    public static final int AuthRequest_VALUE = 0;
+    /**
+     * <code>AuthResponse = 1;</code>
+     */
+    public static final int AuthResponse_VALUE = 1;
+    /**
+     * <code>LogoutRequest = 2;</code>
+     */
+    public static final int LogoutRequest_VALUE = 2;
+    /**
+     * <code>LogoutResponse = 3;</code>
+     */
+    public static final int LogoutResponse_VALUE = 3;
+    /**
+     * <code>KichoutRequest = 4;</code>
+     */
+    public static final int KichoutRequest_VALUE = 4;
+    /**
+     * <code>KichoutResponse = 5;</code>
+     */
+    public static final int KichoutResponse_VALUE = 5;
+    /**
+     * <code>HeartbeatRequest = 6;</code>
+     */
+    public static final int HeartbeatRequest_VALUE = 6;
+    /**
+     * <code>O2OSendRequest = 7;</code>
+     */
+    public static final int O2OSendRequest_VALUE = 7;
+    /**
+     * <code>O2OSendResponse = 8;</code>
+     */
+    public static final int O2OSendResponse_VALUE = 8;
+    /**
+     * <code>O2ODistributeRequest = 9;</code>
+     */
+    public static final int O2ODistributeRequest_VALUE = 9;
+    /**
+     * <code>O2ODistributeResponse = 10;</code>
+     */
+    public static final int O2ODistributeResponse_VALUE = 10;
+    /**
+     * <code>O2MSendRequest = 11;</code>
+     */
+    public static final int O2MSendRequest_VALUE = 11;
+    /**
+     * <code>O2MSendResponse = 12;</code>
+     */
+    public static final int O2MSendResponse_VALUE = 12;
+    /**
+     * <code>O2MDistributeRequest = 13;</code>
+     */
+    public static final int O2MDistributeRequest_VALUE = 13;
+    /**
+     * <code>O2MDistributeResponse = 14;</code>
+     */
+    public static final int O2MDistributeResponse_VALUE = 14;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Cmd valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static Cmd forNumber(int value) {
+      switch (value) {
+        case 0: return AuthRequest;
+        case 1: return AuthResponse;
+        case 2: return LogoutRequest;
+        case 3: return LogoutResponse;
+        case 4: return KichoutRequest;
+        case 5: return KichoutResponse;
+        case 6: return HeartbeatRequest;
+        case 7: return O2OSendRequest;
+        case 8: return O2OSendResponse;
+        case 9: return O2ODistributeRequest;
+        case 10: return O2ODistributeResponse;
+        case 11: return O2MSendRequest;
+        case 12: return O2MSendResponse;
+        case 13: return O2MDistributeRequest;
+        case 14: return O2MDistributeResponse;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Cmd>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Cmd> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Cmd>() {
+            public Cmd findValueByNumber(int number) {
+              return Cmd.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return cn.bytes.jtim.core.protocol.protobuf.Message.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final Cmd[] VALUES = values();
+
+    public static Cmd valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private Cmd(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:Message.Cmd)
+  }
+
+  private int bodyCase_ = 0;
+  private java.lang.Object body_;
+  public enum BodyCase
+      implements com.google.protobuf.Internal.EnumLite {
+    AUTHREQUEST(2),
+    AUTHRESPONSE(3),
+    LOGOUTREQUEST(4),
+    LOGOUTRESPONSE(5),
+    KICHOUTREQUEST(6),
+    KICHOUTRESPONSE(7),
+    HEARTBEATREQUEST(8),
+    O2OSENDREQUEST(9),
+    O2OSENDRESPONSE(10),
+    O2ODISTRIBUTEREQUEST(11),
+    O2ODISTRIBUTERESPONSE(12),
+    O2MSENDREQUEST(13),
+    O2MSENDRESPONSE(14),
+    O2MDISTRIBUTEREQUEST(15),
+    O2MDISTRIBUTERESPONSE(16),
+    BODY_NOT_SET(0);
+    private final int value;
+    private BodyCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static BodyCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static BodyCase forNumber(int value) {
+      switch (value) {
+        case 2: return AUTHREQUEST;
+        case 3: return AUTHRESPONSE;
+        case 4: return LOGOUTREQUEST;
+        case 5: return LOGOUTRESPONSE;
+        case 6: return KICHOUTREQUEST;
+        case 7: return KICHOUTRESPONSE;
+        case 8: return HEARTBEATREQUEST;
+        case 9: return O2OSENDREQUEST;
+        case 10: return O2OSENDRESPONSE;
+        case 11: return O2ODISTRIBUTEREQUEST;
+        case 12: return O2ODISTRIBUTERESPONSE;
+        case 13: return O2MSENDREQUEST;
+        case 14: return O2MSENDRESPONSE;
+        case 15: return O2MDISTRIBUTEREQUEST;
+        case 16: return O2MDISTRIBUTERESPONSE;
+        case 0: return BODY_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public BodyCase
+  getBodyCase() {
+    return BodyCase.forNumber(
+        bodyCase_);
+  }
+
+  public static final int CMD_FIELD_NUMBER = 1;
+  private int cmd_;
+  /**
+   * <code>.Message.Cmd cmd = 1;</code>
+   */
+  public int getCmdValue() {
+    return cmd_;
+  }
+  /**
+   * <code>.Message.Cmd cmd = 1;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.Message.Cmd getCmd() {
+    cn.bytes.jtim.core.protocol.protobuf.Message.Cmd result = cn.bytes.jtim.core.protocol.protobuf.Message.Cmd.valueOf(cmd_);
+    return result == null ? cn.bytes.jtim.core.protocol.protobuf.Message.Cmd.UNRECOGNIZED : result;
+  }
+
+  public static final int AUTHREQUEST_FIELD_NUMBER = 2;
+  /**
+   * <code>.AuthRequest authRequest = 2;</code>
+   */
+  public boolean hasAuthRequest() {
+    return bodyCase_ == 2;
+  }
+  /**
+   * <code>.AuthRequest authRequest = 2;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.AuthRequest getAuthRequest() {
+    if (bodyCase_ == 2) {
+       return (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.AuthRequest authRequest = 2;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.AuthRequestOrBuilder getAuthRequestOrBuilder() {
+    if (bodyCase_ == 2) {
+       return (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance();
+  }
+
+  public static final int AUTHRESPONSE_FIELD_NUMBER = 3;
+  /**
+   * <code>.AuthResponse authResponse = 3;</code>
+   */
+  public boolean hasAuthResponse() {
+    return bodyCase_ == 3;
+  }
+  /**
+   * <code>.AuthResponse authResponse = 3;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.AuthResponse getAuthResponse() {
+    if (bodyCase_ == 3) {
+       return (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.AuthResponse authResponse = 3;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.AuthResponseOrBuilder getAuthResponseOrBuilder() {
+    if (bodyCase_ == 3) {
+       return (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance();
+  }
+
+  public static final int LOGOUTREQUEST_FIELD_NUMBER = 4;
+  /**
+   * <code>.LogoutRequest logoutRequest = 4;</code>
+   */
+  public boolean hasLogoutRequest() {
+    return bodyCase_ == 4;
+  }
+  /**
+   * <code>.LogoutRequest logoutRequest = 4;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.LogoutRequest getLogoutRequest() {
+    if (bodyCase_ == 4) {
+       return (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.LogoutRequest logoutRequest = 4;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.LogoutRequestOrBuilder getLogoutRequestOrBuilder() {
+    if (bodyCase_ == 4) {
+       return (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance();
+  }
+
+  public static final int LOGOUTRESPONSE_FIELD_NUMBER = 5;
+  /**
+   * <code>.LogoutResponse logoutResponse = 5;</code>
+   */
+  public boolean hasLogoutResponse() {
+    return bodyCase_ == 5;
+  }
+  /**
+   * <code>.LogoutResponse logoutResponse = 5;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.LogoutResponse getLogoutResponse() {
+    if (bodyCase_ == 5) {
+       return (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.LogoutResponse logoutResponse = 5;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder getLogoutResponseOrBuilder() {
+    if (bodyCase_ == 5) {
+       return (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
+  }
+
+  public static final int KICHOUTREQUEST_FIELD_NUMBER = 6;
+  /**
+   * <code>.KichoutRequest kichoutRequest = 6;</code>
+   */
+  public boolean hasKichoutRequest() {
+    return bodyCase_ == 6;
+  }
+  /**
+   * <code>.KichoutRequest kichoutRequest = 6;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.KichoutRequest getKichoutRequest() {
+    if (bodyCase_ == 6) {
+       return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.KichoutRequest kichoutRequest = 6;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder getKichoutRequestOrBuilder() {
+    if (bodyCase_ == 6) {
+       return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+  }
+
+  public static final int KICHOUTRESPONSE_FIELD_NUMBER = 7;
+  /**
+   * <code>.KichoutResponse kichoutResponse = 7;</code>
+   */
+  public boolean hasKichoutResponse() {
+    return bodyCase_ == 7;
+  }
+  /**
+   * <code>.KichoutResponse kichoutResponse = 7;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.KichoutResponse getKichoutResponse() {
+    if (bodyCase_ == 7) {
+       return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.KichoutResponse kichoutResponse = 7;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder getKichoutResponseOrBuilder() {
+    if (bodyCase_ == 7) {
+       return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+  }
+
+  public static final int HEARTBEATREQUEST_FIELD_NUMBER = 8;
+  /**
+   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   */
+  public boolean hasHeartbeatRequest() {
+    return bodyCase_ == 8;
+  }
+  /**
+   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest getHeartbeatRequest() {
+    if (bodyCase_ == 8) {
+       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder getHeartbeatRequestOrBuilder() {
+    if (bodyCase_ == 8) {
+       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+  }
+
+  public static final int O2OSENDREQUEST_FIELD_NUMBER = 9;
+  /**
+   * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+   */
+  public boolean hasO2OSendRequest() {
+    return bodyCase_ == 9;
+  }
+  /**
+   * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest getO2OSendRequest() {
+    if (bodyCase_ == 9) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder getO2OSendRequestOrBuilder() {
+    if (bodyCase_ == 9) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+  }
+
+  public static final int O2OSENDRESPONSE_FIELD_NUMBER = 10;
+  /**
+   * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+   */
+  public boolean hasO2OSendResponse() {
+    return bodyCase_ == 10;
+  }
+  /**
+   * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse getO2OSendResponse() {
+    if (bodyCase_ == 10) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder getO2OSendResponseOrBuilder() {
+    if (bodyCase_ == 10) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+  }
+
+  public static final int O2ODISTRIBUTEREQUEST_FIELD_NUMBER = 11;
+  /**
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+   */
+  public boolean hasO2ODistributeRequest() {
+    return bodyCase_ == 11;
+  }
+  /**
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getO2ODistributeRequest() {
+    if (bodyCase_ == 11) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder getO2ODistributeRequestOrBuilder() {
+    if (bodyCase_ == 11) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+  }
+
+  public static final int O2ODISTRIBUTERESPONSE_FIELD_NUMBER = 12;
+  /**
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+   */
+  public boolean hasO2ODistributeResponse() {
+    return bodyCase_ == 12;
+  }
+  /**
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse getO2ODistributeResponse() {
+    if (bodyCase_ == 12) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder getO2ODistributeResponseOrBuilder() {
+    if (bodyCase_ == 12) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+  }
+
+  public static final int O2MSENDREQUEST_FIELD_NUMBER = 13;
+  /**
+   * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+   */
+  public boolean hasO2MSendRequest() {
+    return bodyCase_ == 13;
+  }
+  /**
+   * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest getO2MSendRequest() {
+    if (bodyCase_ == 13) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder getO2MSendRequestOrBuilder() {
+    if (bodyCase_ == 13) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+  }
+
+  public static final int O2MSENDRESPONSE_FIELD_NUMBER = 14;
+  /**
+   * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+   */
+  public boolean hasO2MSendResponse() {
+    return bodyCase_ == 14;
+  }
+  /**
+   * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getO2MSendResponse() {
+    if (bodyCase_ == 14) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder getO2MSendResponseOrBuilder() {
+    if (bodyCase_ == 14) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
+  }
+
+  public static final int O2MDISTRIBUTEREQUEST_FIELD_NUMBER = 15;
+  /**
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+   */
+  public boolean hasO2MDistributeRequest() {
+    return bodyCase_ == 15;
+  }
+  /**
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest getO2MDistributeRequest() {
+    if (bodyCase_ == 15) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
+  }
+  /**
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder getO2MDistributeRequestOrBuilder() {
+    if (bodyCase_ == 15) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
+  }
+
+  public static final int O2MDISTRIBUTERESPONSE_FIELD_NUMBER = 16;
+  /**
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+   */
+  public boolean hasO2MDistributeResponse() {
+    return bodyCase_ == 16;
+  }
+  /**
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse getO2MDistributeResponse() {
+    if (bodyCase_ == 16) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
+  }
+  /**
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+   */
+  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder getO2MDistributeResponseOrBuilder() {
+    if (bodyCase_ == 16) {
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
+    }
+    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
+  }
+
+  private byte memoizedIsInitialized = -1;
+  public final boolean isInitialized() {
+    byte isInitialized = memoizedIsInitialized;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
+
+    memoizedIsInitialized = 1;
+    return true;
+  }
+
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    if (cmd_ != cn.bytes.jtim.core.protocol.protobuf.Message.Cmd.AuthRequest.getNumber()) {
+      output.writeEnum(1, cmd_);
+    }
+    if (bodyCase_ == 2) {
+      output.writeMessage(2, (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_);
+    }
+    if (bodyCase_ == 3) {
+      output.writeMessage(3, (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_);
+    }
+    if (bodyCase_ == 4) {
+      output.writeMessage(4, (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_);
+    }
+    if (bodyCase_ == 5) {
+      output.writeMessage(5, (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_);
+    }
+    if (bodyCase_ == 6) {
+      output.writeMessage(6, (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_);
+    }
+    if (bodyCase_ == 7) {
+      output.writeMessage(7, (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_);
+    }
+    if (bodyCase_ == 8) {
+      output.writeMessage(8, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
+    }
+    if (bodyCase_ == 9) {
+      output.writeMessage(9, (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
+    }
+    if (bodyCase_ == 10) {
+      output.writeMessage(10, (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
+    }
+    if (bodyCase_ == 11) {
+      output.writeMessage(11, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
+    }
+    if (bodyCase_ == 12) {
+      output.writeMessage(12, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
+    }
+    if (bodyCase_ == 13) {
+      output.writeMessage(13, (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
+    }
+    if (bodyCase_ == 14) {
+      output.writeMessage(14, (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
+    }
+    if (bodyCase_ == 15) {
+      output.writeMessage(15, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
+    }
+    if (bodyCase_ == 16) {
+      output.writeMessage(16, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
+    }
+    unknownFields.writeTo(output);
+  }
+
+  public int getSerializedSize() {
+    int size = memoizedSize;
+    if (size != -1) return size;
+
+    size = 0;
+    if (cmd_ != cn.bytes.jtim.core.protocol.protobuf.Message.Cmd.AuthRequest.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(1, cmd_);
+    }
+    if (bodyCase_ == 2) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_);
+    }
+    if (bodyCase_ == 3) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_);
+    }
+    if (bodyCase_ == 4) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_);
+    }
+    if (bodyCase_ == 5) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_);
+    }
+    if (bodyCase_ == 6) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_);
+    }
+    if (bodyCase_ == 7) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_);
+    }
+    if (bodyCase_ == 8) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(8, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
+    }
+    if (bodyCase_ == 9) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(9, (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
+    }
+    if (bodyCase_ == 10) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(10, (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
+    }
+    if (bodyCase_ == 11) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(11, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
+    }
+    if (bodyCase_ == 12) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(12, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
+    }
+    if (bodyCase_ == 13) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(13, (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
+    }
+    if (bodyCase_ == 14) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(14, (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
+    }
+    if (bodyCase_ == 15) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(15, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
+    }
+    if (bodyCase_ == 16) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(16, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
+    }
+    size += unknownFields.getSerializedSize();
+    memoizedSize = size;
+    return size;
+  }
+
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof cn.bytes.jtim.core.protocol.protobuf.Message)) {
+      return super.equals(obj);
+    }
+    cn.bytes.jtim.core.protocol.protobuf.Message other = (cn.bytes.jtim.core.protocol.protobuf.Message) obj;
+
+    boolean result = true;
+    result = result && cmd_ == other.cmd_;
+    result = result && getBodyCase().equals(
+        other.getBodyCase());
+    if (!result) return false;
+    switch (bodyCase_) {
+      case 2:
+        result = result && getAuthRequest()
+            .equals(other.getAuthRequest());
+        break;
+      case 3:
+        result = result && getAuthResponse()
+            .equals(other.getAuthResponse());
+        break;
+      case 4:
+        result = result && getLogoutRequest()
+            .equals(other.getLogoutRequest());
+        break;
+      case 5:
+        result = result && getLogoutResponse()
+            .equals(other.getLogoutResponse());
+        break;
+      case 6:
+        result = result && getKichoutRequest()
+            .equals(other.getKichoutRequest());
+        break;
+      case 7:
+        result = result && getKichoutResponse()
+            .equals(other.getKichoutResponse());
+        break;
+      case 8:
+        result = result && getHeartbeatRequest()
+            .equals(other.getHeartbeatRequest());
+        break;
+      case 9:
+        result = result && getO2OSendRequest()
+            .equals(other.getO2OSendRequest());
+        break;
+      case 10:
+        result = result && getO2OSendResponse()
+            .equals(other.getO2OSendResponse());
+        break;
+      case 11:
+        result = result && getO2ODistributeRequest()
+            .equals(other.getO2ODistributeRequest());
+        break;
+      case 12:
+        result = result && getO2ODistributeResponse()
+            .equals(other.getO2ODistributeResponse());
+        break;
+      case 13:
+        result = result && getO2MSendRequest()
+            .equals(other.getO2MSendRequest());
+        break;
+      case 14:
+        result = result && getO2MSendResponse()
+            .equals(other.getO2MSendResponse());
+        break;
+      case 15:
+        result = result && getO2MDistributeRequest()
+            .equals(other.getO2MDistributeRequest());
+        break;
+      case 16:
+        result = result && getO2MDistributeResponse()
+            .equals(other.getO2MDistributeResponse());
+        break;
+      case 0:
+      default:
+    }
+    result = result && unknownFields.equals(other.unknownFields);
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + CMD_FIELD_NUMBER;
+    hash = (53 * hash) + cmd_;
+    switch (bodyCase_) {
+      case 2:
+        hash = (37 * hash) + AUTHREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getAuthRequest().hashCode();
+        break;
+      case 3:
+        hash = (37 * hash) + AUTHRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getAuthResponse().hashCode();
+        break;
+      case 4:
+        hash = (37 * hash) + LOGOUTREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getLogoutRequest().hashCode();
+        break;
+      case 5:
+        hash = (37 * hash) + LOGOUTRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getLogoutResponse().hashCode();
+        break;
+      case 6:
+        hash = (37 * hash) + KICHOUTREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getKichoutRequest().hashCode();
+        break;
+      case 7:
+        hash = (37 * hash) + KICHOUTRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getKichoutResponse().hashCode();
+        break;
+      case 8:
+        hash = (37 * hash) + HEARTBEATREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getHeartbeatRequest().hashCode();
+        break;
+      case 9:
+        hash = (37 * hash) + O2OSENDREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getO2OSendRequest().hashCode();
+        break;
+      case 10:
+        hash = (37 * hash) + O2OSENDRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getO2OSendResponse().hashCode();
+        break;
+      case 11:
+        hash = (37 * hash) + O2ODISTRIBUTEREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getO2ODistributeRequest().hashCode();
+        break;
+      case 12:
+        hash = (37 * hash) + O2ODISTRIBUTERESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getO2ODistributeResponse().hashCode();
+        break;
+      case 13:
+        hash = (37 * hash) + O2MSENDREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getO2MSendRequest().hashCode();
+        break;
+      case 14:
+        hash = (37 * hash) + O2MSENDRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getO2MSendResponse().hashCode();
+        break;
+      case 15:
+        hash = (37 * hash) + O2MDISTRIBUTEREQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getO2MDistributeRequest().hashCode();
+        break;
+      case 16:
+        hash = (37 * hash) + O2MDISTRIBUTERESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getO2MDistributeResponse().hashCode();
+        break;
+      case 0:
+      default:
+    }
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static cn.bytes.jtim.core.protocol.protobuf.Message parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public Builder newBuilderForType() { return newBuilder(); }
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+  public static Builder newBuilder(cn.bytes.jtim.core.protocol.protobuf.Message prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
+  }
+  /**
+   * Protobuf type {@code Message}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      // @@protoc_insertion_point(builder_implements:Message)
+      cn.bytes.jtim.core.protocol.protobuf.MessageOrBuilder {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_Message_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_Message_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cn.bytes.jtim.core.protocol.protobuf.Message.class, cn.bytes.jtim.core.protocol.protobuf.Message.Builder.class);
+    }
+
+    // Construct using cn.bytes.jtim.core.protocol.protobuf.Message.newBuilder()
+    private Builder() {
+      maybeForceBuilderInitialization();
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
+    public Builder clear() {
+      super.clear();
+      cmd_ = 0;
+
+      bodyCase_ = 0;
+      body_ = null;
+      return this;
+    }
+
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_Message_descriptor;
+    }
+
+    public cn.bytes.jtim.core.protocol.protobuf.Message getDefaultInstanceForType() {
+      return cn.bytes.jtim.core.protocol.protobuf.Message.getDefaultInstance();
+    }
+
+    public cn.bytes.jtim.core.protocol.protobuf.Message build() {
+      cn.bytes.jtim.core.protocol.protobuf.Message result = buildPartial();
+      if (!result.isInitialized()) {
+        throw newUninitializedMessageException(result);
+      }
+      return result;
+    }
+
+    public cn.bytes.jtim.core.protocol.protobuf.Message buildPartial() {
+      cn.bytes.jtim.core.protocol.protobuf.Message result = new cn.bytes.jtim.core.protocol.protobuf.Message(this);
+      result.cmd_ = cmd_;
+      if (bodyCase_ == 2) {
+        if (authRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = authRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 3) {
+        if (authResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = authResponseBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 4) {
+        if (logoutRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = logoutRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 5) {
+        if (logoutResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = logoutResponseBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 6) {
+        if (kichoutRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = kichoutRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 7) {
+        if (kichoutResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = kichoutResponseBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 8) {
+        if (heartbeatRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = heartbeatRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 9) {
+        if (o2OSendRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2OSendRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 10) {
+        if (o2OSendResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2OSendResponseBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 11) {
+        if (o2ODistributeRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2ODistributeRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 12) {
+        if (o2ODistributeResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2ODistributeResponseBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 13) {
+        if (o2MSendRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2MSendRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 14) {
+        if (o2MSendResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2MSendResponseBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 15) {
+        if (o2MDistributeRequestBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2MDistributeRequestBuilder_.build();
+        }
+      }
+      if (bodyCase_ == 16) {
+        if (o2MDistributeResponseBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = o2MDistributeResponseBuilder_.build();
+        }
+      }
+      result.bodyCase_ = bodyCase_;
+      onBuilt();
+      return result;
+    }
+
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof cn.bytes.jtim.core.protocol.protobuf.Message) {
+        return mergeFrom((cn.bytes.jtim.core.protocol.protobuf.Message)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    public Builder mergeFrom(cn.bytes.jtim.core.protocol.protobuf.Message other) {
+      if (other == cn.bytes.jtim.core.protocol.protobuf.Message.getDefaultInstance()) return this;
+      if (other.cmd_ != 0) {
+        setCmdValue(other.getCmdValue());
+      }
+      switch (other.getBodyCase()) {
+        case AUTHREQUEST: {
+          mergeAuthRequest(other.getAuthRequest());
+          break;
+        }
+        case AUTHRESPONSE: {
+          mergeAuthResponse(other.getAuthResponse());
+          break;
+        }
+        case LOGOUTREQUEST: {
+          mergeLogoutRequest(other.getLogoutRequest());
+          break;
+        }
+        case LOGOUTRESPONSE: {
+          mergeLogoutResponse(other.getLogoutResponse());
+          break;
+        }
+        case KICHOUTREQUEST: {
+          mergeKichoutRequest(other.getKichoutRequest());
+          break;
+        }
+        case KICHOUTRESPONSE: {
+          mergeKichoutResponse(other.getKichoutResponse());
+          break;
+        }
+        case HEARTBEATREQUEST: {
+          mergeHeartbeatRequest(other.getHeartbeatRequest());
+          break;
+        }
+        case O2OSENDREQUEST: {
+          mergeO2OSendRequest(other.getO2OSendRequest());
+          break;
+        }
+        case O2OSENDRESPONSE: {
+          mergeO2OSendResponse(other.getO2OSendResponse());
+          break;
+        }
+        case O2ODISTRIBUTEREQUEST: {
+          mergeO2ODistributeRequest(other.getO2ODistributeRequest());
+          break;
+        }
+        case O2ODISTRIBUTERESPONSE: {
+          mergeO2ODistributeResponse(other.getO2ODistributeResponse());
+          break;
+        }
+        case O2MSENDREQUEST: {
+          mergeO2MSendRequest(other.getO2MSendRequest());
+          break;
+        }
+        case O2MSENDRESPONSE: {
+          mergeO2MSendResponse(other.getO2MSendResponse());
+          break;
+        }
+        case O2MDISTRIBUTEREQUEST: {
+          mergeO2MDistributeRequest(other.getO2MDistributeRequest());
+          break;
+        }
+        case O2MDISTRIBUTERESPONSE: {
+          mergeO2MDistributeResponse(other.getO2MDistributeResponse());
+          break;
+        }
+        case BODY_NOT_SET: {
+          break;
+        }
+      }
+      this.mergeUnknownFields(other.unknownFields);
+      onChanged();
+      return this;
+    }
+
+    public final boolean isInitialized() {
+      return true;
+    }
+
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      cn.bytes.jtim.core.protocol.protobuf.Message parsedMessage = null;
+      try {
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (cn.bytes.jtim.core.protocol.protobuf.Message) e.getUnfinishedMessage();
+        throw e.unwrapIOException();
+      } finally {
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
+      return this;
+    }
+    private int bodyCase_ = 0;
+    private java.lang.Object body_;
+    public BodyCase
+        getBodyCase() {
+      return BodyCase.forNumber(
+          bodyCase_);
+    }
+
+    public Builder clearBody() {
+      bodyCase_ = 0;
+      body_ = null;
+      onChanged();
+      return this;
+    }
+
+
+    private int cmd_ = 0;
+    /**
+     * <code>.Message.Cmd cmd = 1;</code>
+     */
+    public int getCmdValue() {
+      return cmd_;
+    }
+    /**
+     * <code>.Message.Cmd cmd = 1;</code>
+     */
+    public Builder setCmdValue(int value) {
+      cmd_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.Cmd cmd = 1;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.Message.Cmd getCmd() {
+      cn.bytes.jtim.core.protocol.protobuf.Message.Cmd result = cn.bytes.jtim.core.protocol.protobuf.Message.Cmd.valueOf(cmd_);
+      return result == null ? cn.bytes.jtim.core.protocol.protobuf.Message.Cmd.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.Message.Cmd cmd = 1;</code>
+     */
+    public Builder setCmd(cn.bytes.jtim.core.protocol.protobuf.Message.Cmd value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      cmd_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.Cmd cmd = 1;</code>
+     */
+    public Builder clearCmd() {
+      
+      cmd_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.AuthRequest, cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.AuthRequestOrBuilder> authRequestBuilder_;
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public boolean hasAuthRequest() {
+      return bodyCase_ == 2;
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.AuthRequest getAuthRequest() {
+      if (authRequestBuilder_ == null) {
+        if (bodyCase_ == 2) {
+          return (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 2) {
+          return authRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public Builder setAuthRequest(cn.bytes.jtim.core.protocol.protobuf.AuthRequest value) {
+      if (authRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        authRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 2;
+      return this;
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public Builder setAuthRequest(
+        cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder builderForValue) {
+      if (authRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        authRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 2;
+      return this;
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public Builder mergeAuthRequest(cn.bytes.jtim.core.protocol.protobuf.AuthRequest value) {
+      if (authRequestBuilder_ == null) {
+        if (bodyCase_ == 2 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.AuthRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 2) {
+          authRequestBuilder_.mergeFrom(value);
+        }
+        authRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 2;
+      return this;
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public Builder clearAuthRequest() {
+      if (authRequestBuilder_ == null) {
+        if (bodyCase_ == 2) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 2) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        authRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder getAuthRequestBuilder() {
+      return getAuthRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.AuthRequestOrBuilder getAuthRequestOrBuilder() {
+      if ((bodyCase_ == 2) && (authRequestBuilder_ != null)) {
+        return authRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 2) {
+          return (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.AuthRequest authRequest = 2;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.AuthRequest, cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.AuthRequestOrBuilder> 
+        getAuthRequestFieldBuilder() {
+      if (authRequestBuilder_ == null) {
+        if (!(bodyCase_ == 2)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.AuthRequest.getDefaultInstance();
+        }
+        authRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.AuthRequest, cn.bytes.jtim.core.protocol.protobuf.AuthRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.AuthRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.AuthRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 2;
+      onChanged();;
+      return authRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.AuthResponse, cn.bytes.jtim.core.protocol.protobuf.AuthResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.AuthResponseOrBuilder> authResponseBuilder_;
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public boolean hasAuthResponse() {
+      return bodyCase_ == 3;
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.AuthResponse getAuthResponse() {
+      if (authResponseBuilder_ == null) {
+        if (bodyCase_ == 3) {
+          return (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 3) {
+          return authResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public Builder setAuthResponse(cn.bytes.jtim.core.protocol.protobuf.AuthResponse value) {
+      if (authResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        authResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 3;
+      return this;
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public Builder setAuthResponse(
+        cn.bytes.jtim.core.protocol.protobuf.AuthResponse.Builder builderForValue) {
+      if (authResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        authResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 3;
+      return this;
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public Builder mergeAuthResponse(cn.bytes.jtim.core.protocol.protobuf.AuthResponse value) {
+      if (authResponseBuilder_ == null) {
+        if (bodyCase_ == 3 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.AuthResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 3) {
+          authResponseBuilder_.mergeFrom(value);
+        }
+        authResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 3;
+      return this;
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public Builder clearAuthResponse() {
+      if (authResponseBuilder_ == null) {
+        if (bodyCase_ == 3) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 3) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        authResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.AuthResponse.Builder getAuthResponseBuilder() {
+      return getAuthResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.AuthResponseOrBuilder getAuthResponseOrBuilder() {
+      if ((bodyCase_ == 3) && (authResponseBuilder_ != null)) {
+        return authResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 3) {
+          return (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.AuthResponse authResponse = 3;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.AuthResponse, cn.bytes.jtim.core.protocol.protobuf.AuthResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.AuthResponseOrBuilder> 
+        getAuthResponseFieldBuilder() {
+      if (authResponseBuilder_ == null) {
+        if (!(bodyCase_ == 3)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.AuthResponse.getDefaultInstance();
+        }
+        authResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.AuthResponse, cn.bytes.jtim.core.protocol.protobuf.AuthResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.AuthResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.AuthResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 3;
+      onChanged();;
+      return authResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.LogoutRequest, cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.LogoutRequestOrBuilder> logoutRequestBuilder_;
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public boolean hasLogoutRequest() {
+      return bodyCase_ == 4;
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.LogoutRequest getLogoutRequest() {
+      if (logoutRequestBuilder_ == null) {
+        if (bodyCase_ == 4) {
+          return (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 4) {
+          return logoutRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public Builder setLogoutRequest(cn.bytes.jtim.core.protocol.protobuf.LogoutRequest value) {
+      if (logoutRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        logoutRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public Builder setLogoutRequest(
+        cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.Builder builderForValue) {
+      if (logoutRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        logoutRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public Builder mergeLogoutRequest(cn.bytes.jtim.core.protocol.protobuf.LogoutRequest value) {
+      if (logoutRequestBuilder_ == null) {
+        if (bodyCase_ == 4 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 4) {
+          logoutRequestBuilder_.mergeFrom(value);
+        }
+        logoutRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 4;
+      return this;
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public Builder clearLogoutRequest() {
+      if (logoutRequestBuilder_ == null) {
+        if (bodyCase_ == 4) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 4) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        logoutRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.Builder getLogoutRequestBuilder() {
+      return getLogoutRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.LogoutRequestOrBuilder getLogoutRequestOrBuilder() {
+      if ((bodyCase_ == 4) && (logoutRequestBuilder_ != null)) {
+        return logoutRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 4) {
+          return (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.LogoutRequest logoutRequest = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.LogoutRequest, cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.LogoutRequestOrBuilder> 
+        getLogoutRequestFieldBuilder() {
+      if (logoutRequestBuilder_ == null) {
+        if (!(bodyCase_ == 4)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.getDefaultInstance();
+        }
+        logoutRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.LogoutRequest, cn.bytes.jtim.core.protocol.protobuf.LogoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.LogoutRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.LogoutRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 4;
+      onChanged();;
+      return logoutRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.LogoutResponse, cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder> logoutResponseBuilder_;
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public boolean hasLogoutResponse() {
+      return bodyCase_ == 5;
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.LogoutResponse getLogoutResponse() {
+      if (logoutResponseBuilder_ == null) {
+        if (bodyCase_ == 5) {
+          return (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 5) {
+          return logoutResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public Builder setLogoutResponse(cn.bytes.jtim.core.protocol.protobuf.LogoutResponse value) {
+      if (logoutResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        logoutResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public Builder setLogoutResponse(
+        cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder builderForValue) {
+      if (logoutResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        logoutResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public Builder mergeLogoutResponse(cn.bytes.jtim.core.protocol.protobuf.LogoutResponse value) {
+      if (logoutResponseBuilder_ == null) {
+        if (bodyCase_ == 5 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 5) {
+          logoutResponseBuilder_.mergeFrom(value);
+        }
+        logoutResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 5;
+      return this;
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public Builder clearLogoutResponse() {
+      if (logoutResponseBuilder_ == null) {
+        if (bodyCase_ == 5) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 5) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        logoutResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder getLogoutResponseBuilder() {
+      return getLogoutResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder getLogoutResponseOrBuilder() {
+      if ((bodyCase_ == 5) && (logoutResponseBuilder_ != null)) {
+        return logoutResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 5) {
+          return (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.LogoutResponse logoutResponse = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.LogoutResponse, cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder> 
+        getLogoutResponseFieldBuilder() {
+      if (logoutResponseBuilder_ == null) {
+        if (!(bodyCase_ == 5)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
+        }
+        logoutResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.LogoutResponse, cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 5;
+      onChanged();;
+      return logoutResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.KichoutRequest, cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder> kichoutRequestBuilder_;
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public boolean hasKichoutRequest() {
+      return bodyCase_ == 6;
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.KichoutRequest getKichoutRequest() {
+      if (kichoutRequestBuilder_ == null) {
+        if (bodyCase_ == 6) {
+          return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 6) {
+          return kichoutRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public Builder setKichoutRequest(cn.bytes.jtim.core.protocol.protobuf.KichoutRequest value) {
+      if (kichoutRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        kichoutRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 6;
+      return this;
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public Builder setKichoutRequest(
+        cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder builderForValue) {
+      if (kichoutRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        kichoutRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 6;
+      return this;
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public Builder mergeKichoutRequest(cn.bytes.jtim.core.protocol.protobuf.KichoutRequest value) {
+      if (kichoutRequestBuilder_ == null) {
+        if (bodyCase_ == 6 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 6) {
+          kichoutRequestBuilder_.mergeFrom(value);
+        }
+        kichoutRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 6;
+      return this;
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public Builder clearKichoutRequest() {
+      if (kichoutRequestBuilder_ == null) {
+        if (bodyCase_ == 6) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 6) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        kichoutRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder getKichoutRequestBuilder() {
+      return getKichoutRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder getKichoutRequestOrBuilder() {
+      if ((bodyCase_ == 6) && (kichoutRequestBuilder_ != null)) {
+        return kichoutRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 6) {
+          return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.KichoutRequest, cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder> 
+        getKichoutRequestFieldBuilder() {
+      if (kichoutRequestBuilder_ == null) {
+        if (!(bodyCase_ == 6)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+        }
+        kichoutRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.KichoutRequest, cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 6;
+      onChanged();;
+      return kichoutRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.KichoutResponse, cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder> kichoutResponseBuilder_;
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public boolean hasKichoutResponse() {
+      return bodyCase_ == 7;
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.KichoutResponse getKichoutResponse() {
+      if (kichoutResponseBuilder_ == null) {
+        if (bodyCase_ == 7) {
+          return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 7) {
+          return kichoutResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public Builder setKichoutResponse(cn.bytes.jtim.core.protocol.protobuf.KichoutResponse value) {
+      if (kichoutResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        kichoutResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public Builder setKichoutResponse(
+        cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder builderForValue) {
+      if (kichoutResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        kichoutResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public Builder mergeKichoutResponse(cn.bytes.jtim.core.protocol.protobuf.KichoutResponse value) {
+      if (kichoutResponseBuilder_ == null) {
+        if (bodyCase_ == 7 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 7) {
+          kichoutResponseBuilder_.mergeFrom(value);
+        }
+        kichoutResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public Builder clearKichoutResponse() {
+      if (kichoutResponseBuilder_ == null) {
+        if (bodyCase_ == 7) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 7) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        kichoutResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder getKichoutResponseBuilder() {
+      return getKichoutResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder getKichoutResponseOrBuilder() {
+      if ((bodyCase_ == 7) && (kichoutResponseBuilder_ != null)) {
+        return kichoutResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 7) {
+          return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.KichoutResponse kichoutResponse = 7;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.KichoutResponse, cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder> 
+        getKichoutResponseFieldBuilder() {
+      if (kichoutResponseBuilder_ == null) {
+        if (!(bodyCase_ == 7)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+        }
+        kichoutResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.KichoutResponse, cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 7;
+      onChanged();;
+      return kichoutResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder> heartbeatRequestBuilder_;
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public boolean hasHeartbeatRequest() {
+      return bodyCase_ == 8;
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest getHeartbeatRequest() {
+      if (heartbeatRequestBuilder_ == null) {
+        if (bodyCase_ == 8) {
+          return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 8) {
+          return heartbeatRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public Builder setHeartbeatRequest(cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest value) {
+      if (heartbeatRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        heartbeatRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 8;
+      return this;
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public Builder setHeartbeatRequest(
+        cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder builderForValue) {
+      if (heartbeatRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        heartbeatRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 8;
+      return this;
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public Builder mergeHeartbeatRequest(cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest value) {
+      if (heartbeatRequestBuilder_ == null) {
+        if (bodyCase_ == 8 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 8) {
+          heartbeatRequestBuilder_.mergeFrom(value);
+        }
+        heartbeatRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 8;
+      return this;
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public Builder clearHeartbeatRequest() {
+      if (heartbeatRequestBuilder_ == null) {
+        if (bodyCase_ == 8) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 8) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        heartbeatRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder getHeartbeatRequestBuilder() {
+      return getHeartbeatRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder getHeartbeatRequestOrBuilder() {
+      if ((bodyCase_ == 8) && (heartbeatRequestBuilder_ != null)) {
+        return heartbeatRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 8) {
+          return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder> 
+        getHeartbeatRequestFieldBuilder() {
+      if (heartbeatRequestBuilder_ == null) {
+        if (!(bodyCase_ == 8)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+        }
+        heartbeatRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 8;
+      onChanged();;
+      return heartbeatRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder> o2OSendRequestBuilder_;
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public boolean hasO2OSendRequest() {
+      return bodyCase_ == 9;
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest getO2OSendRequest() {
+      if (o2OSendRequestBuilder_ == null) {
+        if (bodyCase_ == 9) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 9) {
+          return o2OSendRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public Builder setO2OSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest value) {
+      if (o2OSendRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2OSendRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 9;
+      return this;
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public Builder setO2OSendRequest(
+        cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder builderForValue) {
+      if (o2OSendRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2OSendRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 9;
+      return this;
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public Builder mergeO2OSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest value) {
+      if (o2OSendRequestBuilder_ == null) {
+        if (bodyCase_ == 9 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 9) {
+          o2OSendRequestBuilder_.mergeFrom(value);
+        }
+        o2OSendRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 9;
+      return this;
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public Builder clearO2OSendRequest() {
+      if (o2OSendRequestBuilder_ == null) {
+        if (bodyCase_ == 9) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 9) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2OSendRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder getO2OSendRequestBuilder() {
+      return getO2OSendRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder getO2OSendRequestOrBuilder() {
+      if ((bodyCase_ == 9) && (o2OSendRequestBuilder_ != null)) {
+        return o2OSendRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 9) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2OSendRequest o2oSendRequest = 9;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder> 
+        getO2OSendRequestFieldBuilder() {
+      if (o2OSendRequestBuilder_ == null) {
+        if (!(bodyCase_ == 9)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+        }
+        o2OSendRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 9;
+      onChanged();;
+      return o2OSendRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder> o2OSendResponseBuilder_;
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public boolean hasO2OSendResponse() {
+      return bodyCase_ == 10;
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse getO2OSendResponse() {
+      if (o2OSendResponseBuilder_ == null) {
+        if (bodyCase_ == 10) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 10) {
+          return o2OSendResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public Builder setO2OSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse value) {
+      if (o2OSendResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2OSendResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 10;
+      return this;
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public Builder setO2OSendResponse(
+        cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder builderForValue) {
+      if (o2OSendResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2OSendResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 10;
+      return this;
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public Builder mergeO2OSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse value) {
+      if (o2OSendResponseBuilder_ == null) {
+        if (bodyCase_ == 10 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 10) {
+          o2OSendResponseBuilder_.mergeFrom(value);
+        }
+        o2OSendResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 10;
+      return this;
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public Builder clearO2OSendResponse() {
+      if (o2OSendResponseBuilder_ == null) {
+        if (bodyCase_ == 10) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 10) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2OSendResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder getO2OSendResponseBuilder() {
+      return getO2OSendResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder getO2OSendResponseOrBuilder() {
+      if ((bodyCase_ == 10) && (o2OSendResponseBuilder_ != null)) {
+        return o2OSendResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 10) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2OSendResponse o2oSendResponse = 10;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder> 
+        getO2OSendResponseFieldBuilder() {
+      if (o2OSendResponseBuilder_ == null) {
+        if (!(bodyCase_ == 10)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+        }
+        o2OSendResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 10;
+      onChanged();;
+      return o2OSendResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder> o2ODistributeRequestBuilder_;
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public boolean hasO2ODistributeRequest() {
+      return bodyCase_ == 11;
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getO2ODistributeRequest() {
+      if (o2ODistributeRequestBuilder_ == null) {
+        if (bodyCase_ == 11) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 11) {
+          return o2ODistributeRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public Builder setO2ODistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest value) {
+      if (o2ODistributeRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2ODistributeRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 11;
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public Builder setO2ODistributeRequest(
+        cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder builderForValue) {
+      if (o2ODistributeRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2ODistributeRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 11;
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public Builder mergeO2ODistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest value) {
+      if (o2ODistributeRequestBuilder_ == null) {
+        if (bodyCase_ == 11 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 11) {
+          o2ODistributeRequestBuilder_.mergeFrom(value);
+        }
+        o2ODistributeRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 11;
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public Builder clearO2ODistributeRequest() {
+      if (o2ODistributeRequestBuilder_ == null) {
+        if (bodyCase_ == 11) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 11) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2ODistributeRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder getO2ODistributeRequestBuilder() {
+      return getO2ODistributeRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder getO2ODistributeRequestOrBuilder() {
+      if ((bodyCase_ == 11) && (o2ODistributeRequestBuilder_ != null)) {
+        return o2ODistributeRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 11) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 11;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder> 
+        getO2ODistributeRequestFieldBuilder() {
+      if (o2ODistributeRequestBuilder_ == null) {
+        if (!(bodyCase_ == 11)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+        }
+        o2ODistributeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 11;
+      onChanged();;
+      return o2ODistributeRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder> o2ODistributeResponseBuilder_;
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public boolean hasO2ODistributeResponse() {
+      return bodyCase_ == 12;
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse getO2ODistributeResponse() {
+      if (o2ODistributeResponseBuilder_ == null) {
+        if (bodyCase_ == 12) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 12) {
+          return o2ODistributeResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public Builder setO2ODistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse value) {
+      if (o2ODistributeResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2ODistributeResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 12;
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public Builder setO2ODistributeResponse(
+        cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder builderForValue) {
+      if (o2ODistributeResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2ODistributeResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 12;
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public Builder mergeO2ODistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse value) {
+      if (o2ODistributeResponseBuilder_ == null) {
+        if (bodyCase_ == 12 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 12) {
+          o2ODistributeResponseBuilder_.mergeFrom(value);
+        }
+        o2ODistributeResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 12;
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public Builder clearO2ODistributeResponse() {
+      if (o2ODistributeResponseBuilder_ == null) {
+        if (bodyCase_ == 12) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 12) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2ODistributeResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder getO2ODistributeResponseBuilder() {
+      return getO2ODistributeResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder getO2ODistributeResponseOrBuilder() {
+      if ((bodyCase_ == 12) && (o2ODistributeResponseBuilder_ != null)) {
+        return o2ODistributeResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 12) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 12;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder> 
+        getO2ODistributeResponseFieldBuilder() {
+      if (o2ODistributeResponseBuilder_ == null) {
+        if (!(bodyCase_ == 12)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+        }
+        o2ODistributeResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 12;
+      onChanged();;
+      return o2ODistributeResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder> o2MSendRequestBuilder_;
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public boolean hasO2MSendRequest() {
+      return bodyCase_ == 13;
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest getO2MSendRequest() {
+      if (o2MSendRequestBuilder_ == null) {
+        if (bodyCase_ == 13) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 13) {
+          return o2MSendRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public Builder setO2MSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest value) {
+      if (o2MSendRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2MSendRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 13;
+      return this;
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public Builder setO2MSendRequest(
+        cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder builderForValue) {
+      if (o2MSendRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2MSendRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 13;
+      return this;
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public Builder mergeO2MSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest value) {
+      if (o2MSendRequestBuilder_ == null) {
+        if (bodyCase_ == 13 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 13) {
+          o2MSendRequestBuilder_.mergeFrom(value);
+        }
+        o2MSendRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 13;
+      return this;
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public Builder clearO2MSendRequest() {
+      if (o2MSendRequestBuilder_ == null) {
+        if (bodyCase_ == 13) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 13) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2MSendRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder getO2MSendRequestBuilder() {
+      return getO2MSendRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder getO2MSendRequestOrBuilder() {
+      if ((bodyCase_ == 13) && (o2MSendRequestBuilder_ != null)) {
+        return o2MSendRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 13) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MSendRequest o2mSendRequest = 13;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder> 
+        getO2MSendRequestFieldBuilder() {
+      if (o2MSendRequestBuilder_ == null) {
+        if (!(bodyCase_ == 13)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+        }
+        o2MSendRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 13;
+      onChanged();;
+      return o2MSendRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder> o2MSendResponseBuilder_;
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public boolean hasO2MSendResponse() {
+      return bodyCase_ == 14;
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getO2MSendResponse() {
+      if (o2MSendResponseBuilder_ == null) {
+        if (bodyCase_ == 14) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 14) {
+          return o2MSendResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public Builder setO2MSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse value) {
+      if (o2MSendResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2MSendResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 14;
+      return this;
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public Builder setO2MSendResponse(
+        cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder builderForValue) {
+      if (o2MSendResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2MSendResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 14;
+      return this;
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public Builder mergeO2MSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse value) {
+      if (o2MSendResponseBuilder_ == null) {
+        if (bodyCase_ == 14 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 14) {
+          o2MSendResponseBuilder_.mergeFrom(value);
+        }
+        o2MSendResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 14;
+      return this;
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public Builder clearO2MSendResponse() {
+      if (o2MSendResponseBuilder_ == null) {
+        if (bodyCase_ == 14) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 14) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2MSendResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder getO2MSendResponseBuilder() {
+      return getO2MSendResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder getO2MSendResponseOrBuilder() {
+      if ((bodyCase_ == 14) && (o2MSendResponseBuilder_ != null)) {
+        return o2MSendResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 14) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MSendResponse o2mSendResponse = 14;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder> 
+        getO2MSendResponseFieldBuilder() {
+      if (o2MSendResponseBuilder_ == null) {
+        if (!(bodyCase_ == 14)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
+        }
+        o2MSendResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 14;
+      onChanged();;
+      return o2MSendResponseBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder> o2MDistributeRequestBuilder_;
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public boolean hasO2MDistributeRequest() {
+      return bodyCase_ == 15;
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest getO2MDistributeRequest() {
+      if (o2MDistributeRequestBuilder_ == null) {
+        if (bodyCase_ == 15) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 15) {
+          return o2MDistributeRequestBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public Builder setO2MDistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest value) {
+      if (o2MDistributeRequestBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2MDistributeRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 15;
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public Builder setO2MDistributeRequest(
+        cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder builderForValue) {
+      if (o2MDistributeRequestBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2MDistributeRequestBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 15;
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public Builder mergeO2MDistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest value) {
+      if (o2MDistributeRequestBuilder_ == null) {
+        if (bodyCase_ == 15 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 15) {
+          o2MDistributeRequestBuilder_.mergeFrom(value);
+        }
+        o2MDistributeRequestBuilder_.setMessage(value);
+      }
+      bodyCase_ = 15;
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public Builder clearO2MDistributeRequest() {
+      if (o2MDistributeRequestBuilder_ == null) {
+        if (bodyCase_ == 15) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 15) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2MDistributeRequestBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder getO2MDistributeRequestBuilder() {
+      return getO2MDistributeRequestFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder getO2MDistributeRequestOrBuilder() {
+      if ((bodyCase_ == 15) && (o2MDistributeRequestBuilder_ != null)) {
+        return o2MDistributeRequestBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 15) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 15;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder> 
+        getO2MDistributeRequestFieldBuilder() {
+      if (o2MDistributeRequestBuilder_ == null) {
+        if (!(bodyCase_ == 15)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
+        }
+        o2MDistributeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 15;
+      onChanged();;
+      return o2MDistributeRequestBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder> o2MDistributeResponseBuilder_;
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public boolean hasO2MDistributeResponse() {
+      return bodyCase_ == 16;
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse getO2MDistributeResponse() {
+      if (o2MDistributeResponseBuilder_ == null) {
+        if (bodyCase_ == 16) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
+      } else {
+        if (bodyCase_ == 16) {
+          return o2MDistributeResponseBuilder_.getMessage();
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public Builder setO2MDistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse value) {
+      if (o2MDistributeResponseBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        body_ = value;
+        onChanged();
+      } else {
+        o2MDistributeResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 16;
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public Builder setO2MDistributeResponse(
+        cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder builderForValue) {
+      if (o2MDistributeResponseBuilder_ == null) {
+        body_ = builderForValue.build();
+        onChanged();
+      } else {
+        o2MDistributeResponseBuilder_.setMessage(builderForValue.build());
+      }
+      bodyCase_ = 16;
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public Builder mergeO2MDistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse value) {
+      if (o2MDistributeResponseBuilder_ == null) {
+        if (bodyCase_ == 16 &&
+            body_ != cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance()) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          body_ = value;
+        }
+        onChanged();
+      } else {
+        if (bodyCase_ == 16) {
+          o2MDistributeResponseBuilder_.mergeFrom(value);
+        }
+        o2MDistributeResponseBuilder_.setMessage(value);
+      }
+      bodyCase_ = 16;
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public Builder clearO2MDistributeResponse() {
+      if (o2MDistributeResponseBuilder_ == null) {
+        if (bodyCase_ == 16) {
+          bodyCase_ = 0;
+          body_ = null;
+          onChanged();
+        }
+      } else {
+        if (bodyCase_ == 16) {
+          bodyCase_ = 0;
+          body_ = null;
+        }
+        o2MDistributeResponseBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder getO2MDistributeResponseBuilder() {
+      return getO2MDistributeResponseFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder getO2MDistributeResponseOrBuilder() {
+      if ((bodyCase_ == 16) && (o2MDistributeResponseBuilder_ != null)) {
+        return o2MDistributeResponseBuilder_.getMessageOrBuilder();
+      } else {
+        if (bodyCase_ == 16) {
+          return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
+        }
+        return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 16;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder> 
+        getO2MDistributeResponseFieldBuilder() {
+      if (o2MDistributeResponseBuilder_ == null) {
+        if (!(bodyCase_ == 16)) {
+          body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
+        }
+        o2MDistributeResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder>(
+                (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_,
+                getParentForChildren(),
+                isClean());
+        body_ = null;
+      }
+      bodyCase_ = 16;
+      onChanged();;
+      return o2MDistributeResponseBuilder_;
+    }
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.setUnknownFieldsProto3(unknownFields);
+    }
+
+    public final Builder mergeUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.mergeUnknownFields(unknownFields);
+    }
+
+
+    // @@protoc_insertion_point(builder_scope:Message)
+  }
+
+  // @@protoc_insertion_point(class_scope:Message)
+  private static final cn.bytes.jtim.core.protocol.protobuf.Message DEFAULT_INSTANCE;
+  static {
+    DEFAULT_INSTANCE = new cn.bytes.jtim.core.protocol.protobuf.Message();
+  }
+
+  public static cn.bytes.jtim.core.protocol.protobuf.Message getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  private static final com.google.protobuf.Parser<Message>
+      PARSER = new com.google.protobuf.AbstractParser<Message>() {
+    public Message parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new Message(input, extensionRegistry);
+    }
+  };
+
+  public static com.google.protobuf.Parser<Message> parser() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  public com.google.protobuf.Parser<Message> getParserForType() {
+    return PARSER;
+  }
+
+  public cn.bytes.jtim.core.protocol.protobuf.Message getDefaultInstanceForType() {
+    return DEFAULT_INSTANCE;
+  }
+
 }
+

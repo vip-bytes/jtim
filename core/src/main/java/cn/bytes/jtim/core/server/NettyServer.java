@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 public abstract class NettyServer extends InitializerServer {
 
-    public enum State {Created, Initialized,Starting,Started}
+    public enum State {Created, Initialized, Starting, Started}
 
     protected final AtomicReference<State> state = new AtomicReference<>(State.Created);
 
@@ -39,7 +39,7 @@ public abstract class NettyServer extends InitializerServer {
     @Override
     public void start() {
         this.init();
-        if(state.compareAndSet(State.Initialized, State.Starting)){
+        if (state.compareAndSet(State.Initialized, State.Starting)) {
             startAsync().syncUninterruptibly();
         }
     }
@@ -48,7 +48,7 @@ public abstract class NettyServer extends InitializerServer {
     public void start(AfterHandler<State> afterHandler) {
         this.start();
 
-        if(Objects.nonNull(afterHandler)) {
+        if (Objects.nonNull(afterHandler)) {
             afterHandler.accept(state.get());
         }
 
@@ -61,32 +61,30 @@ public abstract class NettyServer extends InitializerServer {
 
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup).channel(channelClass).childHandler(this);
-        //connection options
-        applyConnectionOptions(b);
+
+        options(b);
 
         InetSocketAddress addr =
                 StringUtils.isNotBlank(configuration.getHost()) ?
-                        new InetSocketAddress(configuration.getHost(), configuration.getPort()):
+                        new InetSocketAddress(configuration.getHost(), configuration.getPort()) :
                         new InetSocketAddress(configuration.getPort());
 
         return b.bind(addr).addListener((FutureListener<Void>) future -> {
             if (future.isSuccess()) {
                 this.state.set(State.Started);
-                log.info(" {} started at port: {}",this.getClass().getSimpleName(), configuration.getPort());
+                log.info(" {} started at port: {}", this.getClass().getSimpleName(), configuration.getPort());
             } else {
-                log.error(" {} start failed at port: {}!",this.getClass().getSimpleName(), configuration.getPort());
+                log.error(" {} start failed at port: {}!", this.getClass().getSimpleName(), configuration.getPort());
             }
         });
     }
 
-
     @Override
     protected void initChannel(Channel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast(new IdleStateHandler(this.configuration.getHeartReadTime(),0,0, TimeUnit.SECONDS));
-        this.handlerOptions(pipeline);
+        pipeline.addLast(new IdleStateHandler(this.configuration.getHeartReadTime(), 0, 0, TimeUnit.SECONDS));
+        this.channelPipelineOptions(pipeline);
     }
-
 
     private Class<? extends ServerChannel> getChannelClass() {
         Class<? extends ServerChannel> channelClass = NioServerSocketChannel.class;
@@ -98,9 +96,10 @@ public abstract class NettyServer extends InitializerServer {
 
     /**
      * 服务绑定对应的处理器
+     *
      * @param pipeline
      */
-    public abstract void handlerOptions(ChannelPipeline pipeline) ;
+    public abstract void channelPipelineOptions(ChannelPipeline pipeline);
 
     /**
      * 初始group
@@ -117,9 +116,10 @@ public abstract class NettyServer extends InitializerServer {
 
     /**
      * 连接options
+     *
      * @param bootstrap
      */
-    protected void applyConnectionOptions(ServerBootstrap bootstrap) {
+    protected void options(ServerBootstrap bootstrap) {
         SocketConfig config = configuration.getSocketConfig();
         bootstrap.childOption(ChannelOption.TCP_NODELAY, config.isNoDelay());
         if (config.getSendBufferSize() > -1) {
@@ -137,6 +137,8 @@ public abstract class NettyServer extends InitializerServer {
         //http://blog.csdn.net/u010942020/article/details/52044809
         bootstrap.childOption(ChannelOption.WRITE_BUFFER_WATER_MARK,
                 new WriteBufferWaterMark(config.getWriteBufferWaterLow(), config.getWriteBufferWaterHigh()));
+        bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
+        bootstrap.childOption(ChannelOption.TCP_NODELAY, true);
 
     }
 
@@ -145,7 +147,6 @@ public abstract class NettyServer extends InitializerServer {
         // todo
         state.compareAndSet(State.Created, State.Initialized);
     }
-
 
     @Override
     public void stop() {

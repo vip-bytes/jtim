@@ -24,11 +24,11 @@ public class NettyWebSocketServer extends NettyServer {
     }
 
     @Override
-    public void handlerOptions(ChannelPipeline pipeline) {
+    public void channelPipelineOptions(ChannelPipeline pipeline) {
         pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(this.configuration.getMaxHttpContentLength()));
         pipeline.addLast(new WebSocketServerCompressionHandler());
-        pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, true,this.configuration.getMaxWebsocketFrameSize()));
+        pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, true, this.configuration.getMaxWebsocketFrameSize()));
 //        pipeline.addLast(this.wsServerChannelHandlerAdapter);
     }
 

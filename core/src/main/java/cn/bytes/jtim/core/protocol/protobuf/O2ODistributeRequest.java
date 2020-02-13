@@ -115,12 +115,12 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2ODistributeRequest_descriptor;
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2ODistributeRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2ODistributeRequest_fieldAccessorTable
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2ODistributeRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.class, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder.class);
   }
@@ -567,12 +567,12 @@ private static final long serialVersionUID = 0L;
       cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2ODistributeRequest_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2ODistributeRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2ODistributeRequest_fieldAccessorTable
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2ODistributeRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.class, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder.class);
     }
@@ -613,7 +613,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2ODistributeRequest_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2ODistributeRequest_descriptor;
     }
 
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getDefaultInstanceForType() {

@@ -83,12 +83,12 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2MSendResponse_descriptor;
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2MSendResponse_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2MSendResponse_fieldAccessorTable
+    return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2MSendResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.class, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder.class);
   }
@@ -359,12 +359,12 @@ private static final long serialVersionUID = 0L;
       cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2MSendResponse_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2MSendResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2MSendResponse_fieldAccessorTable
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2MSendResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.class, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder.class);
     }
@@ -397,7 +397,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cn.bytes.jtim.core.protocol.protobuf.Message.internal_static_O2MSendResponse_descriptor;
+      return cn.bytes.jtim.core.protocol.protobuf.MessageContent.internal_static_O2MSendResponse_descriptor;
     }
 
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getDefaultInstanceForType() {
