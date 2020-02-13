@@ -1,5 +1,6 @@
 package cn.bytes.jtim.core.handler;
 
+import cn.bytes.jtim.core.Actuator;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
@@ -15,12 +16,18 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufHandler extends SimpleChannelInboundHandler<Message> {
+public class ProtobufHandler2 extends SimpleChannelInboundHandler<Message> {
+
+    private Actuator actuator;
+
+    public ProtobufHandler2(Actuator actuator) {
+        this.actuator = actuator;
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
 
-        log.info("消息: {}", message);
+        log.info("【客户端】消息: {}", message);
 
         Message.Cmd cmd = message.getCmd();
         if (Message.Cmd.HeartbeatRequest.equals(cmd)) {
@@ -32,25 +39,21 @@ public class ProtobufHandler extends SimpleChannelInboundHandler<Message> {
                     .build());
         }
 
-        if (Message.Cmd.HeartbeatResponse.equals(cmd)) {
-            channelHandlerContext.writeAndFlush(Message.newBuilder()
-                    .setCmd(Message.Cmd.HeartbeatRequest)
-                    .setHeartbeatRequest(HeartbeatRequest.newBuilder()
-                            .setPing(ByteString.EMPTY)
-                            .build())
-                    .build());
-        }
-
     }
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        log.info("连接成功:{}", ctx);
-        ctx.writeAndFlush(Message.newBuilder()
-                .setCmd(Message.Cmd.HeartbeatRequest)
-                .setHeartbeatRequest(HeartbeatRequest.newBuilder()
-                        .setPing(ByteString.EMPTY)
-                        .build())
-                .build());
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        log.info("【客户端】连接断开:{}", ctx);
+        ctx.close();
+        //actuator.close();
+        //客户端连接断开了直接断开连接
+        //尝试重连,轮询选址等 TODO
+        actuator.close();
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+
+        cause.printStackTrace();
     }
 }

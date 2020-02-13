@@ -14,20 +14,27 @@ message Message {
     enum Cmd {
         AuthRequest = 0;
         AuthResponse = 1;
+
         LogoutRequest = 2;
         LogoutResponse = 3;
+
         KichoutRequest = 4;
         KichoutResponse = 5;
-        HeartbeatRequest = 6;
 
-        O2OSendRequest = 7;
-        O2OSendResponse = 8;
-        O2ODistributeRequest = 9;
-        O2ODistributeResponse = 10;
-        O2MSendRequest = 11;
-        O2MSendResponse = 12;
-        O2MDistributeRequest = 13;
-        O2MDistributeResponse = 14;
+        HeartbeatRequest = 6;
+        HeartbeatResponse = 7;
+
+        O2OSendRequest = 8;
+        O2OSendResponse = 9;
+
+        O2ODistributeRequest = 10;
+        O2ODistributeResponse = 11;
+
+        O2MSendRequest = 12;
+        O2MSendResponse = 13;
+
+        O2MDistributeRequest = 14;
+        O2MDistributeResponse = 15;
     }
 
     Cmd cmd = 1;
@@ -35,19 +42,27 @@ message Message {
     oneof Body {
         AuthRequest authRequest = 2;
         AuthResponse authResponse = 3;
+
         LogoutRequest logoutRequest = 4;
         LogoutResponse logoutResponse = 5;
+
         KichoutRequest kichoutRequest = 6;
         KichoutResponse kichoutResponse = 7;
+
         HeartbeatRequest heartbeatRequest = 8;
-        O2OSendRequest o2oSendRequest = 9;
-        O2OSendResponse o2oSendResponse = 10;
-        O2ODistributeRequest o2oDistributeRequest = 11;
-        O2ODistributeResponse o2oDistributeResponse = 12;
-        O2MSendRequest o2mSendRequest = 13;
-        O2MSendResponse o2mSendResponse = 14;
-        O2MDistributeRequest o2mDistributeRequest = 15;
-        O2MDistributeResponse o2mDistributeResponse = 16;
+        HeartbeatResponse heartbeatResponse = 9;
+
+        O2OSendRequest o2oSendRequest = 10;
+        O2OSendResponse o2oSendResponse = 11;
+
+        O2ODistributeRequest o2oDistributeRequest = 12;
+        O2ODistributeResponse o2oDistributeResponse = 13;
+
+        O2MSendRequest o2mSendRequest = 14;
+        O2MSendResponse o2mSendResponse = 15;
+
+        O2MDistributeRequest o2mDistributeRequest = 16;
+        O2MDistributeResponse o2mDistributeResponse = 17;
     }
 
 }

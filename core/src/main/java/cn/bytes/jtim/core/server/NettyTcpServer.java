@@ -2,9 +2,7 @@ package cn.bytes.jtim.core.server;
 
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.handler.ProtobufHandler;
-import cn.bytes.jtim.core.protocol.protobuf.AuthRequest;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
-import cn.bytes.jtim.core.protocol.protobuf.MessageContent;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
@@ -17,12 +15,6 @@ public class NettyTcpServer extends NettyServer {
 
     public NettyTcpServer(Configuration configuration) {
         super(configuration);
-    }
-
-    @Override
-    public void init() {
-        super.init();
-        //初始化信息，构建编码解码器
     }
 
     @Override

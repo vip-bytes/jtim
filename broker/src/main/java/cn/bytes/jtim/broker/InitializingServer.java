@@ -7,7 +7,6 @@ import cn.bytes.jtim.core.server.NettyTcpServer;
 import cn.bytes.jtim.core.server.NettyWebSocketServer;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**

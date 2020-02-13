@@ -1,4 +1,4 @@
-package cn.bytes.jtim.core.server;
+package cn.bytes.jtim.core;
 
 import java.util.function.Consumer;
 

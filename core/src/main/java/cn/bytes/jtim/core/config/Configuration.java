@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 public class Configuration {
 
     @Builder.Default
-    private String host ="0.0.0.0";
+    private String host = "0.0.0.0";
 
     @Builder.Default
     private int port = 1999;
 
     @Builder.Default
-    private int bossThreads = 0; // 0 = current_processors_amount * 2,单个端口设置1
+    private int bossThreads = 1; // 0 = current_processors_amount * 2,单个端口设置1
 
     @Builder.Default
-    private int workerThreads = 0; // 0 = current_processors_amount * 2
+    private int workerThreads = 10; // 0 = current_processors_amount * 2
 
     private boolean useLinuxNativeEpoll;
 
