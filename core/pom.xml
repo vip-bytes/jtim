@@ -70,7 +70,9 @@
                 <version>0.5.1</version>
                 <configuration>
                     <!--                    <outputDirectory>${project.build.sourceDirectory}</outputDirectory>-->
-<!--                    <outputDirectory>src/main/java/cn/bytes/jtim/core/protocol/protobuf</outputDirectory>-->
+                    <outputDirectory>${basedir}/src/main/java</outputDirectory>
+                    <clearOutputDirectory>false</clearOutputDirectory>
+
                     <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.17.1:exe:${os.detected.classifier}</pluginArtifact>
