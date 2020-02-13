@@ -2,14 +2,16 @@
 
 #### 消息发送流程
 
-#### 模块
+#### 服务
 
-* bom 引用管理模块
-* docs 文档
-* gate 连接端
-* logic 逻辑处理服务
-* protocol 传输协议
-* register 服务注册中心
+* tcp-server
+* websocket-server
+* grpc-server
+* http-server
+
+#### 数据传输
+
+* protobuf
 
 #### 配置
 
