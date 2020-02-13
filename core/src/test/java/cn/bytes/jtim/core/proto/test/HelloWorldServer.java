@@ -25,6 +25,7 @@ public class HelloWorldServer {
 
             @Override
             public void run() {
+
                 System.err.println("*** shutting down gRPC server since JVM is shutting down");
                 HelloWorldServer.this.stop();
                 System.err.println("*** server shut down");
