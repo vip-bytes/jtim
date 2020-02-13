@@ -11,8 +11,11 @@
 
     <artifactId>core</artifactId>
 
-    <dependencies>
+    <properties>
+        <argLine>-Dfile.encoding=UTF-8</argLine>
+    </properties>
 
+    <dependencies>
 
         <dependency>
             <groupId>cn.bytes</groupId>
@@ -44,6 +47,10 @@
             <groupId>io.grpc</groupId>
             <artifactId>grpc-all</artifactId>
         </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
 
     </dependencies>
 
@@ -62,9 +69,11 @@
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.1</version>
                 <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:3.6.1:exe:${os.detected.classifier}</protocArtifact>
+                    <!--                    <outputDirectory>${project.build.sourceDirectory}</outputDirectory>-->
+<!--                    <outputDirectory>src/main/java/cn/bytes/jtim/core/protocol/protobuf</outputDirectory>-->
+                    <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.14.0:exe:${os.detected.classifier}</pluginArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.17.1:exe:${os.detected.classifier}</pluginArtifact>
                 </configuration>
                 <executions>
                     <execution>

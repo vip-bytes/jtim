@@ -4,6 +4,4 @@ server:
 
 netty:
   tcp:
-    port: 3333
-    enable: true
-
+    enable: false
