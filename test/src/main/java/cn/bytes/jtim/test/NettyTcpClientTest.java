@@ -13,7 +13,7 @@ public class NettyTcpClientTest {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
         configuration.setHost("127.0.0.1");
-        configuration.setPort(19999);
+        configuration.setPort(1999);
 
         NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
         nettyTcpClient.open();

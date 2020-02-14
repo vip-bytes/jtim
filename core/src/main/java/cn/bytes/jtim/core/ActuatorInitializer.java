@@ -152,14 +152,6 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
     }
 
     @Override
-    public void open(AfterHandler<State> afterHandler) {
-        this.open();
-        if (Objects.nonNull(afterHandler)) {
-            afterHandler.accept(state.get());
-        }
-    }
-
-    @Override
     public void open(Retry retry) {
 
         this.init();

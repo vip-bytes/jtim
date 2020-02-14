@@ -4,4 +4,4 @@ server:
 
 netty:
   tcp:
-    enable: false
+    enable: true

@@ -24,7 +24,7 @@ public class NettyTcpServer extends NettyServer {
     @Override
     public void channelHandlerOptions(ChannelPipeline pipeline) {
         pipeline.addLast(getChannelHandlerManager().getChannelHandlerArrays())
-                .addLast(new ProtobufServerHandler());
+                .addLast(new ProtobufServerHandler(this));
     }
 
 }
