@@ -23,11 +23,6 @@
         </dependency>
 
         <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>compile</scope>
@@ -43,10 +38,11 @@
             <artifactId>protobuf-java</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-all</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.grpc</groupId>-->
+        <!--            <artifactId>grpc-all</artifactId>-->
+        <!--        </dependency>-->
+
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>

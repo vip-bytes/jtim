@@ -18,11 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandler<Message> {
-
-    public ProtobufTcpClientHandler(Actuator actuator) {
-        super(actuator);
-    }
+public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandler<Message> implements Runnable {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -60,5 +56,10 @@ public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandle
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("连接异常: ", cause);
         ctx.close();
+    }
+
+    @Override
+    public void run() {
+
     }
 }

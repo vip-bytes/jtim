@@ -19,7 +19,6 @@ public class NettyTcpClient extends NettyClient {
     @Override
     public void channelHandlerOptions(ChannelPipeline pipeline) {
 //        pipeline.addLast(getChannelHandlerManager().getChannelHandlerArrays());
-
-        pipeline.addLast(new ProtobufTcpClientHandler(this));
+        super.addLastAndBindManager(new ProtobufTcpClientHandler());
     }
 }

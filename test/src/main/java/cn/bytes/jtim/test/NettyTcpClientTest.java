@@ -2,6 +2,7 @@ package cn.bytes.jtim.test;
 
 import cn.bytes.jtim.core.client.NettyTcpClient;
 import cn.bytes.jtim.core.config.Configuration;
+import cn.bytes.jtim.core.handler.ProtobufTcpClientHandler;
 
 /**
  * @author maliang@sioniov.com
@@ -16,6 +17,7 @@ public class NettyTcpClientTest {
         configuration.setPort(1999);
 
         NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
+        nettyTcpClient.addLastAndBindManager(new ProtobufTcpClientHandler());
         nettyTcpClient.open();
     }
 }

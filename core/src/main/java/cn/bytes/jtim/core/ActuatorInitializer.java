@@ -5,8 +5,7 @@ import cn.bytes.jtim.core.config.SocketConfig;
 import cn.bytes.jtim.core.connection.Connection;
 import cn.bytes.jtim.core.connection.ConnectionManager;
 import cn.bytes.jtim.core.connection.DefaultConnectionManager;
-import cn.bytes.jtim.core.handler.ChannelHandlerManager;
-import cn.bytes.jtim.core.handler.DefaultChannelInitializer;
+import cn.bytes.jtim.core.handler.DefaultHandlerManagerInitializer;
 import cn.bytes.jtim.core.retry.Retry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -31,7 +30,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Slf4j
 @Getter
-public abstract class ActuatorInitializer extends DefaultChannelInitializer {
+public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializer {
 
     private static final ConnectionManager<String, Connection> connectionManager = new DefaultConnectionManager();
 

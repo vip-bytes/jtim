@@ -1,7 +1,8 @@
 package cn.bytes.jtim.broker;
 
 import cn.bytes.jtim.broker.config.NettyServerProperties;
-import cn.bytes.jtim.broker.handler.ProtobufTcpServerHandler;
+import cn.bytes.jtim.broker.handler.ProtobufClientHandler;
+import cn.bytes.jtim.broker.handler.ProtobufServerHandler;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
 import cn.bytes.jtim.core.server.NettyTcpServer;
@@ -28,17 +29,24 @@ public class InitializingServer implements InitializingBean {
 
     @Bean
     @ConditionalOnMissingBean
-    public ProtobufTcpServerHandler protobufTcpServerHandler() {
-        return new ProtobufTcpServerHandler();
+    public ProtobufServerHandler protobufTcpServerHandler() {
+        return new ProtobufServerHandler();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ProtobufClientHandler protobufClientHandler() {
+        return new ProtobufClientHandler();
     }
 
     @Bean
     @ConditionalOnProperty(name = "netty.tcp.enable", havingValue = "true")
-    public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties) {
+    public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
+                                         ProtobufServerHandler protobufServerHandler) {
         NettyTcpServer nettyTcpServer =
                 new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
 
-        nettyTcpServer.addLast(protobufTcpServerHandler());
+        nettyTcpServer.addLastAndBindManager(protobufServerHandler);
 
         nettyTcpServer.open();
         return nettyTcpServer;
