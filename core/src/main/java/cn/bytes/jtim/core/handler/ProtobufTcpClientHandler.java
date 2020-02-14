@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufTcpClientHandler extends SimpleChannelInboundHandler<Message> {
+public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandler<Message> {
 
     private Actuator actuator;
 

@@ -5,6 +5,8 @@ import cn.bytes.jtim.core.config.SocketConfig;
 import cn.bytes.jtim.core.connection.Connection;
 import cn.bytes.jtim.core.connection.ConnectionManager;
 import cn.bytes.jtim.core.connection.DefaultConnectionManager;
+import cn.bytes.jtim.core.handler.ChannelHandlerManager;
+import cn.bytes.jtim.core.handler.DefaultChannelHandlerManager;
 import cn.bytes.jtim.core.retry.Retry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -31,10 +33,11 @@ import java.util.concurrent.atomic.AtomicReference;
 @Getter
 public abstract class ActuatorInitializer extends ChannelInitializer<Channel> implements Actuator {
 
-    /**
-     * 连接管理器
-     */
     private static final ConnectionManager<String, Connection> connectionManager = new DefaultConnectionManager();
+
+    private static final ChannelHandlerManager<ChannelHandler> channelHandlerManager = new DefaultChannelHandlerManager() {{
+        this.initProtoBufHandler();
+    }};
 
     public enum State {Created, Initialized, Executing, Completed}
 
@@ -54,7 +57,7 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
     public void initChannel(Channel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
         pipeline.addLast(new IdleStateHandler(this.configuration.getHeartReadTime(), 0, 0, TimeUnit.SECONDS));
-        this.channelPipelineOptions(pipeline);
+        this.channelHandlerOptions(pipeline);
     }
 
     /**
@@ -62,7 +65,7 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
      *
      * @param pipeline
      */
-    public abstract void channelPipelineOptions(ChannelPipeline pipeline);
+    public abstract void channelHandlerOptions(ChannelPipeline pipeline);
 
     public abstract Future<Void> openAsync();
 
@@ -70,6 +73,11 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
      * 初始group
      */
     public void selectEventLoopGroup() {
+
+        if (Objects.nonNull(bossGroup) && Objects.nonNull(workerGroup)) {
+            return;
+        }
+
         if (configuration.isUseLinuxNativeEpoll()) {
             bossGroup = new EpollEventLoopGroup(configuration.getBossThreads());
             workerGroup = new EpollEventLoopGroup(configuration.getWorkerThreads());
@@ -205,4 +213,13 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
             workerGroup.shutdownGracefully();
         }
     }
+
+    public ConnectionManager<String, Connection> getConnectionManager() {
+        return connectionManager;
+    }
+
+    public ChannelHandlerManager<ChannelHandler> getChannelHandlerManager() {
+        return channelHandlerManager;
+    }
+
 }

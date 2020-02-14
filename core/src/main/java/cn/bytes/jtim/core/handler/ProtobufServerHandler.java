@@ -6,7 +6,6 @@ import cn.bytes.jtim.core.protocol.protobuf.Message;
 import com.google.protobuf.ByteString;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -15,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufHandler extends SimpleChannelInboundHandler<Message> {
+public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {

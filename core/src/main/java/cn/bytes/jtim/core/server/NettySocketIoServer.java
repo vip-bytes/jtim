@@ -15,7 +15,7 @@ public class NettySocketIoServer extends NettyServer {
     }
 
     @Override
-    public void channelPipelineOptions(ChannelPipeline pipeline) {
+    public void channelHandlerOptions(ChannelPipeline pipeline) {
 
     }
 

@@ -4,12 +4,11 @@ import cn.bytes.jtim.core.ActuatorInitializer;
 import cn.bytes.jtim.core.config.Configuration;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.FutureListener;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.net.InetSocketAddress;
-
 @Slf4j
+@Getter
 public abstract class NettyServer extends ActuatorInitializer {
 
     public NettyServer(Configuration configuration) {
@@ -30,7 +29,6 @@ public abstract class NettyServer extends ActuatorInitializer {
 
     @Override
     public void init() {
-        // todo
         state.compareAndSet(State.Created, State.Initialized);
         super.selectEventLoopGroup();
     }

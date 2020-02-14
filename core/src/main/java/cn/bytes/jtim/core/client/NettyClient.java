@@ -9,8 +9,6 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.FutureListener;
 import lombok.extern.slf4j.Slf4j;
 
-import java.net.InetSocketAddress;
-
 /**
  * @author maliang@sioniov.com
  * @version 1.0
@@ -36,16 +34,17 @@ public abstract class NettyClient extends ActuatorInitializer {
     }
 
     @Override
+    public void init() {
+        state.compareAndSet(State.Created, State.Initialized);
+        super.selectEventLoopGroup();
+    }
+
+    @Override
     public void close() {
         log.info("Socket connection closing!!!");
         super.close();
         log.info("Socket connection closed");
     }
 
-    @Override
-    public void init() {
-        state.compareAndSet(State.Created, State.Initialized);
-        super.selectEventLoopGroup();
-    }
 
 }

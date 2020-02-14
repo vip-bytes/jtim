@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
- * @author maliang@sioniov.com
  * @version 1.0
  * @date 2020/2/12 20:42
  */
@@ -24,11 +23,11 @@ public class InitializingServer implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
 
         if (nettyServerProperties.isEnableTcp()) {
-            new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp())).start();
+            new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp())).open();
         }
 
         if (nettyServerProperties.isEnableWebsocket()) {
-            new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getTcp())).start();
+            new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getTcp())).open();
         }
     }
 

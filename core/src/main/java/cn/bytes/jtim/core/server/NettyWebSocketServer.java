@@ -24,7 +24,7 @@ public class NettyWebSocketServer extends NettyServer {
     }
 
     @Override
-    public void channelPipelineOptions(ChannelPipeline pipeline) {
+    public void channelHandlerOptions(ChannelPipeline pipeline) {
         pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(this.configuration.getMaxHttpContentLength()));
         pipeline.addLast(new WebSocketServerCompressionHandler());
