@@ -1,5 +1,6 @@
 package cn.bytes.jtim.core.handler;
 
+import cn.bytes.jtim.core.Actuator;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
@@ -15,6 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ChannelHandler.Sharable
 public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<Message> {
+
+    public ProtobufServerHandler(Actuator actuator) {
+        super(actuator);
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {

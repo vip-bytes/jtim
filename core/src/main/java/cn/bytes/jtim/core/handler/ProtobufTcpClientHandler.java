@@ -20,10 +20,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ChannelHandler.Sharable
 public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandler<Message> {
 
-    private Actuator actuator;
-
     public ProtobufTcpClientHandler(Actuator actuator) {
-        this.actuator = actuator;
+        super(actuator);
     }
 
     @Override
@@ -46,7 +44,7 @@ public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandle
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
-        actuator.open(
+        getActuator().open(
                 DefaultRetry.builder()
                         .retryMax(new AtomicInteger(Integer.MAX_VALUE))
                         .build()

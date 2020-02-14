@@ -17,10 +17,12 @@ public interface Actuator {
 
     void open(Retry retry);
 
-    void open(AfterHandler<ActuatorInitializer.State> afterHandler);
-
     void close();
 
     void init();
+
+    //TODO 服务注册
+
+    //TODO 消息分发处理
 
 }
