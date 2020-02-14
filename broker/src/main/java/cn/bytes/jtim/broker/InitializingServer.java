@@ -1,13 +1,14 @@
 package cn.bytes.jtim.broker;
 
 import cn.bytes.jtim.broker.config.NettyServerProperties;
+import cn.bytes.jtim.broker.handler.ProtobufTcpServerHandler;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
 import cn.bytes.jtim.core.server.NettyTcpServer;
 import cn.bytes.jtim.core.server.NettyWebSocketServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -26,9 +27,19 @@ public class InitializingServer implements InitializingBean {
     }
 
     @Bean
+    @ConditionalOnMissingBean
+    public ProtobufTcpServerHandler protobufTcpServerHandler() {
+        return new ProtobufTcpServerHandler();
+    }
+
+    @Bean
     @ConditionalOnProperty(name = "netty.tcp.enable", havingValue = "true")
     public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties) {
-        NettyTcpServer nettyTcpServer = new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
+        NettyTcpServer nettyTcpServer =
+                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
+
+        nettyTcpServer.addLast(protobufTcpServerHandler());
+
         nettyTcpServer.open();
         return nettyTcpServer;
     }
@@ -36,7 +47,8 @@ public class InitializingServer implements InitializingBean {
     @Bean
     @ConditionalOnProperty(name = "netty.websocket.enable", havingValue = "true")
     public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties) {
-        NettyWebSocketServer nettyWebSocketServer = new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()));
+        NettyWebSocketServer nettyWebSocketServer =
+                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()));
         nettyWebSocketServer.open();
         return nettyWebSocketServer;
     }

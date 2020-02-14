@@ -1,8 +1,6 @@
 package cn.bytes.jtim.core.client;
 
 import cn.bytes.jtim.core.ActuatorInitializer;
-import cn.bytes.jtim.core.retry.DefaultRetry;
-import cn.bytes.jtim.core.retry.Retry;
 import cn.bytes.jtim.core.config.Configuration;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.util.concurrent.Future;

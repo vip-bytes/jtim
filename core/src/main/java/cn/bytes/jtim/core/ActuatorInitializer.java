@@ -6,7 +6,7 @@ import cn.bytes.jtim.core.connection.Connection;
 import cn.bytes.jtim.core.connection.ConnectionManager;
 import cn.bytes.jtim.core.connection.DefaultConnectionManager;
 import cn.bytes.jtim.core.handler.ChannelHandlerManager;
-import cn.bytes.jtim.core.handler.DefaultChannelHandlerManager;
+import cn.bytes.jtim.core.handler.DefaultChannelInitializer;
 import cn.bytes.jtim.core.retry.Retry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -31,13 +31,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Slf4j
 @Getter
-public abstract class ActuatorInitializer extends ChannelInitializer<Channel> implements Actuator {
+public abstract class ActuatorInitializer extends DefaultChannelInitializer {
 
     private static final ConnectionManager<String, Connection> connectionManager = new DefaultConnectionManager();
-
-    private static final ChannelHandlerManager<ChannelHandler> channelHandlerManager = new DefaultChannelHandlerManager() {{
-        this.initProtoBufHandler();
-    }};
 
     public enum State {Created, Initialized, Executing, Completed}
 
@@ -50,13 +46,25 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
     public Configuration configuration;
 
     public ActuatorInitializer(Configuration configuration) {
-        this.configuration = new Configuration(configuration);
+        this.configuration = configuration;
     }
 
     @Override
     public void initChannel(Channel channel) throws Exception {
+
+        //默认需要加载初始的信息，如果不需要，需要单个自行重写
+        //1.系统默认
+        super.initChannel(channel);
+
+        //2.系统扩展
         ChannelPipeline pipeline = channel.pipeline();
         pipeline.addLast(new IdleStateHandler(this.configuration.getHeartReadTime(), 0, 0, TimeUnit.SECONDS));
+
+        //3.服务启动
+        //加载服务启动添加的处理
+        pipeline.addLast(defineHandlerToArray());
+
+        //用户自定义
         this.channelHandlerOptions(pipeline);
     }
 
@@ -208,10 +216,6 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
 
     public ConnectionManager<String, Connection> getConnectionManager() {
         return connectionManager;
-    }
-
-    public ChannelHandlerManager<ChannelHandler> getChannelHandlerManager() {
-        return channelHandlerManager;
     }
 
 }
