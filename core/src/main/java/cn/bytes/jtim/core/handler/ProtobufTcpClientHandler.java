@@ -1,14 +1,16 @@
 package cn.bytes.jtim.core.handler;
 
 import cn.bytes.jtim.core.Actuator;
-import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
+import cn.bytes.jtim.core.retry.DefaultRetry;
 import com.google.protobuf.ByteString;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @version 1.0
@@ -16,11 +18,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufHandler2 extends SimpleChannelInboundHandler<Message> {
+public class ProtobufTcpClientHandler extends SimpleChannelInboundHandler<Message> {
 
     private Actuator actuator;
 
-    public ProtobufHandler2(Actuator actuator) {
+    public ProtobufTcpClientHandler(Actuator actuator) {
         this.actuator = actuator;
     }
 
@@ -44,16 +46,21 @@ public class ProtobufHandler2 extends SimpleChannelInboundHandler<Message> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
-        ctx.close();
-        //actuator.close();
-        //客户端连接断开了直接断开连接
-        //尝试重连,轮询选址等 TODO
-        actuator.close();
+        actuator.open(
+                DefaultRetry.builder()
+                        .retryMax(new AtomicInteger(Integer.MAX_VALUE))
+                        .build()
+        );
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-
-        cause.printStackTrace();
+        log.error("连接异常: ", cause);
+        ctx.close();
     }
 }

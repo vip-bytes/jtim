@@ -20,22 +20,12 @@ public abstract class NettyServer extends ActuatorInitializer {
     public Future<Void> openAsync() {
 
         ServerBootstrap b = new ServerBootstrap();
-        b.group(bossGroup, workerGroup)
-                .channel(super.getNioServerSocketChannelClass()).childHandler(this);
+
+        b.group(bossGroup, workerGroup).channel(super.getNioServerSocketChannelClass()).childHandler(this);
 
         super.options(b);
 
-        InetSocketAddress addr = super.getSocketAddress();
-
-        return b.bind(addr).addListener((FutureListener<Void>) future -> {
-            if (future.isSuccess()) {
-                this.state.set(State.Completed);
-                log.info(" {} started at port: {}", this.getClass().getSimpleName(), configuration.getPort());
-            } else {
-                log.error(" {} start failed at port: {}", this.getClass().getSimpleName(), configuration.getPort());
-                this.close();
-            }
-        });
+        return b.bind(super.getSocketAddress());
     }
 
     @Override

@@ -5,6 +5,7 @@ import cn.bytes.jtim.core.config.SocketConfig;
 import cn.bytes.jtim.core.connection.Connection;
 import cn.bytes.jtim.core.connection.ConnectionManager;
 import cn.bytes.jtim.core.connection.DefaultConnectionManager;
+import cn.bytes.jtim.core.retry.Retry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -16,6 +17,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.FutureListener;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -138,10 +140,7 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
 
     @Override
     public void open() {
-        this.init();
-        if (state.compareAndSet(State.Initialized, State.Executing)) {
-            openAsync().syncUninterruptibly();
-        }
+        this.open((Retry) null);
     }
 
     @Override
@@ -150,12 +149,60 @@ public abstract class ActuatorInitializer extends ChannelInitializer<Channel> im
         if (Objects.nonNull(afterHandler)) {
             afterHandler.accept(state.get());
         }
+    }
+
+    @Override
+    public void open(Retry retry) {
+
+        this.init();
+
+        this.openAsync().addListener((FutureListener<Void>) future -> {
+            if (future.isSuccess()) {
+                this.state.set(State.Completed);
+                log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), configuration.getHost(), configuration.getPort());
+            } else {
+                log.error(" {} failed at addr: {}:{}", this.getClass().getSimpleName(), configuration.getHost(), configuration.getPort());
+
+                this.close();
+                if (Objects.nonNull(retry)) {
+                    final int retryMax = retry.retryMax();
+                    if (retryMax < 0) {
+                        log.warn("重试结束");
+                        this.close();
+                        return;
+                    }
+
+                    final TimeUnit timeUnit = retry.suspendTimeUnit();
+                    final int suspendStep = retry.suspendStep();
+                    if (Objects.isNull(timeUnit) || suspendStep <= 0) {
+                        log.warn("重试设置信息错误: timeUnit = {}, step = {}", timeUnit, suspendStep);
+                        this.close();
+                        return;
+                    }
+
+                    log.info("retry [{}] open after {} {}", retryMax, suspendStep, timeUnit);
+                    try {
+                        timeUnit.sleep(suspendStep);
+                    } catch (InterruptedException e) {
+                        log.error("", e);
+                    }
+
+                    retry.decRetryMax();
+                    this.open(retry);
+                }
+
+            }
+        });
 
     }
 
     @Override
     public void close() {
-        bossGroup.shutdownGracefully();
-        workerGroup.shutdownGracefully();
+        if (Objects.nonNull(bossGroup)) {
+            bossGroup.shutdownGracefully();
+        }
+        if (Objects.nonNull(workerGroup)) {
+            workerGroup.shutdownGracefully();
+        }
     }
 }

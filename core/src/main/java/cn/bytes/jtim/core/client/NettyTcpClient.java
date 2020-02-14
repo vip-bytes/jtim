@@ -1,8 +1,7 @@
 package cn.bytes.jtim.core.client;
 
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.handler.ProtobufHandler;
-import cn.bytes.jtim.core.handler.ProtobufHandler2;
+import cn.bytes.jtim.core.handler.ProtobufTcpClientHandler;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
@@ -35,6 +34,6 @@ public class NettyTcpClient extends NettyClient {
         //Google Protocol Buffers编码器
         pipeline.addLast(new ProtobufEncoder());
 
-        pipeline.addLast(new ProtobufHandler2(this));
+        pipeline.addLast(new ProtobufTcpClientHandler(this));
     }
 }

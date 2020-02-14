@@ -1,6 +1,8 @@
 package cn.bytes.jtim.core.client;
 
 import cn.bytes.jtim.core.ActuatorInitializer;
+import cn.bytes.jtim.core.retry.DefaultRetry;
+import cn.bytes.jtim.core.retry.Retry;
 import cn.bytes.jtim.core.config.Configuration;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.util.concurrent.Future;
@@ -30,19 +32,7 @@ public abstract class NettyClient extends ActuatorInitializer {
 
         super.options(bootstrap);
 
-        InetSocketAddress addr = super.getSocketAddress();
-
-        return bootstrap.connect(addr).addListener((FutureListener<Void>) future -> {
-
-            if (future.isSuccess()) {
-                this.state.set(State.Completed);
-                log.info(" {} client at addr: {}:{}", this.getClass().getSimpleName(), configuration.getHost(), configuration.getPort());
-            } else {
-                log.error(" {} client failed at addr: {}:{}", this.getClass().getSimpleName(), configuration.getHost(), configuration.getPort());
-                this.close();
-            }
-        });
-
+        return bootstrap.connect(super.getSocketAddress());
     }
 
     @Override
@@ -57,4 +47,5 @@ public abstract class NettyClient extends ActuatorInitializer {
         state.compareAndSet(State.Created, State.Initialized);
         super.selectEventLoopGroup();
     }
+
 }
