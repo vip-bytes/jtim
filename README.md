@@ -12,6 +12,8 @@
 
 * protobuf
 
+---
+
 #### 功能
 
 * 认证
@@ -28,15 +30,13 @@
 
 * 群聊
 
+---
+
 #### 模块
 
-* 模块管理器 
-  * ModuleManager 
-    * DefaultModuleManager
+* [模块管理器](docs\module\manager.md) 
   
-* 编解码处理器模块
-  * DefineHandlerManager (必选)
-    * DefaultDefineHandlerManager
+* [编解码处理器模块](docs\module\codec.md)
   
 * 连接管理模块 (必选)
   * DefineConnectionManager 
