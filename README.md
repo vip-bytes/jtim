@@ -34,9 +34,9 @@
 
 #### 模块
 
-* [模块管理器](docs\module\manager.md) 
+* [模块管理器](https://github.com/vip-bytes/jtim/blob/master/docs/module/manager.md)
   
-* [编解码处理器模块](docs\module\codec.md)
+* [编解码处理器模块](https://github.com/vip-bytes/jtim/blob/master/docs/module/codec.md)
   
 * 连接管理模块 (必选)
   * DefineConnectionManager 
