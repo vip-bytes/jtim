@@ -2,10 +2,11 @@ package cn.bytes.jtim.core;
 
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
-import cn.bytes.jtim.core.connection.Connection;
-import cn.bytes.jtim.core.connection.ConnectionManager;
-import cn.bytes.jtim.core.connection.DefaultConnectionManager;
-import cn.bytes.jtim.core.handler.DefaultHandlerManagerInitializer;
+import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
+import cn.bytes.jtim.core.connection.DefineConnectionManager;
+import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
+import cn.bytes.jtim.core.handler.DefaultDefineInitialize;
+import cn.bytes.jtim.core.handler.DefineHandlerManager;
 import cn.bytes.jtim.core.retry.Retry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -30,9 +31,13 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Slf4j
 @Getter
-public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializer {
+public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
 
-    private static final ConnectionManager<String, Connection> connectionManager = new DefaultConnectionManager();
+    public NettyDefineInitialize(Configuration configuration,
+                                 DefineHandlerManager defineHandlerManager,
+                                 DefineConnectionManager defineConnectionManager) {
+        super(configuration, defineHandlerManager, defineConnectionManager);
+    }
 
     public enum State {Created, Initialized, Executing, Completed}
 
@@ -42,37 +47,13 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
 
     public EventLoopGroup workerGroup;
 
-    public Configuration configuration;
-
-    public ActuatorInitializer(Configuration configuration) {
-        this.configuration = configuration;
-    }
-
     @Override
-    public void initChannel(Channel channel) throws Exception {
-
-        //默认需要加载初始的信息，如果不需要，需要单个自行重写
-        //1.系统默认
-        super.initChannel(channel);
-
-        //2.系统扩展
-        ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast(new IdleStateHandler(this.configuration.getHeartReadTime(), 0, 0, TimeUnit.SECONDS));
-
-        //3.服务启动
-        //加载服务启动添加的处理
-        pipeline.addLast(defineHandlerToArray());
-
-        //用户自定义
-        this.channelHandlerOptions(pipeline);
+    public void initChannel(ChannelPipeline pipeline) {
+        if (Objects.isNull(pipeline)) {
+            return;
+        }
+        pipeline.addLast(new IdleStateHandler(super.getConfiguration().getHeartReadTime(), 0, 0, TimeUnit.SECONDS));
     }
-
-    /**
-     * 服务绑定对应的处理器
-     *
-     * @param pipeline
-     */
-    public abstract void channelHandlerOptions(ChannelPipeline pipeline);
 
     public abstract Future<Void> openAsync();
 
@@ -85,24 +66,24 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
             return;
         }
 
-        if (configuration.isUseLinuxNativeEpoll()) {
-            bossGroup = new EpollEventLoopGroup(configuration.getBossThreads());
-            workerGroup = new EpollEventLoopGroup(configuration.getWorkerThreads());
+        if (getConfiguration().isUseLinuxNativeEpoll()) {
+            bossGroup = new EpollEventLoopGroup(getConfiguration().getBossThreads());
+            workerGroup = new EpollEventLoopGroup(getConfiguration().getWorkerThreads());
         } else {
-            bossGroup = new NioEventLoopGroup(configuration.getBossThreads());
-            workerGroup = new NioEventLoopGroup(configuration.getWorkerThreads());
+            bossGroup = new NioEventLoopGroup(getConfiguration().getBossThreads());
+            workerGroup = new NioEventLoopGroup(getConfiguration().getWorkerThreads());
         }
     }
 
     public InetSocketAddress getSocketAddress() {
-        return StringUtils.isNotBlank(configuration.getHost()) ?
-                new InetSocketAddress(configuration.getHost(), configuration.getPort()) :
-                new InetSocketAddress(configuration.getPort());
+        return StringUtils.isNotBlank(getConfiguration().getHost()) ?
+                new InetSocketAddress(getConfiguration().getHost(), getConfiguration().getPort()) :
+                new InetSocketAddress(getConfiguration().getPort());
     }
 
     public Class<? extends ServerChannel> getNioServerSocketChannelClass() {
         Class<? extends ServerChannel> channelClass = NioServerSocketChannel.class;
-        if (configuration.isUseLinuxNativeEpoll()) {
+        if (getConfiguration().isUseLinuxNativeEpoll()) {
             channelClass = EpollServerSocketChannel.class;
         }
         return channelClass;
@@ -110,7 +91,7 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
 
     public Class<? extends Channel> getNioSocketChannelClass() {
         Class<? extends Channel> channelClass = NioSocketChannel.class;
-        if (configuration.isUseLinuxNativeEpoll()) {
+        if (getConfiguration().isUseLinuxNativeEpoll()) {
             channelClass = EpollSocketChannel.class;
         }
         return channelClass;
@@ -122,7 +103,7 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
      * @param bootstrap
      */
     protected void options(ServerBootstrap bootstrap) {
-        SocketConfig config = configuration.getSocketConfig();
+        SocketConfig config = getConfiguration().getSocketConfig();
         bootstrap.childOption(ChannelOption.TCP_NODELAY, config.isNoDelay());
         if (config.getSendBufferSize() > -1) {
             bootstrap.childOption(ChannelOption.SO_SNDBUF, config.getSendBufferSize());
@@ -144,7 +125,7 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
     }
 
     protected void options(Bootstrap bootstrap) {
-        SocketConfig config = configuration.getSocketConfig();
+        SocketConfig config = getConfiguration().getSocketConfig();
         if (config.getReceiveBufferSize() > -1) {
             bootstrap.option(ChannelOption.SO_RCVBUF, config.getReceiveBufferSize());
             bootstrap.option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(config.getReceiveBufferSize()));
@@ -166,9 +147,9 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
         this.openAsync().addListener((FutureListener<Void>) future -> {
             if (future.isSuccess()) {
                 this.state.set(State.Completed);
-                log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), configuration.getHost(), configuration.getPort());
+                log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
             } else {
-                log.error(" {} failed at addr: {}:{}", this.getClass().getSimpleName(), configuration.getHost(), configuration.getPort());
+                log.error(" {} failed at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
 
                 this.close();
                 if (Objects.nonNull(retry)) {
@@ -213,8 +194,8 @@ public abstract class ActuatorInitializer extends DefaultHandlerManagerInitializ
         }
     }
 
-    public ConnectionManager<String, Connection> getConnectionManager() {
-        return connectionManager;
-    }
+//    public ConnectionManager<String, Connection> getConnectionManager() {
+//        return connectionManager;
+//    }
 
 }

@@ -1,6 +1,8 @@
 package cn.bytes.jtim.test;
 
 import cn.bytes.jtim.core.config.Configuration;
+import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
+import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
 import cn.bytes.jtim.core.server.NettyTcpServer;
 
 /**
@@ -14,7 +16,11 @@ public class NettyTcpServerTest {
         Configuration configuration = new Configuration();
         configuration.setHost("127.0.0.1");
         configuration.setPort(19999);
-        NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration);
+
+        NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration,
+                new DefaultDefineHandlerManager(),
+                new DefaultDefineConnectionManager());
+
         nettyTcpServer.open();
     }
 }

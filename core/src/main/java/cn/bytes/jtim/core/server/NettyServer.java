@@ -1,9 +1,9 @@
 package cn.bytes.jtim.core.server;
 
-import cn.bytes.jtim.core.ActuatorInitializer;
+import cn.bytes.jtim.core.NettyDefineInitialize;
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.handler.AbstractSimpleChannelInboundHandler;
-import cn.bytes.jtim.core.protocol.protobuf.Message;
+import cn.bytes.jtim.core.connection.DefineConnectionManager;
+import cn.bytes.jtim.core.handler.DefineHandlerManager;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.util.concurrent.Future;
 import lombok.Getter;
@@ -11,10 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Getter
-public abstract class NettyServer extends ActuatorInitializer {
+public abstract class NettyServer extends NettyDefineInitialize {
 
-    public NettyServer(Configuration configuration) {
-        super(configuration);
+    public NettyServer(Configuration configuration, DefineHandlerManager defineHandlerManager, DefineConnectionManager defineConnectionManager) {
+        super(configuration, defineHandlerManager, defineConnectionManager);
     }
 
     @Override

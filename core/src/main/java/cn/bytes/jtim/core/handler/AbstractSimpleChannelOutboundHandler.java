@@ -1,6 +1,7 @@
 package cn.bytes.jtim.core.handler;
 
-import cn.bytes.jtim.core.Actuator;
+import cn.bytes.jtim.core.DefineManagerInitialize;
+import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.handler.codec.MessageToMessageEncoder;
 import lombok.Getter;
 
@@ -9,14 +10,13 @@ import lombok.Getter;
  * @date 2020/2/14 23:04
  */
 @Getter
-public abstract class AbstractSimpleChannelOutboundHandler<I> extends MessageToMessageEncoder<I>
-        implements DefineChannelHandler<I> {
+public abstract class AbstractSimpleChannelOutboundHandler extends MessageToMessageEncoder<Message>
+        implements DefineChannelHandler {
 
-    private Actuator actuator;
+    private DefineManagerInitialize defineManagerInitialize;
 
     @Override
-    public void bindActuator(Actuator actuator) {
-        this.actuator = actuator;
+    public void bindManagerInitialize(DefineManagerInitialize defineManagerInitialize) {
+        this.defineManagerInitialize = defineManagerInitialize;
     }
-
 }

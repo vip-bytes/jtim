@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * 连接包装
+ *
  * @version 1.0
  * @date 2020/2/11 23:57
  */
@@ -23,6 +24,11 @@ public class Connection {
      */
     private String unique;
 
+    /**
+     * 认证token
+     */
+    private String token;
+
     private Channel channel;
 
     private String tag;
@@ -36,9 +42,10 @@ public class Connection {
     private long clientTime;
 
     public void writeAndFlush(Object body) {
-        if(Objects.nonNull(channel) && channel.isActive()) {
+        if (Objects.nonNull(channel) && channel.isActive()) {
             channel.writeAndFlush(body);
         }
     }
+
 
 }

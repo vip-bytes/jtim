@@ -1,6 +1,5 @@
 package cn.bytes.jtim.broker.handler;
 
-import cn.bytes.jtim.core.Actuator;
 import cn.bytes.jtim.core.handler.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
@@ -18,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler<Message> {
+public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -40,7 +39,7 @@ public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler<M
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
-        getActuator().open(
+        getDefineManagerInitialize().open(
                 DefaultRetry.builder()
                         .retryMax(new AtomicInteger(Integer.MAX_VALUE))
                         .build()

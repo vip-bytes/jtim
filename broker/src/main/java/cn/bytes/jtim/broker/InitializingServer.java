@@ -5,6 +5,11 @@ import cn.bytes.jtim.broker.handler.ProtobufClientHandler;
 import cn.bytes.jtim.broker.handler.ProtobufServerHandler;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
+import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
+import cn.bytes.jtim.core.connection.DefineConnectionManager;
+import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
+import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.protocol.protobuf.Message;
 import cn.bytes.jtim.core.server.NettyTcpServer;
 import cn.bytes.jtim.core.server.NettyWebSocketServer;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +18,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+
+import java.lang.reflect.Member;
 
 /**
  * @version 1.0
@@ -40,23 +47,40 @@ public class InitializingServer implements InitializingBean {
     }
 
     @Bean
+    @ConditionalOnMissingBean
+    public DefineHandlerManager defineHandlerManager(ProtobufServerHandler protobufServerHandler) {
+        DefineHandlerManager defineHandlerManager = new DefaultDefineHandlerManager();
+        defineHandlerManager.addHandlerLast(protobufServerHandler);
+        return defineHandlerManager;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public DefineConnectionManager defineConnectionManager() {
+        DefineConnectionManager defineHandlerManager = new DefaultDefineConnectionManager();
+        return defineHandlerManager;
+    }
+
+    @Bean
     @ConditionalOnProperty(name = "netty.tcp.enable", havingValue = "true")
     public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
-                                         ProtobufServerHandler protobufServerHandler) {
+                                         DefineHandlerManager defineHandlerManager,
+                                         DefineConnectionManager defineConnectionManager) {
         NettyTcpServer nettyTcpServer =
-                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
+                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()), defineHandlerManager, defineConnectionManager);
+        nettyTcpServer.use(defineHandlerManager).open();
 
-        nettyTcpServer.addLastAndBindManager(protobufServerHandler);
-
-        nettyTcpServer.open();
         return nettyTcpServer;
     }
 
     @Bean
     @ConditionalOnProperty(name = "netty.websocket.enable", havingValue = "true")
-    public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties) {
+    public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties,
+                                                     DefineHandlerManager defineHandlerManager,
+                                                     DefineConnectionManager defineConnectionManager) {
         NettyWebSocketServer nettyWebSocketServer =
-                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()));
+                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()), defineHandlerManager, defineConnectionManager);
+
         nettyWebSocketServer.open();
         return nettyWebSocketServer;
     }
