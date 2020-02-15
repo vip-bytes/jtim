@@ -2,11 +2,10 @@ package cn.bytes.jtim.core;
 
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
-import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
-import cn.bytes.jtim.core.connection.DefineConnectionManager;
-import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
 import cn.bytes.jtim.core.handler.DefaultDefineInitialize;
-import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.module.ModuleManager;
+import cn.bytes.jtim.core.module.ModuleMapping;
 import cn.bytes.jtim.core.retry.Retry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -33,10 +32,8 @@ import java.util.concurrent.atomic.AtomicReference;
 @Getter
 public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
 
-    public NettyDefineInitialize(Configuration configuration,
-                                 DefineHandlerManager defineHandlerManager,
-                                 DefineConnectionManager defineConnectionManager) {
-        super(configuration, defineHandlerManager, defineConnectionManager);
+    public NettyDefineInitialize(Configuration configuration, ModuleManager moduleManager) {
+        super(configuration, moduleManager);
     }
 
     public enum State {Created, Initialized, Executing, Completed}
@@ -142,6 +139,8 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
     @Override
     public void open(Retry retry) {
 
+        this.validatorMustModule();
+
         this.init();
 
         this.openAsync().addListener((FutureListener<Void>) future -> {
@@ -182,6 +181,15 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
             }
         });
 
+    }
+
+    private void validatorMustModule() {
+        for (ModuleMapping moduleMapping : ModuleMapping.values()) {
+            Module module = getModuleManager().getModule(moduleMapping);
+            if (moduleMapping.isMust() && Objects.isNull(module)) {
+                throw new RuntimeException(String.format("必填模块[%s]不能为空", moduleMapping.getName()));
+            }
+        }
     }
 
     @Override

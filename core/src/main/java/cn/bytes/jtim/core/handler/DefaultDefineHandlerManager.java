@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.handler;
 
-import cn.bytes.jtim.core.protocol.protobuf.Message;
+import cn.bytes.jtim.core.module.ModuleMapping;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
@@ -29,4 +29,8 @@ public class DefaultDefineHandlerManager extends LinkedList<DefineChannelHandler
         return this.toArray(new DefineChannelHandler[]{});
     }
 
+    @Override
+    public ModuleMapping getModuleMapping() {
+        return ModuleMapping.MODULE_HANDLER_MANAGER;
+    }
 }

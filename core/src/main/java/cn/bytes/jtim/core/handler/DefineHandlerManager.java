@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.handler;
 
-import cn.bytes.jtim.core.protocol.protobuf.Message;
+import cn.bytes.jtim.core.module.Module;
 
 import java.util.Deque;
 
@@ -10,7 +10,7 @@ import java.util.Deque;
  * @version 1.0
  * @date 2020/2/14 14:40
  */
-public interface DefineHandlerManager extends Deque<DefineChannelHandler> {
+public interface DefineHandlerManager extends Deque<DefineChannelHandler>, Module {
 
     /**
      * 添加处理器,并且处理器绑定管理manager

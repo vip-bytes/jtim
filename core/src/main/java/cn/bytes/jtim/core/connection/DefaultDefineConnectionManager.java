@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.connection;
 
-import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.ModuleMapping;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 
@@ -76,5 +76,9 @@ public class DefaultDefineConnectionManager extends HashMap<String, Connection> 
         return this;
     }
 
+    @Override
+    public ModuleMapping getModuleMapping() {
+        return ModuleMapping.MODULE_CONNECTION_MANAGER;
+    }
 
 }

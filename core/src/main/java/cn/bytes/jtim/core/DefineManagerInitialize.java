@@ -2,6 +2,8 @@ package cn.bytes.jtim.core;
 
 import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.module.ModuleManager;
 import cn.bytes.jtim.core.register.DefineRegisterManager;
 import cn.bytes.jtim.core.retry.Retry;
 import cn.bytes.jtim.core.router.DefineRouterManager;
@@ -24,20 +26,6 @@ public interface DefineManagerInitialize {
 
     void init();
 
-    DefineManagerInitialize use(DefineRegisterManager defineRegisterManager);
-
-    DefineRegisterManager getDefineRegisterManager();
-
-    DefineManagerInitialize use(DefineHandlerManager defineHandlerManager);
-
-    DefineHandlerManager getDefineHandlerManager();
-
-    DefineManagerInitialize use(DefineRouterManager defineRouterManager);
-
-    DefineRouterManager getDefineRouterManager();
-
-    DefineManagerInitialize use(DefineConnectionManager defineConnectionManager);
-
-    DefineConnectionManager getDefineConnectionManager();
+    ModuleManager getModuleManager();
 
 }

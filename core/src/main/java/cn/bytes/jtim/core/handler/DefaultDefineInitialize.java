@@ -2,9 +2,11 @@ package cn.bytes.jtim.core.handler;
 
 import cn.bytes.jtim.core.DefineManagerInitialize;
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.connection.Connection;
-import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
 import cn.bytes.jtim.core.connection.DefineConnectionManager;
+import cn.bytes.jtim.core.module.DefaultModuleManager;
+import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.module.ModuleManager;
+import cn.bytes.jtim.core.module.ModuleMapping;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import cn.bytes.jtim.core.register.DefineRegisterManager;
 import cn.bytes.jtim.core.router.DefineRouterManager;
@@ -15,9 +17,7 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
@@ -32,34 +32,11 @@ public abstract class DefaultDefineInitialize
 
     private Configuration configuration;
 
-    private DefineHandlerManager defineHandlerManager;
+    private ModuleManager moduleManager;
 
-    private DefineConnectionManager defineConnectionManager;
-
-    private DefineRegisterManager defineRegisterManager;
-
-    private DefineRouterManager defineRouterManager;
-
-    public DefaultDefineInitialize(Configuration configuration) {
-        this(configuration, null, null, null, null);
-    }
-
-    public DefaultDefineInitialize(Configuration configuration,
-                                   DefineHandlerManager defineHandlerManager,
-                                   DefineConnectionManager defineConnectionManager) {
-        this(configuration, defineHandlerManager, defineConnectionManager, null, null);
-    }
-
-    public DefaultDefineInitialize(Configuration configuration,
-                                   DefineHandlerManager defineHandlerManager,
-                                   DefineConnectionManager defineConnectionManager,
-                                   DefineRegisterManager defineRegisterManager,
-                                   DefineRouterManager defineRouterManager) {
+    public DefaultDefineInitialize(Configuration configuration, ModuleManager moduleManager) {
         this.configuration = configuration;
-        this.defineHandlerManager = defineHandlerManager;
-        this.defineConnectionManager = defineConnectionManager;
-        this.defineRegisterManager = defineRegisterManager;
-        this.defineRouterManager = defineRouterManager;
+        this.moduleManager = moduleManager;
     }
 
     @Override
@@ -70,6 +47,8 @@ public abstract class DefaultDefineInitialize
         pipeline.addLast(new ProtobufDecoder(Message.getDefaultInstance()));
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufEncoder());
+
+        DefineHandlerManager defineHandlerManager = moduleManager.getModule(ModuleMapping.MODULE_HANDLER_MANAGER);
 
         if (Objects.nonNull(defineHandlerManager)) {
             this.initChannel(defineHandlerManager);
@@ -100,27 +79,4 @@ public abstract class DefaultDefineInitialize
     public void initChannel(ChannelPipeline pipeline) {
     }
 
-    @Override
-    public DefineManagerInitialize use(DefineRegisterManager defineRegisterManager) {
-        this.defineRegisterManager = defineRegisterManager;
-        return this;
-    }
-
-    @Override
-    public DefineManagerInitialize use(DefineHandlerManager defineHandlerManager) {
-        this.defineHandlerManager = defineHandlerManager;
-        return this;
-    }
-
-    @Override
-    public DefineManagerInitialize use(DefineRouterManager defineRouterManager) {
-        this.defineRouterManager = defineRouterManager;
-        return this;
-    }
-
-    @Override
-    public DefineManagerInitialize use(DefineConnectionManager defineConnectionManager) {
-        this.defineConnectionManager = defineConnectionManager;
-        return this;
-    }
 }

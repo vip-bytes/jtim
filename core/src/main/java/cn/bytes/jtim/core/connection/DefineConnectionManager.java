@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.connection;
 
-import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.Module;
 import io.netty.channel.Channel;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/2/12 0:10
  */
-public interface DefineConnectionManager extends Map<String, Connection> {
+public interface DefineConnectionManager extends Map<String, Connection>, Module {
 
     /**
      * 保存连接信息

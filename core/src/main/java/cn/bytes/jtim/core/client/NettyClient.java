@@ -4,6 +4,8 @@ import cn.bytes.jtim.core.NettyDefineInitialize;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.module.ModuleManager;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.util.concurrent.Future;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class NettyClient extends NettyDefineInitialize {
 
-    public NettyClient(Configuration configuration, DefineHandlerManager defineHandlerManager, DefineConnectionManager defineConnectionManager) {
-        super(configuration, defineHandlerManager, defineConnectionManager);
+    public NettyClient(Configuration configuration, ModuleManager moduleManager) {
+        super(configuration, moduleManager);
     }
 
     @Override

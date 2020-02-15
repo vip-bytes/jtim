@@ -3,6 +3,8 @@ package cn.bytes.jtim.core.server;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.module.ModuleManager;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
@@ -14,9 +16,8 @@ import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketSe
  * @date 2020/2/10 22:58
  */
 public class NettyWebSocketServer extends NettyServer {
-
-    public NettyWebSocketServer(Configuration configuration, DefineHandlerManager defineHandlerManager, DefineConnectionManager defineConnectionManager) {
-        super(configuration, defineHandlerManager, defineConnectionManager);
+    public NettyWebSocketServer(Configuration configuration, ModuleManager moduleManager) {
+        super(configuration, moduleManager);
     }
 
 

@@ -9,6 +9,8 @@ import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
 import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.DefaultModuleManager;
+import cn.bytes.jtim.core.module.ModuleManager;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import cn.bytes.jtim.core.server.NettyTcpServer;
 import cn.bytes.jtim.core.server.NettyWebSocketServer;
@@ -20,6 +22,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 import java.lang.reflect.Member;
+
+import static cn.bytes.jtim.common.constant.DefineConstant.*;
 
 /**
  * @version 1.0
@@ -62,26 +66,33 @@ public class InitializingServer implements InitializingBean {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "netty.tcp.enable", havingValue = "true")
-    public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
-                                         DefineHandlerManager defineHandlerManager,
-                                         DefineConnectionManager defineConnectionManager) {
+    @ConditionalOnMissingBean
+    public ModuleManager moduleManager(DefineHandlerManager defineHandlerManager,
+                                       DefineConnectionManager defineConnectionManager) {
+
+        ModuleManager moduleManager =
+                DefaultModuleManager.builder().build()
+                        .module(defineHandlerManager, defineConnectionManager);
+        return moduleManager;
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = PROPER_TCP_ENABLE, havingValue = "true")
+    public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties, ModuleManager moduleManager) {
         NettyTcpServer nettyTcpServer =
-                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()), defineHandlerManager, defineConnectionManager);
-        nettyTcpServer.use(defineHandlerManager).open();
+                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()), moduleManager);
+        nettyTcpServer.open();
 
         return nettyTcpServer;
     }
 
     @Bean
-    @ConditionalOnProperty(name = "netty.websocket.enable", havingValue = "true")
-    public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties,
-                                                     DefineHandlerManager defineHandlerManager,
-                                                     DefineConnectionManager defineConnectionManager) {
+    @ConditionalOnProperty(name = PROPER_WEBSOCKET_ENABLE, havingValue = "true")
+    public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties, ModuleManager moduleManager) {
         NettyWebSocketServer nettyWebSocketServer =
-                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()), defineHandlerManager, defineConnectionManager);
-
+                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()), moduleManager);
         nettyWebSocketServer.open();
+
         return nettyWebSocketServer;
     }
 

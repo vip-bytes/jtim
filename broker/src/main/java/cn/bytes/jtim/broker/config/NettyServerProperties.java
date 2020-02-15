@@ -5,15 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
+
+import static cn.bytes.jtim.common.constant.DefineConstant.PREFIX_PROPER;
 
 /**
  * @version 1.0
  * @date 2020/2/12 21:13
  */
-@ConfigurationProperties("netty")
+@ConfigurationProperties(PREFIX_PROPER)
 @Data
 public class NettyServerProperties {
 

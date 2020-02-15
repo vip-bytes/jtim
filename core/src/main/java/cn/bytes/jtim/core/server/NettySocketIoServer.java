@@ -3,6 +3,8 @@ package cn.bytes.jtim.core.server;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
+import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.module.ModuleManager;
 import io.netty.channel.ChannelPipeline;
 
 /**
@@ -11,7 +13,7 @@ import io.netty.channel.ChannelPipeline;
  */
 public class NettySocketIoServer extends NettyServer {
 
-    public NettySocketIoServer(Configuration configuration, DefineHandlerManager defineHandlerManager, DefineConnectionManager defineConnectionManager) {
-        super(configuration, defineHandlerManager, defineConnectionManager);
+    public NettySocketIoServer(Configuration configuration, ModuleManager moduleManager) {
+        super(configuration, moduleManager);
     }
 }

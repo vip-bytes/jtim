@@ -1,14 +1,10 @@
 package cn.bytes.jtim.core.client;
 
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
 import cn.bytes.jtim.core.handler.ProtobufTcpClientHandler;
-import cn.bytes.jtim.core.protocol.protobuf.Message;
-import io.netty.channel.ChannelPipeline;
+import cn.bytes.jtim.core.module.ModuleManager;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Objects;
 
 /**
  * @version 1.0
@@ -17,8 +13,8 @@ import java.util.Objects;
 @Slf4j
 public class NettyTcpClient extends NettyClient {
 
-    public NettyTcpClient(Configuration configuration, DefineHandlerManager defineHandlerManager, DefineConnectionManager defineConnectionManager) {
-        super(configuration, defineHandlerManager, defineConnectionManager);
+    public NettyTcpClient(Configuration configuration, ModuleManager moduleManager) {
+        super(configuration, moduleManager);
     }
 
     @Override
