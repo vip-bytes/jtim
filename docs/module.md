@@ -1,58 +1,32 @@
-#### 系统设计
-
-#### 消息发送流程
-
-#### 服务
-
-* tcp-server
-* websocket-server
-* http-server
-
-#### 数据传输
-
-* protobuf
-
----
-
-#### 功能
-
-* 认证
-
-  ![image-20200216003333824](docs\images\oauth-001.png)
-
-* 单聊
-
-  * 发送消息逻辑
-
-    ![image-20200216003543540](docs\images\o2o-oo1.png)
-
-    ![image-20200216003647629](E:\bytes-im\jtim\docs\images\o2o-002.png)
-
-* 群聊
-
----
-
 #### 模块
 
-* [模块管理器](docs/module/manager.md)
-  
-* [编解码处理器模块](docs/module/codec.md)
-  
+* 模块管理器 
+
+  * ModuleManager 
+    * DefaultModuleManager
+
+* 编解码处理器模块
+
+  * DefineHandlerManager (必选)
+    * DefaultDefineHandlerManager
+
 * 连接管理模块 (必选)
+
   * DefineConnectionManager 
     * DefaultDefineConnectionManager
-  
+
 * 重试模块 (可选)
+
   * DefineRetryManager 
     * DefaultDefineRetryManager
-  
+
 * 注册(中心)模块(可选)
-  
+
   * DefineRegisterManager
     * DefaultDefineRegisterManager
   * 选址方式
   * 如果注册模块不开启使用，对外提供的服务列表中将不会存在该地址，通过地址直连
-  
+
 * 路由模块(可选)
 
   * DefineRouterManager
@@ -85,6 +59,4 @@
             nettyTcpServer.open();
     ```
 
-#### 配置
-
-TODO
+#### 
