@@ -2,14 +2,10 @@ package cn.bytes.jtim.core.handler;
 
 import cn.bytes.jtim.core.DefineManagerInitialize;
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.module.DefaultModuleManager;
-import cn.bytes.jtim.core.module.Module;
 import cn.bytes.jtim.core.module.ModuleManager;
 import cn.bytes.jtim.core.module.ModuleMapping;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
-import cn.bytes.jtim.core.register.DefineRegisterManager;
-import cn.bytes.jtim.core.router.DefineRouterManager;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -37,6 +33,9 @@ public abstract class DefaultDefineInitialize
     public DefaultDefineInitialize(Configuration configuration, ModuleManager moduleManager) {
         this.configuration = configuration;
         this.moduleManager = moduleManager;
+        if (Objects.isNull(moduleManager)) {
+            this.moduleManager = DefaultModuleManager.builder().build();
+        }
     }
 
     @Override

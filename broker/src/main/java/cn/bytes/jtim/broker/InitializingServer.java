@@ -11,7 +11,6 @@ import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
 import cn.bytes.jtim.core.module.DefaultModuleManager;
 import cn.bytes.jtim.core.module.ModuleManager;
-import cn.bytes.jtim.core.protocol.protobuf.Message;
 import cn.bytes.jtim.core.server.NettyTcpServer;
 import cn.bytes.jtim.core.server.NettyWebSocketServer;
 import lombok.extern.slf4j.Slf4j;
@@ -21,9 +20,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
-import java.lang.reflect.Member;
-
-import static cn.bytes.jtim.common.constant.DefineConstant.*;
+import static cn.bytes.jtim.common.constant.DefineConstant.PROPER_TCP_ENABLE;
+import static cn.bytes.jtim.common.constant.DefineConstant.PROPER_WEBSOCKET_ENABLE;
 
 /**
  * @version 1.0
@@ -69,7 +67,6 @@ public class InitializingServer implements InitializingBean {
     @ConditionalOnMissingBean
     public ModuleManager moduleManager(DefineHandlerManager defineHandlerManager,
                                        DefineConnectionManager defineConnectionManager) {
-
         ModuleManager moduleManager =
                 DefaultModuleManager.builder().build()
                         .module(defineHandlerManager, defineConnectionManager);

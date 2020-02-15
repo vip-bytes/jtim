@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * @author maliang@sioniov.com
  * @version 1.0
  * @date 2020/2/15 16:23
  */

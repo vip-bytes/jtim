@@ -2,13 +2,10 @@ package cn.bytes.jtim.core.handler;
 
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
-import cn.bytes.jtim.core.retry.DefaultRetry;
 import com.google.protobuf.ByteString;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @version 1.0
@@ -38,11 +35,7 @@ public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandle
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
 
-        getDefineManagerInitialize().open(
-                DefaultRetry.builder()
-                        .retryMax(new AtomicInteger(Integer.MAX_VALUE))
-                        .build()
-        );
+        getDefineManagerInitialize().open();
 
     }
 

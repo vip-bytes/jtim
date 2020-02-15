@@ -6,7 +6,8 @@ import cn.bytes.jtim.core.handler.DefaultDefineInitialize;
 import cn.bytes.jtim.core.module.Module;
 import cn.bytes.jtim.core.module.ModuleManager;
 import cn.bytes.jtim.core.module.ModuleMapping;
-import cn.bytes.jtim.core.retry.Retry;
+import cn.bytes.jtim.core.retry.DefaultDefineRetryManager;
+import cn.bytes.jtim.core.retry.DefineRetryManager;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -28,6 +29,8 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static cn.bytes.jtim.core.module.ModuleMapping.MODULE_RETRY_MANAGER;
+
 @Slf4j
 @Getter
 public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
@@ -36,7 +39,7 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
         super(configuration, moduleManager);
     }
 
-    public enum State {Created, Initialized, Executing, Completed}
+    public enum State {Created, Initialized, FAILED, Completed}
 
     public final AtomicReference<State> state = new AtomicReference<>(State.Created);
 
@@ -133,11 +136,12 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
 
     @Override
     public void open() {
-        this.open((Retry) null);
+        DefineRetryManager defineRetryManager = getModuleManager().getModule(MODULE_RETRY_MANAGER);
+        this.open(defineRetryManager);
     }
 
     @Override
-    public void open(Retry retry) {
+    public void open(DefineRetryManager defineRetryManager) {
 
         this.validatorMustModule();
 
@@ -147,42 +151,48 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
             if (future.isSuccess()) {
                 this.state.set(State.Completed);
                 log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
+                this.openSuccessAfterHandler();
             } else {
                 log.error(" {} failed at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
-
-                this.close();
-                if (Objects.nonNull(retry)) {
-                    final int retryMax = retry.retryMax();
-                    if (retryMax < 0) {
-                        log.warn("重试结束");
-                        this.close();
-                        return;
-                    }
-
-                    final TimeUnit timeUnit = retry.suspendTimeUnit();
-                    final int suspendStep = retry.suspendStep();
-                    if (Objects.isNull(timeUnit) || suspendStep <= 0) {
-                        log.warn("重试设置信息错误: timeUnit = {}, step = {}", timeUnit, suspendStep);
-                        this.close();
-                        return;
-                    }
-
-                    log.info("retry [{}] open after {} {}", retryMax, suspendStep, timeUnit);
-                    try {
-                        timeUnit.sleep(suspendStep);
-                    } catch (InterruptedException e) {
-                        log.error("", e);
-                    }
-
-                    retry.decRetryMax();
-                    this.open(retry);
-                }
-
+                this.state.set(State.FAILED);
+                this.isRetry(defineRetryManager);
             }
         });
-
     }
 
+    /**
+     * 启动成功以后执行逻辑
+     */
+    protected void openSuccessAfterHandler() {
+    }
+
+    private void isRetry(DefineRetryManager retryManager) {
+        if (Objects.nonNull(retryManager)) {
+            retryManager.retry(retryStatus -> {
+                if (DefaultDefineRetryManager.RetryStatus.CLOSE.equals(retryStatus)) {
+                    this.close();
+                }
+                if (DefaultDefineRetryManager.RetryStatus.EXECUTE.equals(retryStatus)) {
+                    this.open();
+                }
+            });
+        }
+    }
+
+    /**
+     * 重试连接
+     *
+     * @param defineRetryManager
+     */
+    private void failAfterHandler(DefineRetryManager defineRetryManager) {
+        if (Objects.nonNull(defineRetryManager)) {
+
+        }
+    }
+
+    /**
+     * 验证不虚模块是否存在
+     */
     private void validatorMustModule() {
         for (ModuleMapping moduleMapping : ModuleMapping.values()) {
             Module module = getModuleManager().getModule(moduleMapping);
@@ -201,9 +211,4 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
             workerGroup.shutdownGracefully();
         }
     }
-
-//    public ConnectionManager<String, Connection> getConnectionManager() {
-//        return connectionManager;
-//    }
-
 }

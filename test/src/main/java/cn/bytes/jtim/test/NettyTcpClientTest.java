@@ -4,15 +4,8 @@ import cn.bytes.jtim.core.client.NettyTcpClient;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
-import cn.bytes.jtim.core.handler.ProtobufTcpClientHandler;
 import cn.bytes.jtim.core.module.DefaultModuleManager;
-import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.register.DefineRegisterManager;
-import cn.bytes.jtim.core.retry.DefaultRetry;
-import cn.bytes.jtim.core.retry.Retry;
-import cn.bytes.jtim.core.router.DefineRouterManager;
-
-import java.util.concurrent.atomic.AtomicInteger;
+import cn.bytes.jtim.core.retry.DefaultDefineRetryManager;
 
 /**
  * @author maliang@sioniov.com
@@ -29,11 +22,10 @@ public class NettyTcpClientTest {
         NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration, DefaultModuleManager.builder().build()
                 .module(new DefaultDefineHandlerManager())
                 .module(new DefaultDefineConnectionManager())
+                .module(new DefaultDefineRetryManager())
         );
 
         nettyTcpClient
-                .open(DefaultRetry.builder()
-                        .retryMax(new AtomicInteger(5))
-                        .build());
+                .open();
     }
 }

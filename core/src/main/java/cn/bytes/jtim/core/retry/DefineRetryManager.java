@@ -1,14 +1,15 @@
 package cn.bytes.jtim.core.retry;
 
+import cn.bytes.jtim.core.module.Module;
+
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 /**
- * 重试
- *
  * @version 1.0
  * @date 2020/2/14 11:43
  */
-public interface Retry {
+public interface DefineRetryManager extends Module {
 
     /**
      * 最大重试次数
@@ -28,4 +29,7 @@ public interface Retry {
     TimeUnit suspendTimeUnit();
 
     int suspendStep();
+
+    void retry(Consumer<DefaultDefineRetryManager.RetryStatus> consumer);
+
 }

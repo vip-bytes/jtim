@@ -6,7 +6,7 @@ package cn.bytes.jtim.core.module;
  */
 public interface Module {
 
-    default Module add(Module module) {
+    default Module module(Module module) {
         return this;
     }
 

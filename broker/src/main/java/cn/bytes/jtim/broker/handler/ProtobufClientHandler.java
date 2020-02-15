@@ -3,7 +3,7 @@ package cn.bytes.jtim.broker.handler;
 import cn.bytes.jtim.core.handler.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
-import cn.bytes.jtim.core.retry.DefaultRetry;
+import cn.bytes.jtim.core.retry.DefaultDefineRetryManager;
 import com.google.protobuf.ByteString;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -40,7 +40,7 @@ public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
         getDefineManagerInitialize().open(
-                DefaultRetry.builder()
+                DefaultDefineRetryManager.builder()
                         .retryMax(new AtomicInteger(Integer.MAX_VALUE))
                         .build()
         );
