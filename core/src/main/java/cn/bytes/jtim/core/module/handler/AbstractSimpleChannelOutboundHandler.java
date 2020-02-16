@@ -1,6 +1,5 @@
 package cn.bytes.jtim.core.module.handler;
 
-import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.ChannelHandler;
 import io.netty.handler.codec.MessageToMessageEncoder;
 import lombok.Getter;
@@ -11,8 +10,8 @@ import lombok.Getter;
  */
 @Getter
 @ChannelHandler.Sharable
-public abstract class AbstractSimpleChannelOutboundHandler
-        extends MessageToMessageEncoder<Message> implements DefineChannelHandler {
+public abstract class AbstractSimpleChannelOutboundHandler<T>
+        extends MessageToMessageEncoder<T> implements DefineChannelHandler {
 
     private ChannelHandlerModule channelHandlerModule;
 
