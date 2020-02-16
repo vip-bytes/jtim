@@ -1,5 +1,8 @@
-package cn.bytes.jtim.core.handler;
+package cn.bytes.jtim.test;
 
+import cn.bytes.jtim.core.module.handler.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.initialize.InitializeModule;
+import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import com.google.protobuf.ByteString;
@@ -7,13 +10,15 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @version 1.0
  * @date 2020/2/13 18:14
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandler implements Runnable {
+public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -29,14 +34,17 @@ public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandle
                             .build())
                     .build());
         }
+
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
 
-        getDefineManagerInitialize().open();
-
+        InitializeModule initializeModule = getChannelHandlerModule().getHost();
+        initializeModule.open(SimpleRetryModule.builder()
+                .retryMax(new AtomicInteger(Integer.MAX_VALUE))
+                .build());
     }
 
     @Override
@@ -48,10 +56,5 @@ public class ProtobufTcpClientHandler extends AbstractSimpleChannelInboundHandle
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("连接异常: ", cause);
         ctx.close();
-    }
-
-    @Override
-    public void run() {
-
     }
 }

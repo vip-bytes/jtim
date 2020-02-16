@@ -1,11 +1,10 @@
 package cn.bytes.jtim.test;
 
-import cn.bytes.jtim.core.client.NettyTcpClient;
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
-import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
-import cn.bytes.jtim.core.module.DefaultModuleManager;
-import cn.bytes.jtim.core.retry.DefaultDefineRetryManager;
+import cn.bytes.jtim.core.module.client.NettyTcpClient;
+import cn.bytes.jtim.core.module.connection.SimpleConnectionModule;
+import cn.bytes.jtim.core.module.handler.SimpleChannelHandlerProtoBufModule;
+import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 
 /**
  * @author maliang@sioniov.com
@@ -19,10 +18,13 @@ public class NettyTcpClientTest {
         configuration.setHost("127.0.0.1");
         configuration.setPort(1999);
 
-        NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration, DefaultModuleManager.builder().build()
-                .module(new DefaultDefineHandlerManager())
-                .module(new DefaultDefineConnectionManager())
-                .module(new DefaultDefineRetryManager())
+        NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
+        nettyTcpClient.boarder(
+                new SimpleChannelHandlerProtoBufModule()
+                        .addLast(new ProtobufClientHandler())
+                ,
+                new SimpleConnectionModule(),
+                SimpleRetryModule.builder().build()
         );
 
         nettyTcpClient

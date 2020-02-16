@@ -1,9 +1,9 @@
-package cn.bytes.jtim.core.retry;
+package cn.bytes.jtim.core.module.retry;
 
+import cn.bytes.jtim.core.module.AbstractSimpleModule;
 import cn.bytes.jtim.core.module.ModuleMapping;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,12 +12,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
-@Data
+/**
+ * @version 1.0
+ * @date 2020/2/16 22:21
+ */
+@Slf4j
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Slf4j
-public class DefaultDefineRetryManager implements DefineRetryManager {
+public class SimpleRetryModule extends AbstractSimpleModule implements RetryModule {
 
     public enum RetryStatus {
         CLOSE, EXECUTE;
@@ -58,7 +61,7 @@ public class DefaultDefineRetryManager implements DefineRetryManager {
         final int retryMax = this.retryMax();
         if (retryMax < 0) {
             log.warn("重试结束");
-            consumer.accept(RetryStatus.CLOSE);
+            consumer.accept(SimpleRetryModule.RetryStatus.CLOSE);
             return;
         }
 
@@ -66,7 +69,7 @@ public class DefaultDefineRetryManager implements DefineRetryManager {
         final int suspendStep = this.suspendStep();
         if (Objects.isNull(timeUnit) || suspendStep <= 0) {
             log.warn("重试设置信息错误: timeUnit = {}, step = {}", timeUnit, suspendStep);
-            consumer.accept(RetryStatus.CLOSE);
+            consumer.accept(SimpleRetryModule.RetryStatus.CLOSE);
             return;
         }
 
@@ -77,12 +80,13 @@ public class DefaultDefineRetryManager implements DefineRetryManager {
             log.error("暂停错误", e);
         }
         this.decRetryMax();
-        consumer.accept(RetryStatus.EXECUTE);
+        consumer.accept(SimpleRetryModule.RetryStatus.EXECUTE);
 //        this.open(retry);
     }
 
     @Override
-    public ModuleMapping getModuleMapping() {
-        return ModuleMapping.MODULE_RETRY_MANAGER;
+    public ModuleMapping mapping() {
+        return ModuleMapping.MODULE_RETRY;
     }
+
 }

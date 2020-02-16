@@ -1,4 +1,4 @@
-package cn.bytes.jtim.core.retry;
+package cn.bytes.jtim.core.module.retry;
 
 import cn.bytes.jtim.core.module.Module;
 
@@ -7,9 +7,9 @@ import java.util.function.Consumer;
 
 /**
  * @version 1.0
- * @date 2020/2/14 11:43
+ * @date 2020/2/16 22:20
  */
-public interface DefineRetryManager extends Module {
+public interface RetryModule extends Module {
 
     /**
      * 最大重试次数
@@ -30,6 +30,6 @@ public interface DefineRetryManager extends Module {
 
     int suspendStep();
 
-    void retry(Consumer<DefaultDefineRetryManager.RetryStatus> consumer);
+    void retry(Consumer<SimpleRetryModule.RetryStatus> consumer);
 
 }

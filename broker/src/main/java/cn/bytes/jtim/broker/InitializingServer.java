@@ -10,7 +10,6 @@ import cn.bytes.jtim.core.connection.DefineConnectionManager;
 import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
 import cn.bytes.jtim.core.handler.DefineHandlerManager;
 import cn.bytes.jtim.core.module.DefaultModuleManager;
-import cn.bytes.jtim.core.module.ModuleManager;
 import cn.bytes.jtim.core.server.NettyTcpServer;
 import cn.bytes.jtim.core.server.NettyWebSocketServer;
 import lombok.extern.slf4j.Slf4j;

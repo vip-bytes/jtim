@@ -1,13 +1,13 @@
-package cn.bytes.jtim.core;
+package cn.bytes.jtim.core.module.initialize;
 
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
-import cn.bytes.jtim.core.handler.DefaultDefineInitialize;
+import cn.bytes.jtim.core.module.AbstractSimpleModule;
 import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.ModuleManager;
 import cn.bytes.jtim.core.module.ModuleMapping;
-import cn.bytes.jtim.core.retry.DefaultDefineRetryManager;
-import cn.bytes.jtim.core.retry.DefineRetryManager;
+import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
+import cn.bytes.jtim.core.module.retry.RetryModule;
+import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -17,7 +17,6 @@ import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.FutureListener;
 import lombok.Getter;
@@ -26,59 +25,51 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.net.InetSocketAddress;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static cn.bytes.jtim.core.module.ModuleMapping.MODULE_RETRY_MANAGER;
-
-@Slf4j
+/**
+ * 初始服务模块
+ *
+ * @version 1.0
+ * @date 2020/2/16 22:00
+ */
 @Getter
-public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
+@Slf4j
+public abstract class SimpleInitializeModule extends AbstractSimpleModule implements InitializeModule {
 
-    public NettyDefineInitialize(Configuration configuration, ModuleManager moduleManager) {
-        super(configuration, moduleManager);
+    private Configuration configuration;
+
+    private final AtomicReference<State> state = new AtomicReference<>(State.Created);
+
+    private EventLoopGroup bossEventGroup;
+
+    private EventLoopGroup workerEventGroup;
+
+    private enum State {
+        Created, Initialized, Failed, Completed
     }
 
-    public enum State {Created, Initialized, FAILED, Completed}
-
-    public final AtomicReference<State> state = new AtomicReference<>(State.Created);
-
-    public EventLoopGroup bossGroup;
-
-    public EventLoopGroup workerGroup;
-
-    @Override
-    public void initChannel(ChannelPipeline pipeline) {
-        if (Objects.isNull(pipeline)) {
-            return;
-        }
-        pipeline.addLast(new IdleStateHandler(super.getConfiguration().getHeartReadTime(), 0, 0, TimeUnit.SECONDS));
+    public SimpleInitializeModule(Configuration configuration) {
+        this.configuration = configuration;
     }
 
-    public abstract Future<Void> openAsync();
-
-    /**
-     * 初始group
-     */
-    public void selectEventLoopGroup() {
-
-        if (Objects.nonNull(bossGroup) && Objects.nonNull(workerGroup)) {
+    public void initializeEventLoopGroup() {
+        if (Objects.nonNull(bossEventGroup) && Objects.nonNull(workerEventGroup)) {
             return;
         }
-
-        if (getConfiguration().isUseLinuxNativeEpoll()) {
-            bossGroup = new EpollEventLoopGroup(getConfiguration().getBossThreads());
-            workerGroup = new EpollEventLoopGroup(getConfiguration().getWorkerThreads());
+        if (configuration.isUseLinuxNativeEpoll()) {
+            bossEventGroup = new EpollEventLoopGroup(getConfiguration().getBossThreads());
+            workerEventGroup = new EpollEventLoopGroup(getConfiguration().getWorkerThreads());
         } else {
-            bossGroup = new NioEventLoopGroup(getConfiguration().getBossThreads());
-            workerGroup = new NioEventLoopGroup(getConfiguration().getWorkerThreads());
+            bossEventGroup = new NioEventLoopGroup(getConfiguration().getBossThreads());
+            workerEventGroup = new NioEventLoopGroup(getConfiguration().getWorkerThreads());
         }
     }
 
     public InetSocketAddress getSocketAddress() {
-        return StringUtils.isNotBlank(getConfiguration().getHost()) ?
-                new InetSocketAddress(getConfiguration().getHost(), getConfiguration().getPort()) :
-                new InetSocketAddress(getConfiguration().getPort());
+        return StringUtils.isNotBlank(configuration.getHost()) ?
+                new InetSocketAddress(configuration.getHost(), configuration.getPort()) :
+                new InetSocketAddress(configuration.getPort());
     }
 
     public Class<? extends ServerChannel> getNioServerSocketChannelClass() {
@@ -97,13 +88,8 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
         return channelClass;
     }
 
-    /**
-     * 连接options
-     *
-     * @param bootstrap
-     */
     protected void options(ServerBootstrap bootstrap) {
-        SocketConfig config = getConfiguration().getSocketConfig();
+        SocketConfig config = configuration.getSocketConfig();
         bootstrap.childOption(ChannelOption.TCP_NODELAY, config.isNoDelay());
         if (config.getSendBufferSize() > -1) {
             bootstrap.childOption(ChannelOption.SO_SNDBUF, config.getSendBufferSize());
@@ -125,7 +111,7 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
     }
 
     protected void options(Bootstrap bootstrap) {
-        SocketConfig config = getConfiguration().getSocketConfig();
+        SocketConfig config = configuration.getSocketConfig();
         if (config.getReceiveBufferSize() > -1) {
             bootstrap.option(ChannelOption.SO_RCVBUF, config.getReceiveBufferSize());
             bootstrap.option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(config.getReceiveBufferSize()));
@@ -134,68 +120,9 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
                 new WriteBufferWaterMark(config.getWriteBufferWaterLow(), config.getWriteBufferWaterHigh()));
     }
 
-    @Override
-    public void open() {
-        DefineRetryManager defineRetryManager = getModuleManager().getModule(MODULE_RETRY_MANAGER);
-        this.open(defineRetryManager);
-    }
-
-    @Override
-    public void open(DefineRetryManager defineRetryManager) {
-
-        this.validatorMustModule();
-
-        this.init();
-
-        this.openAsync().addListener((FutureListener<Void>) future -> {
-            if (future.isSuccess()) {
-                this.state.set(State.Completed);
-                log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
-                this.openSuccessAfterHandler();
-            } else {
-                log.error(" {} failed at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
-                this.state.set(State.FAILED);
-                this.isRetry(defineRetryManager);
-            }
-        });
-    }
-
-    /**
-     * 启动成功以后执行逻辑
-     */
-    protected void openSuccessAfterHandler() {
-    }
-
-    private void isRetry(DefineRetryManager retryManager) {
-        if (Objects.nonNull(retryManager)) {
-            retryManager.retry(retryStatus -> {
-                if (DefaultDefineRetryManager.RetryStatus.CLOSE.equals(retryStatus)) {
-                    this.close();
-                }
-                if (DefaultDefineRetryManager.RetryStatus.EXECUTE.equals(retryStatus)) {
-                    this.open();
-                }
-            });
-        }
-    }
-
-    /**
-     * 重试连接
-     *
-     * @param defineRetryManager
-     */
-    private void failAfterHandler(DefineRetryManager defineRetryManager) {
-        if (Objects.nonNull(defineRetryManager)) {
-
-        }
-    }
-
-    /**
-     * 验证不虚模块是否存在
-     */
     private void validatorMustModule() {
         for (ModuleMapping moduleMapping : ModuleMapping.values()) {
-            Module module = getModuleManager().getModule(moduleMapping);
+            Module module = getBoarder(moduleMapping);
             if (moduleMapping.isMust() && Objects.isNull(module)) {
                 throw new RuntimeException(String.format("必填模块[%s]不能为空", moduleMapping.getName()));
             }
@@ -203,12 +130,74 @@ public abstract class NettyDefineInitialize extends DefaultDefineInitialize {
     }
 
     @Override
-    public void close() {
-        if (Objects.nonNull(bossGroup)) {
-            bossGroup.shutdownGracefully();
-        }
-        if (Objects.nonNull(workerGroup)) {
-            workerGroup.shutdownGracefully();
+    public void open() {
+        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
+        this.open(retryModule);
+    }
+
+    @Override
+    public void open(RetryModule retryModule) {
+        this.validatorMustModule();
+        this.init();
+        ChannelHandlerModule channelHandlerModule = getBoarder(ModuleMapping.MODULE_CHANNEL_HANDLER);
+        this.openAsync(channelHandlerModule).addListener((FutureListener<Void>) future -> {
+            if (future.isSuccess()) {
+                this.state.set(State.Completed);
+                log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
+            } else {
+                log.error(" {} failed at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
+                this.state.set(State.Failed);
+                this.isRetry(retryModule);
+            }
+        });
+    }
+
+    /**
+     * 断线重连
+     *
+     * @param retryModule
+     */
+    private void isRetry(RetryModule retryModule) {
+        if (Objects.nonNull(retryModule)) {
+            retryModule.retry(retryStatus -> {
+                if (SimpleRetryModule.RetryStatus.CLOSE.equals(retryStatus)) {
+                    this.close();
+                }
+                if (SimpleRetryModule.RetryStatus.EXECUTE.equals(retryStatus)) {
+                    this.open();
+                }
+            });
+        } else {
+            this.close();
         }
     }
+
+    @Override
+    public void close() {
+        log.info("closing {}", this.getClass().getSimpleName());
+        if (Objects.nonNull(bossEventGroup)) {
+            bossEventGroup.shutdownGracefully();
+        }
+        if (Objects.nonNull(workerEventGroup)) {
+            workerEventGroup.shutdownGracefully();
+        }
+        log.info("closed {}", this.getClass().getSimpleName());
+    }
+
+    @Override
+    public void init() {
+        state.compareAndSet(State.Created, State.Initialized);
+        this.initializeEventLoopGroup();
+    }
+
+    public abstract Future<Void> openAsync(ChannelHandlerModule channelHandlerModule);
+
+    protected abstract void channelHandlerOptions(ChannelHandlerModule channelHandlerModule);
+
+    @ChannelHandler.Sharable
+    public abstract static class DefineChannelInitializer extends ChannelInitializer<Channel> {
+
+    }
+
+
 }
