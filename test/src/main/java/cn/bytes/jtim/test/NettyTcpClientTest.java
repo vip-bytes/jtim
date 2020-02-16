@@ -21,13 +21,10 @@ public class NettyTcpClientTest {
         NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
         nettyTcpClient.boarder(
                 new SimpleChannelHandlerProtoBufModule()
-                        .addLast(new ProtobufClientHandler())
-                ,
+                        .addLast(new ProtobufClientHandler()),
                 new SimpleConnectionModule(),
                 SimpleRetryModule.builder().build()
         );
-
-        nettyTcpClient
-                .open();
+        nettyTcpClient.open();
     }
 }
