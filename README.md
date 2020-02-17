@@ -81,10 +81,11 @@
       * 创建一个处理器管理模块
       
         ```java
-         	@Bean
-        @ConditionalOnMissingBean
-            public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler protobufServerHandler) {
-            return new SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
+        
+    	@Bean
+        	@ConditionalOnMissingBean
+    	public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler                                           protobufServerHandler) {
+                return new                  SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
          	}
         ```
       
