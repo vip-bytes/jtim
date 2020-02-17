@@ -17,6 +17,7 @@ public class NettyTcpServerTest {
         configuration.setHost("127.0.0.1");
         configuration.setPort(1999);
         NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration);
+
         nettyTcpServer.boarder(
                 new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufServerHandler()),
                 new SimpleConnectionModule()

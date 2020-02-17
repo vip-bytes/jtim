@@ -19,12 +19,14 @@ public class NettyTcpClientTest {
         configuration.setPort(1999);
 
         NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
+
         nettyTcpClient.boarder(
-                new SimpleChannelHandlerProtoBufModule()
-                        .addLast(new ProtobufClientHandler()),
+                new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufClientHandler()),
                 new SimpleConnectionModule(),
                 SimpleRetryModule.builder().build()
         );
         nettyTcpClient.open();
     }
+
+
 }

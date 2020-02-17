@@ -1,9 +1,9 @@
 package cn.bytes.jtim.test;
 
 import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.codec.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
-import cn.bytes.jtim.core.module.handler.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;

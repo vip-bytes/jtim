@@ -54,9 +54,6 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     }
 
     public void initializeEventLoopGroup() {
-        if (Objects.nonNull(bossEventGroup) && Objects.nonNull(workerEventGroup)) {
-            return;
-        }
         if (configuration.isUseLinuxNativeEpoll()) {
             bossEventGroup = new EpollEventLoopGroup(getConfiguration().getBossThreads());
             workerEventGroup = new EpollEventLoopGroup(getConfiguration().getWorkerThreads());
@@ -140,7 +137,13 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
         this.validatorMustModule();
         this.init();
         ChannelHandlerModule channelHandlerModule = getBoarder(ModuleMapping.MODULE_CHANNEL_HANDLER);
-        this.openAsync(channelHandlerModule).addListener((FutureListener<Void>) future -> {
+        this.openAsync(new ChannelInitializer<Channel>() {
+            @Override
+            protected void initChannel(Channel channel) throws Exception {
+                ChannelPipeline channelPipeline = channel.pipeline();
+                channelHandlerModule.optionHandler(channelPipeline);
+            }
+        }).addListener((FutureListener<Void>) future -> {
             if (future.isSuccess()) {
                 this.state.set(State.Completed);
                 log.info(" {} at addr: {}:{}", this.getClass().getSimpleName(), getConfiguration().getHost(), getConfiguration().getPort());
@@ -160,11 +163,9 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     private void isRetry(RetryModule retryModule) {
         if (Objects.nonNull(retryModule)) {
             retryModule.retry(retryStatus -> {
-                if (SimpleRetryModule.RetryStatus.CLOSE.equals(retryStatus)) {
-                    this.close();
-                }
+                this.close();
                 if (SimpleRetryModule.RetryStatus.EXECUTE.equals(retryStatus)) {
-                    this.open();
+                    this.open(retryModule);
                 }
             });
         } else {
@@ -190,14 +191,6 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
         this.initializeEventLoopGroup();
     }
 
-    public abstract Future<Void> openAsync(ChannelHandlerModule channelHandlerModule);
-
-    protected abstract void channelHandlerOptions(ChannelHandlerModule channelHandlerModule);
-
-    @ChannelHandler.Sharable
-    public abstract static class DefineChannelInitializer extends ChannelInitializer<Channel> {
-
-    }
-
+    public abstract Future<Void> openAsync(ChannelInitializer<Channel> channelInitializer);
 
 }

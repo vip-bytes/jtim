@@ -1,7 +1,10 @@
 package cn.bytes.jtim.broker.handler;
 
-import cn.bytes.jtim.core.connection.Connection;
-import cn.bytes.jtim.core.handler.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.codec.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.connection.Connection;
+import cn.bytes.jtim.core.module.connection.ConnectionModule;
+import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
@@ -11,7 +14,6 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler {
+public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -53,6 +55,7 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler {
         log.info("连接成功:{}", ctx);
 
         Channel channel = ctx.channel();
+
         Connection connection = Connection.builder()
                 .channel(channel)
                 .channelId(channel.id().asLongText())
@@ -64,14 +67,18 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler {
                         .setPing(ByteString.EMPTY)
                         .build()).build();
 
-        getDefineConnectionManager()
+        InitializeModule initializeModule = getChannelHandlerModule().getHost();
+        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleMapping.MODULE_CONNECTION);
+        connectionModule
                 .saveConnection(connection)
                 .writeAndFlush(connection, message);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        getDefineConnectionManager()
+        InitializeModule initializeModule = getChannelHandlerModule().getHost();
+        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleMapping.MODULE_CONNECTION);
+        connectionModule
                 .removeConnection(ctx.channel());
     }
 }

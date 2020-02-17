@@ -2,6 +2,7 @@ package cn.bytes.jtim.core.module.handler;
 
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
+import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
@@ -19,16 +20,17 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class SimpleChannelHandlerProtoBufModule extends SimpleChannelHandlerModule {
 
-    public SimpleChannelHandlerProtoBufModule() {
+    @Override
+    public void optionHandler0(ChannelPipeline channelPipeline) {
         InitializeModule initializeModule = getHost();
         final int heartbeat = Objects.isNull(initializeModule) ? 30 : Objects.isNull(initializeModule.getConfiguration()) ?
                 30 : initializeModule.getConfiguration().getHeartReadTime();
-
-        this.addLast(new ProtobufVarint32FrameDecoder())
+        channelPipeline.addLast(new ProtobufVarint32FrameDecoder())
                 .addLast(new ProtobufDecoder(Message.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder())
                 .addLast(new IdleStateHandler(heartbeat, 0, 0, TimeUnit.SECONDS));
-        log.info("初始 Protobuf 处理器...");
     }
+
+
 }

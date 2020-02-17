@@ -1,9 +1,10 @@
 package cn.bytes.jtim.broker.handler;
 
-import cn.bytes.jtim.core.handler.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.codec.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.initialize.InitializeModule;
+import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
-import cn.bytes.jtim.core.retry.DefaultDefineRetryManager;
 import com.google.protobuf.ByteString;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -17,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler {
+public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -39,11 +40,11 @@ public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
-        getDefineManagerInitialize().open(
-                DefaultDefineRetryManager.builder()
-                        .retryMax(new AtomicInteger(Integer.MAX_VALUE))
-                        .build()
-        );
+
+        InitializeModule initializeModule = getChannelHandlerModule().getHost();
+        initializeModule.open(SimpleRetryModule.builder()
+                .retryMax(new AtomicInteger(Integer.MAX_VALUE))
+                .build());
     }
 
     @Override

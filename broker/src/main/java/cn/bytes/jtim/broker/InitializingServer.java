@@ -5,13 +5,11 @@ import cn.bytes.jtim.broker.handler.ProtobufClientHandler;
 import cn.bytes.jtim.broker.handler.ProtobufServerHandler;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
-import cn.bytes.jtim.core.connection.DefaultDefineConnectionManager;
-import cn.bytes.jtim.core.connection.DefineConnectionManager;
-import cn.bytes.jtim.core.handler.DefaultDefineHandlerManager;
-import cn.bytes.jtim.core.handler.DefineHandlerManager;
-import cn.bytes.jtim.core.module.DefaultModuleManager;
-import cn.bytes.jtim.core.server.NettyTcpServer;
-import cn.bytes.jtim.core.server.NettyWebSocketServer;
+import cn.bytes.jtim.core.module.connection.ConnectionModule;
+import cn.bytes.jtim.core.module.connection.SimpleConnectionModule;
+import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
+import cn.bytes.jtim.core.module.handler.SimpleChannelHandlerProtoBufModule;
+import cn.bytes.jtim.core.module.server.NettyTcpServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -20,7 +18,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 import static cn.bytes.jtim.common.constant.DefineConstant.PROPER_TCP_ENABLE;
-import static cn.bytes.jtim.common.constant.DefineConstant.PROPER_WEBSOCKET_ENABLE;
 
 /**
  * @version 1.0
@@ -49,48 +46,43 @@ public class InitializingServer implements InitializingBean {
 
     @Bean
     @ConditionalOnMissingBean
-    public DefineHandlerManager defineHandlerManager(ProtobufServerHandler protobufServerHandler) {
-        DefineHandlerManager defineHandlerManager = new DefaultDefineHandlerManager();
-        defineHandlerManager.addHandlerLast(protobufServerHandler);
-        return defineHandlerManager;
+    public ChannelHandlerModule channelHandlerModule() {
+        return new SimpleChannelHandlerProtoBufModule();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public DefineConnectionManager defineConnectionManager() {
-        DefineConnectionManager defineHandlerManager = new DefaultDefineConnectionManager();
-        return defineHandlerManager;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public ModuleManager moduleManager(DefineHandlerManager defineHandlerManager,
-                                       DefineConnectionManager defineConnectionManager) {
-        ModuleManager moduleManager =
-                DefaultModuleManager.builder().build()
-                        .module(defineHandlerManager, defineConnectionManager);
-        return moduleManager;
+    public ConnectionModule connectionModule() {
+        return new SimpleConnectionModule();
     }
 
     @Bean
     @ConditionalOnProperty(name = PROPER_TCP_ENABLE, havingValue = "true")
-    public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties, ModuleManager moduleManager) {
+    public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
+                                         ChannelHandlerModule channelHandlerModule,
+                                         ConnectionModule connectionModule) {
         NettyTcpServer nettyTcpServer =
-                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()), moduleManager);
+                new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
+
+        nettyTcpServer.boarder(
+                channelHandlerModule.addLast(protobufTcpServerHandler()),
+                connectionModule
+        );
+
         nettyTcpServer.open();
 
         return nettyTcpServer;
     }
 
-    @Bean
-    @ConditionalOnProperty(name = PROPER_WEBSOCKET_ENABLE, havingValue = "true")
-    public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties, ModuleManager moduleManager) {
-        NettyWebSocketServer nettyWebSocketServer =
-                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()), moduleManager);
-        nettyWebSocketServer.open();
-
-        return nettyWebSocketServer;
-    }
+//    @Bean
+//    @ConditionalOnProperty(name = PROPER_WEBSOCKET_ENABLE, havingValue = "true")
+//    public NettyWebSocketServer nettyWebSocketServer(NettyServerProperties nettyServerProperties, ModuleManager moduleManager) {
+//        NettyWebSocketServer nettyWebSocketServer =
+//                new NettyWebSocketServer(this.builderConfig(nettyServerProperties.getWebsocket()), moduleManager);
+//        nettyWebSocketServer.open();
+//
+//        return nettyWebSocketServer;
+//    }
 
     private Configuration builderConfig(NettyServerProperties.Properties config) {
         return Configuration.builder()

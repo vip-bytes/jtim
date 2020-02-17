@@ -1,5 +1,7 @@
-package cn.bytes.jtim.core.module.handler;
+package cn.bytes.jtim.core.module.codec;
 
+import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
+import cn.bytes.jtim.core.module.handler.DefineChannelHandler;
 import io.netty.channel.ChannelHandler;
 import io.netty.handler.codec.MessageToMessageEncoder;
 import lombok.Getter;

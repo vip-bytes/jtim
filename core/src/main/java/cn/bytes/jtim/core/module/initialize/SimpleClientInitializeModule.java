@@ -1,7 +1,6 @@
 package cn.bytes.jtim.core.module.initialize;
 
 import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -24,16 +23,11 @@ public abstract class SimpleClientInitializeModule extends SimpleInitializeModul
     }
 
     @Override
-    public Future<Void> openAsync(ChannelHandlerModule channelHandlerModule) {
+    public Future<Void> openAsync(ChannelInitializer<Channel> channelInitializer) {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(getWorkerEventGroup())
                 .channel(getNioSocketChannelClass())
-                .handler(new ChannelInitializer<Channel>() {
-                    @Override
-                    protected void initChannel(Channel channel) throws Exception {
-                        channel.pipeline().addLast(channelHandlerModule.getChannelHandlers());
-                    }
-                });
+                .handler(channelInitializer);
         this.options(bootstrap);
         return bootstrap.connect(getSocketAddress());
     }
