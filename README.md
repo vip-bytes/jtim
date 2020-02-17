@@ -35,10 +35,10 @@
 
 * 内部tcp 通信
 
+  * 服务端
+  
   ```java
-  服务端
-      public static void main(String[] args) {
-          Configuration configuration = new Configuration();
+  Configuration configuration = new Configuration();
           configuration.setHost("127.0.0.1");
           configuration.setPort(1999);
           NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration);
@@ -46,29 +46,70 @@
                   new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufServerHandler()),
                   new SimpleConnectionModule()
           );
-  
           nettyTcpServer.open();
-      }
-  客户端
-      public static void main(String[] args) {
-          Configuration configuration = new Configuration();
-          configuration.setHost("127.0.0.1");
-          configuration.setPort(1999);
-  
-          NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
-          nettyTcpClient.boarder(
-                  new SimpleChannelHandlerProtoBufModule()
-                          .addLast(new ProtobufClientHandler()),
-                  new SimpleConnectionModule(),
-                  SimpleRetryModule.builder().build()
-          );
-          nettyTcpClient.open();
-      }
   ```
-
   
+  * 客户端
+  
+    ```
+    Configuration configuration = new Configuration();
+            configuration.setHost("127.0.0.1");
+            configuration.setPort(1999);
+            NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
+            nettyTcpClient.boarder(
+                    new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufClientHandler()),
+                    new SimpleConnectionModule(),
+                    SimpleRetryModule.builder().build()
+            );
+            nettyTcpClient.open();
+    ```
+  
+  * spring 使用方式
 
-#### 模块
+    * 在spring中，只需要构建上面一些模块信息进行组装
+  
+      * 创建一个服务端基于protobuf的处理器
+      
+      ```java
+          @Bean
+          @ConditionalOnMissingBean
+          public ProtobufServerHandler protobufTcpServerHandler() {
+              return new ProtobufServerHandler();
+          }
+      ```
+      
+      * 创建一个处理器管理模块
+      
+        ```java
+         	@Bean
+        @ConditionalOnMissingBean
+            public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler protobufServerHandler) {
+            return new SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
+         	}
+        ```
+      
+      * 创建服务端
+      
+        ```java
+            @Bean
+            @ConditionalOnProperty(name = PROPER_TCP_ENABLE, havingValue = "true")
+            public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
+                ChannelHandlerModule channelHandlerModule) {
+                NettyTcpServer nettyTcpServer =
+                        new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
+                nettyTcpServer.boarder(
+                        channelHandlerModule)
+                );
+        
+                nettyTcpServer.open();
+        
+                return nettyTcpServer;
+            }
+        ```
+      
+        
+
+#### [模块](docs/module/module.md)
 
 #### 配置
 

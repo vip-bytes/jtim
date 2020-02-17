@@ -34,12 +34,6 @@ public class InitializingServer implements InitializingBean {
 
     @Bean
     @ConditionalOnMissingBean
-    public ProtobufServerHandler protobufTcpServerHandler() {
-        return new ProtobufServerHandler();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
     public ProtobufClientHandler protobufClientHandler() {
         return new ProtobufClientHandler();
     }
@@ -48,6 +42,18 @@ public class InitializingServer implements InitializingBean {
     @ConditionalOnMissingBean
     public ChannelHandlerModule channelHandlerModule() {
         return new SimpleChannelHandlerProtoBufModule();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ProtobufServerHandler protobufTcpServerHandler() {
+        return new ProtobufServerHandler();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler protobufServerHandler) {
+        return new SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
     }
 
     @Bean
