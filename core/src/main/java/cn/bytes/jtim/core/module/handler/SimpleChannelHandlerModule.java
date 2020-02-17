@@ -55,5 +55,5 @@ public abstract class SimpleChannelHandlerModule extends AbstractSimpleModule im
         channelPipeline.addLast(this.channelHandlers.toArray(new ChannelHandler[]{}));
     }
 
-    protected abstract void optionHandler0(ChannelPipeline channelPipeline);
+    public abstract void optionHandler0(ChannelPipeline channelPipeline);
 }

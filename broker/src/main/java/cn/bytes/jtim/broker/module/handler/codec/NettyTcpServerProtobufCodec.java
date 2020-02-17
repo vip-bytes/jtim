@@ -1,9 +1,9 @@
-package cn.bytes.jtim.broker.handler;
+package cn.bytes.jtim.broker.module.handler.codec;
 
 import cn.bytes.jtim.core.module.ModuleMapping;
-import cn.bytes.jtim.core.module.codec.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
+import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<Message> {
+public class NettyTcpServerProtobufCodec extends AbstractSimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {

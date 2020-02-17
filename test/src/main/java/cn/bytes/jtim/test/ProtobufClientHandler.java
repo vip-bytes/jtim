@@ -1,6 +1,6 @@
 package cn.bytes.jtim.test;
 
-import cn.bytes.jtim.core.module.codec.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;

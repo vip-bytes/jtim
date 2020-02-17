@@ -1,6 +1,6 @@
-package cn.bytes.jtim.broker.handler;
+package cn.bytes.jtim.broker.module.handler.codec;
 
-import cn.bytes.jtim.core.module.codec.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufClientHandler extends AbstractSimpleChannelInboundHandler<Message> {
+public class ProtobufClientCodec extends AbstractSimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {

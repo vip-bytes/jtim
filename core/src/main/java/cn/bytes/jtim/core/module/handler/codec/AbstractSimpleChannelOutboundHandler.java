@@ -1,4 +1,4 @@
-package cn.bytes.jtim.core.module.codec;
+package cn.bytes.jtim.core.module.handler.codec;
 
 import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
 import cn.bytes.jtim.core.module.handler.DefineChannelHandler;

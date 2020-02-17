@@ -15,7 +15,7 @@ import static cn.bytes.jtim.common.constant.DefineConstant.PREFIX_PROPER;
  */
 @ConfigurationProperties(PREFIX_PROPER)
 @Data
-public class NettyServerProperties {
+public class NettyConfigurationProperties {
 
     private Properties tcp;
 

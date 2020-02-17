@@ -1,4 +1,4 @@
-package cn.bytes.jtim.test;
+package cn.bytes.jtim.broker.module.handler.codec;
 
 import cn.bytes.jtim.core.module.ModuleMapping;
 import cn.bytes.jtim.core.module.connection.Connection;
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<Message> {
+public class NettyWebsocketServerProtobufCodec extends AbstractSimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -53,7 +53,6 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<M
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("连接成功:{}", ctx);
-
         Channel channel = ctx.channel();
 
         Connection connection = Connection.builder()
@@ -61,7 +60,6 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<M
                 .channelId(channel.id().asLongText())
                 .clientTime(System.currentTimeMillis())
                 .build();
-
         Message message = Message.newBuilder().setCmd(Message.Cmd.HeartbeatRequest)
                 .setHeartbeatRequest(HeartbeatRequest.newBuilder()
                         .setPing(ByteString.EMPTY)

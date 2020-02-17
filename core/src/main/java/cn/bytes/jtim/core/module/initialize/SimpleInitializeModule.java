@@ -127,12 +127,6 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     }
 
     @Override
-    public void open() {
-        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
-        this.open(retryModule);
-    }
-
-    @Override
     public void open(RetryModule retryModule) {
         this.validatorMustModule();
         this.init();

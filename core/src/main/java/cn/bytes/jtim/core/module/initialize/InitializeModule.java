@@ -13,7 +13,13 @@ import cn.bytes.jtim.core.module.retry.RetryModule;
  */
 public interface InitializeModule extends Module {
 
-    void open();
+    /**
+     * 默认使用自己模块子模块的重试模块，如果没有再使用全局的重试
+     */
+    default void open() {
+        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
+        this.open(retryModule);
+    }
 
     void open(RetryModule retryModule);
 
