@@ -1,47 +1,25 @@
-#### 系统设计
+ #### 设计
 
-#### 消息发送流程
-
-#### 支持服务
-
-* java 
-  * HttpServer
-  * NettyTcpServer
-  * NettyWebsocketServer
-* golang (TODO)
-  * HttpServer
-  * GoTcpServer
-  * GoWebsocketServer
-
-#### 数据传输
-
-* protobuf
-
----
+ TODO
 
 #### 功能
 
-* 认证
+TODO
 
-  ![image-20200216003333824](docs\images\oauth-001.png)
+ #### [模块](docs\module\readme.md)
 
-* 单聊
+* `InitializeModule`  初始模块，构建服务端跟客户端的基础模块
+* `ConnectionModule` 连接管理模块
+* `ChannelHandlerModule`  编解码处理器模块
+* `RetryModule` 重试模块
+* `ClusterModule` 集群模块
 
-  * 发送消息逻辑
+#### 使用(v1.0)
 
-    ![image-20200216003543540](docs\images\o2o-oo1.png)
+* 如下所示，使用模块构建服务端与客户端
 
-    ![image-20200216003647629](E:\bytes-im\jtim\docs\images\o2o-002.png)
+* 服务端
 
-* 群聊
-
----
-#### 使用示例
-
-* 内部tcp 通信
-
-  * 服务端
-  
   ```java
   Configuration configuration = new Configuration();
           configuration.setHost("127.0.0.1");
@@ -53,72 +31,52 @@
           );
           nettyTcpServer.open();
   ```
+
+* 客户端
+
+  ```java
+  Configuration configuration = new Configuration();
+          configuration.setHost("127.0.0.1");
+          configuration.setPort(1999);
+          NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
+          nettyTcpClient.boarder(
+                  new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufClientHandler()),
+                  new SimpleConnectionModule(),
+                  SimpleRetryModule.builder().build()
+          );
+          nettyTcpClient.open();
+  ```
+
+* spring boot 
+
+  ```java
+  //构建处理器
+  @Bean
+  @ConditionalOnMissingBean
+  public ProtobufServerHandler protobufTcpServerHandler() {
+      return new ProtobufServerHandler();
+  }
   
-  * 客户端
+  //构建处理器管理模块
+  @Bean
+  @ConditionalOnMissingBean
+  public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler                                           protobufServerHandler) {
+      return new              	SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
+  }
   
-    ```
-    Configuration configuration = new Configuration();
-            configuration.setHost("127.0.0.1");
-            configuration.setPort(1999);
-            NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
-            nettyTcpClient.boarder(
-                    new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufClientHandler()),
-                    new SimpleConnectionModule(),
-                    SimpleRetryModule.builder().build()
-            );
-            nettyTcpClient.open();
-    ```
+  //创建服务端
+  @Bean
+  @ConditionalOnProperty(name = PROPER_TCP_ENABLE, havingValue = "true")
+  public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
+                                       ChannelHandlerModule channelHandlerModule) {
+      NettyTcpServer nettyTcpServer =
+          new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
+      nettyTcpServer.boarder(
+          channelHandlerModule)
+          );
+      nettyTcpServer.open();
+      return nettyTcpServer;
+  }
+  ```
+
   
-  * spring 使用方式
-
-    * 在spring中，只需要构建上面一些模块信息进行组装
-  
-      * 创建一个服务端基于protobuf的处理器
-      
-      ```java
-          @Bean
-          @ConditionalOnMissingBean
-          public ProtobufServerHandler protobufTcpServerHandler() {
-              return new ProtobufServerHandler();
-          }
-      ```
-      
-      * 创建一个处理器管理模块
-      
-        ```java
-        
-    	@Bean
-        	@ConditionalOnMissingBean
-    	public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler                                           protobufServerHandler) {
-                return new                  SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
-         	}
-        ```
-      
-      * 创建服务端
-      
-        ```java
-            @Bean
-            @ConditionalOnProperty(name = PROPER_TCP_ENABLE, havingValue = "true")
-            public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
-                ChannelHandlerModule channelHandlerModule) {
-                NettyTcpServer nettyTcpServer =
-                        new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
-                nettyTcpServer.boarder(
-                        channelHandlerModule)
-                );
-        
-                nettyTcpServer.open();
-        
-                return nettyTcpServer;
-            }
-        ```
-      
-        
-
-#### [模块](docs/module/module.md)
-
-#### [任务列表](docs/task/readme.md)
-
-#### 配置
-
-TODO
