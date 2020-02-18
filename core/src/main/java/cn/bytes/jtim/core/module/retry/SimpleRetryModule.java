@@ -4,6 +4,7 @@ import cn.bytes.jtim.core.module.AbstractSimpleModule;
 import cn.bytes.jtim.core.module.ModuleMapping;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +21,7 @@ import java.util.function.Consumer;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class SimpleRetryModule extends AbstractSimpleModule implements RetryModule {
 
     public enum RetryStatus {
@@ -35,9 +37,20 @@ public class SimpleRetryModule extends AbstractSimpleModule implements RetryModu
     @Builder.Default
     private int suspendStep = 3;
 
+    /**
+     * 如果这个参数为true 那么retryMax的次数将没有意义
+     */
+    @Builder.Default
+    private boolean loop = false;
+
     @Override
     public int retryMax() {
         return retryMax.get();
+    }
+
+    @Override
+    public boolean isLoop() {
+        return false;
     }
 
     @Override
@@ -59,7 +72,7 @@ public class SimpleRetryModule extends AbstractSimpleModule implements RetryModu
     public void retry(Consumer<RetryStatus> consumer) {
 
         final int retryMax = this.retryMax();
-        if (retryMax < 0) {
+        if (retryMax < 0 && !isLoop()) {
             log.warn("重试结束");
             consumer.accept(SimpleRetryModule.RetryStatus.CLOSE);
             return;
@@ -72,16 +85,25 @@ public class SimpleRetryModule extends AbstractSimpleModule implements RetryModu
             consumer.accept(SimpleRetryModule.RetryStatus.CLOSE);
             return;
         }
-
-        log.info("retry [{}] open after {} {}", retryMax, suspendStep, timeUnit);
+        log.info("retry [retryMax={},loop={}]  after {} {}", retryMax, isLoop(), suspendStep, timeUnit);
         try {
             timeUnit.sleep(suspendStep);
         } catch (InterruptedException e) {
             log.error("暂停错误", e);
         }
-        this.decRetryMax();
+
+        if (!isLoop()) {
+            this.decRetryMax();
+        }
         consumer.accept(SimpleRetryModule.RetryStatus.EXECUTE);
-//        this.open(retry);
+    }
+
+    @Override
+    public void reset(int retryMax, boolean loop, TimeUnit suspendTimeUnit, int suspendStep) {
+        this.setRetryMax(new AtomicInteger(retryMax));
+        this.setLoop(loop);
+        this.setSuspendStep(suspendStep);
+        this.setTimeUnit(suspendTimeUnit);
     }
 
     @Override

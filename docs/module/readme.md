@@ -1,4 +1,4 @@
-##### 模块列表
+##### 模块
 
 * `InitializeModule` 系统初始模块
 
@@ -20,7 +20,7 @@
 
   * `SimpleRetryModule` 
 
-* RegisterModule 注册模块 
+* ClusterModule 集群模块
 
   * TODO
 

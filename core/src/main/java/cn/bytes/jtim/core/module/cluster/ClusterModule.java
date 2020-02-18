@@ -4,38 +4,57 @@ import cn.bytes.jtim.core.module.Module;
 import cn.bytes.jtim.core.module.ModuleMapping;
 import cn.bytes.jtim.core.module.retry.RetryModule;
 
+import java.util.Objects;
+import java.util.Set;
 import java.util.function.Consumer;
 
 /**
  * @version 1.0
  * @date 2020/2/17 22:55
  */
-public interface ClusterModule<R, D> extends Module {
-
-    /**
-     * 使用自身子模块的重试模块,如果子模块没有重试机制，则不重试
-     */
-    default void register(R registerData) {
-        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
-        this.register(retryModule, registerData);
-    }
+public interface ClusterModule extends Module {
 
     /**
      * 服务注册
      *
-     * @param retryModule
+     * @param clusterServerContent
      */
-    void register(RetryModule retryModule, R registerData);
+    default void register(ClusterServerContent clusterServerContent) {
+        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
+        if (Objects.nonNull(retryModule)) {
+            retryModule.reset(retryModule.retryMax(), true, retryModule.suspendTimeUnit(), retryModule.suspendStep());
+        }
+        this.register(retryModule, clusterServerContent);
+    }
+
+    void register(RetryModule retryModule, ClusterServerContent clusterServerContent);
+
+    default void unRegister(ClusterServerContent clusterServerContent) {
+        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
+        if (Objects.nonNull(retryModule)) {
+            retryModule.reset(retryModule.retryMax(), true, retryModule.suspendTimeUnit(), retryModule.suspendStep());
+        }
+        this.unRegister(retryModule, clusterServerContent);
+    }
+
+    void unRegister(RetryModule retryModule, ClusterServerContent clusterServerContent);
 
     /**
-     * 服务发现
+     * 获取当前注册的服务列表
      *
-     * @param consumer<DD>
+     * @return
      */
-    void discovery(Consumer<D> consumer);
+    Set<ClusterServerContent> getClusterContent();
+
+    /**
+     * 监听实通知
+     *
+     * @param consumer
+     */
+    void listener(Consumer<Set<ClusterServerContent>> consumer);
 
     @Override
     default ModuleMapping mapping() {
-        return ModuleMapping.MODULE_CLUSTER;
+        return ModuleMapping.MODULE_NETTY_WS_CLUSTER;
     }
 }
