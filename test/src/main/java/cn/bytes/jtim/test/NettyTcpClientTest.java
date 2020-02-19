@@ -4,7 +4,6 @@ import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.module.client.NettyTcpClient;
 import cn.bytes.jtim.core.module.connection.SimpleConnectionModule;
 import cn.bytes.jtim.core.module.handler.SimpleChannelHandlerProtoBufModule;
-import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 
 /**
  * @author maliang@sioniov.com
@@ -20,11 +19,10 @@ public class NettyTcpClientTest {
 
         NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
 
-        nettyTcpClient.boarder(
-                new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufClientHandler()),
-                new SimpleConnectionModule(),
-                SimpleRetryModule.builder().build()
-        );
+        nettyTcpClient
+                .then(new SimpleChannelHandlerProtoBufModule().codec(new ProtobufClientHandler()))
+                .then(new SimpleConnectionModule());
+
         nettyTcpClient.open();
     }
 

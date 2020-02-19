@@ -1,7 +1,6 @@
 package cn.bytes.jtim.core.module.retry;
 
 import cn.bytes.jtim.core.module.AbstractSimpleModule;
-import cn.bytes.jtim.core.module.ModuleSlot;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -104,11 +103,6 @@ public class SimpleRetryModule extends AbstractSimpleModule implements RetryModu
         this.setLoop(loop);
         this.setSuspendStep(suspendStep);
         this.setTimeUnit(suspendTimeUnit);
-    }
-
-    @Override
-    public ModuleSlot mapping() {
-        return ModuleSlot.RETRY_SLOT;
     }
 
 }

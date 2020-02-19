@@ -1,10 +1,8 @@
 package cn.bytes.jtim.core.module.cluster;
 
 import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.module.retry.RetryModule;
 
-import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -20,21 +18,13 @@ public interface ClusterModule extends Module {
      * @param clusterServerContent
      */
     default void register(ClusterServerContent clusterServerContent) {
-        RetryModule retryModule = getBoarder(ModuleSlot.RETRY_SLOT);
-        if (Objects.nonNull(retryModule)) {
-            retryModule.reset(retryModule.retryMax(), true, retryModule.suspendTimeUnit(), retryModule.suspendStep());
-        }
-        this.register(retryModule, clusterServerContent);
+        this.register(null, clusterServerContent);
     }
 
     void register(RetryModule retryModule, ClusterServerContent clusterServerContent);
 
     default void unRegister(ClusterServerContent clusterServerContent) {
-        RetryModule retryModule = getBoarder(ModuleSlot.RETRY_SLOT);
-        if (Objects.nonNull(retryModule)) {
-            retryModule.reset(retryModule.retryMax(), true, retryModule.suspendTimeUnit(), retryModule.suspendStep());
-        }
-        this.unRegister(retryModule, clusterServerContent);
+        this.unRegister(null, clusterServerContent);
     }
 
     void unRegister(RetryModule retryModule, ClusterServerContent clusterServerContent);
@@ -53,8 +43,5 @@ public interface ClusterModule extends Module {
      */
     void listener(Consumer<Set<ClusterServerContent>> consumer);
 
-    @Override
-    default ModuleSlot mapping() {
-        return ModuleSlot.WS_CLUSTER_SLOT;
-    }
+
 }

@@ -29,7 +29,7 @@ public class NettyWebsocketServerConfiguration extends InitializingConfiguration
     public SimpleChannelHandlerWebsocketModule simpleChannelHandlerWebsocketModule(
             NettyWebsocketServerProtobufCodec nettyWebsocketServerProtobufCodec) {
         SimpleChannelHandlerWebsocketModule simpleChannelHandlerTcpModule = new SimpleChannelHandlerWebsocketModule();
-        simpleChannelHandlerTcpModule.addLast(nettyWebsocketServerProtobufCodec);
+        simpleChannelHandlerTcpModule.codec(nettyWebsocketServerProtobufCodec);
         return simpleChannelHandlerTcpModule;
     }
 
@@ -43,7 +43,9 @@ public class NettyWebsocketServerConfiguration extends InitializingConfiguration
             SimpleChannelHandlerWebsocketModule simpleChannelHandlerWebsocketModule,
             SimpleConnectionWebsocketServerModule simpleConnectionWebsocketServerModule) {
         NettyWebsocketServer nettyWebsocketServer = new NettyWebsocketServer(super.getWebsocketConfiguration());
-        nettyWebsocketServer.boarder(simpleChannelHandlerWebsocketModule, simpleConnectionWebsocketServerModule);
+        nettyWebsocketServer
+                .then(simpleChannelHandlerWebsocketModule)
+                .then(simpleConnectionWebsocketServerModule);
         nettyWebsocketServer.open();
         return nettyWebsocketServer;
     }

@@ -29,7 +29,7 @@ public class NettyTcpServerConfiguration extends InitializingConfiguration {
     public SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule(
             NettyTcpServerProtobufCodec nettyTcpServerProtobufCodec) {
         SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule = new SimpleChannelHandlerTcpModule();
-        simpleChannelHandlerTcpModule.addLast(nettyTcpServerProtobufCodec);
+        simpleChannelHandlerTcpModule.codec(nettyTcpServerProtobufCodec);
         return simpleChannelHandlerTcpModule;
     }
 
@@ -43,7 +43,9 @@ public class NettyTcpServerConfiguration extends InitializingConfiguration {
             SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
             SimpleConnectionTcpServerModule simpleConnectionTcpServerModule) {
         NettyTcpServer nettyTcpServer = new NettyTcpServer(super.getTcpConfiguration());
-        nettyTcpServer.boarder(simpleChannelHandlerTcpModule, simpleConnectionTcpServerModule);
+        nettyTcpServer
+                .then(simpleChannelHandlerTcpModule)
+                .then(simpleConnectionTcpServerModule);
         nettyTcpServer.open();
         return nettyTcpServer;
     }

@@ -21,14 +21,14 @@ TODO
 * 服务端
 
   ```java
-  Configuration configuration = new Configuration();
+   Configuration configuration = new Configuration();
           configuration.setHost("127.0.0.1");
           configuration.setPort(1999);
           NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration);
-          nettyTcpServer.boarder(
-                  new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufServerHandler()),
-                  new SimpleConnectionModule()
-          );
+          nettyTcpServer
+                  .then(new SimpleChannelHandlerProtoBufModule()
+                          .codec(new ProtobufServerHandler()))
+                  .then(new SimpleConnectionModule());
           nettyTcpServer.open();
   ```
 
@@ -39,11 +39,9 @@ TODO
           configuration.setHost("127.0.0.1");
           configuration.setPort(1999);
           NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
-          nettyTcpClient.boarder(
-                  new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufClientHandler()),
-                  new SimpleConnectionModule(),
-                  SimpleRetryModule.builder().build()
-          );
+          nettyTcpClient
+                  .then(new SimpleChannelHandlerProtoBufModule().codec(new ProtobufClientHandler()))
+                  .then(new SimpleConnectionModule());
           nettyTcpClient.open();
   ```
 
@@ -61,22 +59,20 @@ TODO
   @Bean
   @ConditionalOnMissingBean
   public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler                                           protobufServerHandler) {
-      return new              	SimpleChannelHandlerProtoBufModule().addLast(protobufServerHandler);
+      return new              	SimpleChannelHandlerProtoBufModule().codec(protobufServerHandler);
   }
   
   //创建服务端
   @Bean
-  @ConditionalOnProperty(name = PROPER_TCP_ENABLE, havingValue = "true")
-  public NettyTcpServer nettyTcpServer(NettyServerProperties nettyServerProperties,
-                                       ChannelHandlerModule channelHandlerModule) {
-      NettyTcpServer nettyTcpServer =
-          new NettyTcpServer(this.builderConfig(nettyServerProperties.getTcp()));
-      nettyTcpServer.boarder(
-          channelHandlerModule)
-          );
+  public NettyTcpServer nettyTcpServer(
+      SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
+      SimpleConnectionTcpServerModule simpleConnectionTcpServerModule) {
+      NettyTcpServer nettyTcpServer = new NettyTcpServer(super.getTcpConfiguration());
+      nettyTcpServer
+          .then(simpleChannelHandlerTcpModule)
+          .then(simpleConnectionTcpServerModule);
       nettyTcpServer.open();
       return nettyTcpServer;
   }
   ```
-
   

@@ -9,7 +9,7 @@ import java.util.function.Consumer;
  * @version 1.0
  * @date 2020/2/16 22:20
  */
-public interface RetryModule extends Module, Cloneable {
+public interface RetryModule extends Module {
 
     /**
      * 最大重试次数

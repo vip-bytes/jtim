@@ -8,7 +8,6 @@ import lombok.Getter;
  * @date 2020/2/17 23:05
  */
 @Getter
-public abstract class AbstractSimpleClusterModule extends AbstractSimpleModule
-        implements ClusterModule {
+public abstract class AbstractSimpleClusterModule extends AbstractSimpleModule implements ClusterModule {
 
 }

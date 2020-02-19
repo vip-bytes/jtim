@@ -1,6 +1,5 @@
 package cn.bytes.jtim.core.module.handler;
 
-import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
@@ -22,15 +21,13 @@ public class SimpleChannelHandlerProtoBufModule extends SimpleChannelHandlerModu
 
     @Override
     public void optionHandler0(ChannelPipeline channelPipeline) {
-        InitializeModule initializeModule = getHost();
-        final int heartbeat = Objects.isNull(initializeModule) ? 30 : Objects.isNull(initializeModule.getConfiguration()) ?
-                30 : initializeModule.getConfiguration().getHeartReadTime();
+
+        final int heartbeat = Objects.isNull(getConfiguration()) ? 30 : getConfiguration().getHeartReadTime();
         channelPipeline.addLast(new ProtobufVarint32FrameDecoder())
                 .addLast(new ProtobufDecoder(Message.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder())
                 .addLast(new IdleStateHandler(heartbeat, 0, 0, TimeUnit.SECONDS));
     }
-
 
 }

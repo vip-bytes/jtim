@@ -3,8 +3,6 @@ package cn.bytes.jtim.core.module.initialize;
 import cn.bytes.jtim.core.config.Configuration;
 import cn.bytes.jtim.core.config.SocketConfig;
 import cn.bytes.jtim.core.module.AbstractSimpleModule;
-import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
 import cn.bytes.jtim.core.module.retry.RetryModule;
 import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
@@ -117,25 +115,17 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
                 new WriteBufferWaterMark(config.getWriteBufferWaterLow(), config.getWriteBufferWaterHigh()));
     }
 
-    private void validatorMustModule() {
-        for (ModuleSlot moduleSlot : ModuleSlot.values()) {
-            Module module = getBoarder(moduleSlot);
-            if (moduleSlot.isMust() && Objects.isNull(module)) {
-                throw new RuntimeException(String.format("必填模块[%s]不能为空", moduleSlot.getName()));
-            }
-        }
-    }
-
     @Override
     public void open(RetryModule retryModule) {
-        this.validatorMustModule();
         this.init();
-        ChannelHandlerModule channelHandlerModule = getBoarder(ModuleSlot.HANDLER_SLOT);
         this.openAsync(new ChannelInitializer<Channel>() {
             @Override
             protected void initChannel(Channel channel) throws Exception {
                 ChannelPipeline channelPipeline = channel.pipeline();
-                channelHandlerModule.optionHandler(channelPipeline);
+                ChannelHandlerModule channelHandlerModule = getModule(ChannelHandlerModule.class);
+                if (Objects.nonNull(channelHandlerModule)) {
+                    channelHandlerModule.optionHandler(channelPipeline);
+                }
             }
         }).addListener((FutureListener<Void>) future -> {
             if (future.isSuccess()) {

@@ -1,6 +1,6 @@
 package cn.bytes.jtim.broker.module.handler.codec;
 
-import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
+import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleCodecInboundHandler;
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufClientCodec extends AbstractSimpleChannelInboundHandler<Message> {
+public class ProtobufClientCodec extends AbstractSimpleCodecInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -40,9 +40,7 @@ public class ProtobufClientCodec extends AbstractSimpleChannelInboundHandler<Mes
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
-
-        InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        initializeModule.open(SimpleRetryModule.builder()
+        getHost().getModule(InitializeModule.class).open(SimpleRetryModule.builder()
                 .retryMax(new AtomicInteger(Integer.MAX_VALUE))
                 .build());
     }

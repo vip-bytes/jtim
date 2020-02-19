@@ -6,7 +6,6 @@ import cn.bytes.jtim.core.module.handler.SimpleChannelHandlerProtoBufModule;
 import cn.bytes.jtim.core.module.server.NettyTcpServer;
 
 /**
- * @author maliang@sioniov.com
  * @version 1.0
  * @date 2020/2/13 22:16
  */
@@ -16,13 +15,14 @@ public class NettyTcpServerTest {
         Configuration configuration = new Configuration();
         configuration.setHost("127.0.0.1");
         configuration.setPort(1999);
+
         NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration);
 
-        nettyTcpServer.boarder(
-                new SimpleChannelHandlerProtoBufModule().addLast(new ProtobufServerHandler()),
-                new SimpleConnectionModule()
-        );
-
+        //当前host没有往上级查找
+        nettyTcpServer
+                .then(new SimpleChannelHandlerProtoBufModule()
+                        .codec(new ProtobufServerHandler()))
+                .then(new SimpleConnectionModule());
         nettyTcpServer.open();
     }
 }

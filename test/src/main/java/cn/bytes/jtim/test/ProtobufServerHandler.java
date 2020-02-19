@@ -1,10 +1,8 @@
 package cn.bytes.jtim.test;
 
-import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
-import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
-import cn.bytes.jtim.core.module.initialize.InitializeModule;
+import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleCodecInboundHandler;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
@@ -14,6 +12,7 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -22,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<Message> {
+public class ProtobufServerHandler extends AbstractSimpleCodecInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
@@ -67,18 +66,22 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<M
                         .setPing(ByteString.EMPTY)
                         .build()).build();
 
-        InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleSlot.CONNECTION_SLOT);
-        connectionModule
-                .saveConnection(connection)
-                .writeAndFlush(connection, message);
+        //TODO
+        ConnectionModule connectionModule = getHost().getModule(ConnectionModule.class);
+
+        if (Objects.nonNull(connectionModule)) {
+            connectionModule
+                    .saveConnection(connection)
+                    .writeAndFlush(connection, message);
+        }
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleSlot.CONNECTION_SLOT);
-        connectionModule
-                .removeConnection(ctx.channel());
+        ConnectionModule connectionModule = getHost().getModule(ConnectionModule.class);
+        if (Objects.nonNull(connectionModule)) {
+            connectionModule
+                    .removeConnection(ctx.channel());
+        }
     }
 }
