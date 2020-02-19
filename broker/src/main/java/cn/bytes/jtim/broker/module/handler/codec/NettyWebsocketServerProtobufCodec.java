@@ -1,6 +1,6 @@
 package cn.bytes.jtim.broker.module.handler.codec;
 
-import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
 import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
@@ -66,7 +66,7 @@ public class NettyWebsocketServerProtobufCodec extends AbstractSimpleChannelInbo
                         .build()).build();
 
         InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleMapping.MODULE_CONNECTION);
+        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleSlot.CONNECTION_SLOT);
         connectionModule
                 .saveConnection(connection)
                 .writeAndFlush(connection, message);
@@ -75,7 +75,7 @@ public class NettyWebsocketServerProtobufCodec extends AbstractSimpleChannelInbo
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleMapping.MODULE_CONNECTION);
+        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleSlot.CONNECTION_SLOT);
         connectionModule
                 .removeConnection(ctx.channel());
     }

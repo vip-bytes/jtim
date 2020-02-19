@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.module.cluster;
 
 import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.module.retry.RetryModule;
 
 import java.util.Objects;
@@ -20,7 +20,7 @@ public interface ClusterModule extends Module {
      * @param clusterServerContent
      */
     default void register(ClusterServerContent clusterServerContent) {
-        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
+        RetryModule retryModule = getBoarder(ModuleSlot.RETRY_SLOT);
         if (Objects.nonNull(retryModule)) {
             retryModule.reset(retryModule.retryMax(), true, retryModule.suspendTimeUnit(), retryModule.suspendStep());
         }
@@ -30,7 +30,7 @@ public interface ClusterModule extends Module {
     void register(RetryModule retryModule, ClusterServerContent clusterServerContent);
 
     default void unRegister(ClusterServerContent clusterServerContent) {
-        RetryModule retryModule = getBoarder(ModuleMapping.MODULE_RETRY);
+        RetryModule retryModule = getBoarder(ModuleSlot.RETRY_SLOT);
         if (Objects.nonNull(retryModule)) {
             retryModule.reset(retryModule.retryMax(), true, retryModule.suspendTimeUnit(), retryModule.suspendStep());
         }
@@ -54,7 +54,7 @@ public interface ClusterModule extends Module {
     void listener(Consumer<Set<ClusterServerContent>> consumer);
 
     @Override
-    default ModuleMapping mapping() {
-        return ModuleMapping.MODULE_NETTY_WS_CLUSTER;
+    default ModuleSlot mapping() {
+        return ModuleSlot.WS_CLUSTER_SLOT;
     }
 }

@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.module.handler;
 
 import cn.bytes.jtim.core.module.AbstractSimpleModule;
-import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.ModuleSlot;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelPipeline;
 import lombok.Getter;
@@ -23,8 +23,8 @@ public abstract class SimpleChannelHandlerModule extends AbstractSimpleModule im
     private Deque<ChannelHandler> channelHandlers = new LinkedList<>();
 
     @Override
-    public ModuleMapping mapping() {
-        return ModuleMapping.MODULE_CHANNEL_HANDLER;
+    public ModuleSlot mapping() {
+        return ModuleSlot.HANDLER_SLOT;
     }
 
     private void addLast(ChannelHandler channelHandler) {

@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.module.connection;
 
 import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.Channel;
 
@@ -24,8 +24,8 @@ public interface ConnectionModule extends Module {
     ConnectionModule writeAndFlush(Connection connection, Message body);
 
     @Override
-    default ModuleMapping mapping() {
-        return ModuleMapping.MODULE_CONNECTION;
+    default ModuleSlot mapping() {
+        return ModuleSlot.CONNECTION_SLOT;
     }
 
 }

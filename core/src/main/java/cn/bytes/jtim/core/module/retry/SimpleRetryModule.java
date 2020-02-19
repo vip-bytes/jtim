@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.module.retry;
 
 import cn.bytes.jtim.core.module.AbstractSimpleModule;
-import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.ModuleSlot;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -107,8 +107,8 @@ public class SimpleRetryModule extends AbstractSimpleModule implements RetryModu
     }
 
     @Override
-    public ModuleMapping mapping() {
-        return ModuleMapping.MODULE_RETRY;
+    public ModuleSlot mapping() {
+        return ModuleSlot.RETRY_SLOT;
     }
 
 }

@@ -1,6 +1,6 @@
 package cn.bytes.jtim.test;
 
-import cn.bytes.jtim.core.module.ModuleMapping;
+import cn.bytes.jtim.core.module.ModuleSlot;
 import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
 import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleChannelInboundHandler;
@@ -68,7 +68,7 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<M
                         .build()).build();
 
         InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleMapping.MODULE_CONNECTION);
+        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleSlot.CONNECTION_SLOT);
         connectionModule
                 .saveConnection(connection)
                 .writeAndFlush(connection, message);
@@ -77,7 +77,7 @@ public class ProtobufServerHandler extends AbstractSimpleChannelInboundHandler<M
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         InitializeModule initializeModule = getChannelHandlerModule().getHost();
-        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleMapping.MODULE_CONNECTION);
+        ConnectionModule connectionModule = initializeModule.getBoarder(ModuleSlot.CONNECTION_SLOT);
         connectionModule
                 .removeConnection(ctx.channel());
     }

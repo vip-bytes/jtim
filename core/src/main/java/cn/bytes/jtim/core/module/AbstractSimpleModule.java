@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  * @date 2020/2/16 21:23
  */
 @Slf4j
-public abstract class AbstractSimpleModule extends HashMap<ModuleMapping, Module> implements Module {
+public abstract class AbstractSimpleModule extends HashMap<ModuleSlot, Module> implements Module {
 
     private Module host;
 
@@ -45,12 +45,13 @@ public abstract class AbstractSimpleModule extends HashMap<ModuleMapping, Module
         if (Objects.isNull(boarder)) {
             return;
         }
+        log.info(">>>[{}] add slot [{}]>>>", this.getClass().getSimpleName(), boarder.mapping());
         boarder.host(this);
         this.putIfAbsent(boarder.mapping(), boarder);
     }
 
     @Override
-    public <T extends Module> T getBoarder(ModuleMapping mapping) {
+    public <T extends Module> T getBoarder(ModuleSlot mapping) {
         return (T) this.getOrDefault(mapping, null);
     }
 }

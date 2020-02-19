@@ -11,14 +11,14 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/2/16 21:09
  */
-public interface Module extends Map<ModuleMapping, Module> {
+public interface Module extends Map<ModuleSlot, Module> {
 
     /**
      * 模块映射名称
      *
      * @return
      */
-    ModuleMapping mapping();
+    ModuleSlot mapping();
 
     /**
      * 添加寄宿主
@@ -51,5 +51,5 @@ public interface Module extends Map<ModuleMapping, Module> {
      */
     Collection<Module> getBoarders();
 
-    <T extends Module> T getBoarder(ModuleMapping mapping);
+    <T extends Module> T getBoarder(ModuleSlot mapping);
 }
