@@ -24,7 +24,7 @@ TODO
    Configuration configuration = new Configuration();
           configuration.setHost("127.0.0.1");
           configuration.setPort(1999);
-          NettyTcpServer nettyTcpServer = new NettyTcpServer(configuration);
+          SimpleServerInitializeModule nettyTcpServer = new SimpleServerInitializeModule(configuration);
           nettyTcpServer
                   .then(new SimpleChannelHandlerProtoBufModule()
                           .codec(new ProtobufServerHandler()))
@@ -38,7 +38,7 @@ TODO
   Configuration configuration = new Configuration();
           configuration.setHost("127.0.0.1");
           configuration.setPort(1999);
-          NettyTcpClient nettyTcpClient = new NettyTcpClient(configuration);
+          SimpleClientInitializeModule nettyTcpClient = new SimpleClientInitializeModule(configuration);
           nettyTcpClient
                   .then(new SimpleChannelHandlerProtoBufModule().codec(new ProtobufClientHandler()))
                   .then(new SimpleConnectionModule());
@@ -65,10 +65,10 @@ TODO
   
   //创建服务端
   @Bean
-  public NettyTcpServer nettyTcpServer(
+  public SimpleServerInitializeModule nettyTcpServer(
       SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
       SimpleConnectionTcpServerModule simpleConnectionTcpServerModule) {
-      NettyTcpServer nettyTcpServer = new NettyTcpServer(super.getTcpConfiguration());
+      SimpleServerInitializeModule nettyTcpServer = new SimpleServerInitializeModule(super.getTcpConfiguration());
       nettyTcpServer
           .then(simpleChannelHandlerTcpModule)
           .then(simpleConnectionTcpServerModule);

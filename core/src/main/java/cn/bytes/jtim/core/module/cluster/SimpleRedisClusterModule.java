@@ -21,7 +21,7 @@ import java.util.function.Consumer;
  * @date 2020/2/18 14:10
  */
 @Slf4j
-public class SimpleRedisClusterModule extends AbstractSimpleClusterModule implements Runnable, EntryExpiredListener {
+public class SimpleRedisClusterModule extends AbstractSimpleClusterModule implements Runnable, EntryExpiredListener<String, ClusterModule> {
 
     private static final String TOPIC = "cluster:data:notify";
 
