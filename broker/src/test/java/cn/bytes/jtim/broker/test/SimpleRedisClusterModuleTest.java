@@ -32,8 +32,7 @@ public class SimpleRedisClusterModuleTest {
                 .port(1999)
                 .tag("tcp")
                 .build();
-        simpleRedisClusterModule.content(clusterServerContent).register();
-        while (true) {
-        }
+
+        simpleRedisClusterModule.content(clusterServerContent);
     }
 }

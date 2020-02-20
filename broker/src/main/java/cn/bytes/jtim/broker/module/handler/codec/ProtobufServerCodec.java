@@ -4,7 +4,6 @@ import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
 import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleCodecInboundHandler;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
-import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import com.google.protobuf.ByteString;
 import io.netty.channel.Channel;
@@ -13,7 +12,6 @@ import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @version 1.0
@@ -21,31 +19,31 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @ChannelHandler.Sharable
-public class NettyTcpServerProtobufCodec extends AbstractSimpleCodecInboundHandler<Message> {
+public class ProtobufServerCodec extends AbstractSimpleCodecInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
 
         log.info("服务端收到消息: {}", message);
-        Message.Cmd cmd = message.getCmd();
-        TimeUnit.MILLISECONDS.sleep(1);
-        if (Message.Cmd.HeartbeatRequest.equals(cmd)) {
-            channelHandlerContext.writeAndFlush(Message.newBuilder()
-                    .setCmd(Message.Cmd.HeartbeatResponse)
-                    .setHeartbeatResponse(HeartbeatResponse.newBuilder()
-                            .setPong(ByteString.EMPTY)
-                            .build())
-                    .build());
-        }
-
-        if (Message.Cmd.HeartbeatResponse.equals(cmd)) {
-            channelHandlerContext.writeAndFlush(Message.newBuilder()
-                    .setCmd(Message.Cmd.HeartbeatRequest)
-                    .setHeartbeatRequest(HeartbeatRequest.newBuilder()
-                            .setPing(ByteString.EMPTY)
-                            .build())
-                    .build());
-        }
+//        Message.Cmd cmd = message.getCmd();
+//        TimeUnit.MILLISECONDS.sleep(1);
+//        if (Message.Cmd.HeartbeatRequest.equals(cmd)) {
+//            channelHandlerContext.writeAndFlush(Message.newBuilder()
+//                    .setCmd(Message.Cmd.HeartbeatResponse)
+//                    .setHeartbeatResponse(HeartbeatResponse.newBuilder()
+//                            .setPong(ByteString.EMPTY)
+//                            .build())
+//                    .build());
+//        }
+//
+//        if (Message.Cmd.HeartbeatResponse.equals(cmd)) {
+//            channelHandlerContext.writeAndFlush(Message.newBuilder()
+//                    .setCmd(Message.Cmd.HeartbeatRequest)
+//                    .setHeartbeatRequest(HeartbeatRequest.newBuilder()
+//                            .setPing(ByteString.EMPTY)
+//                            .build())
+//                    .build());
+//        }
 
     }
 
@@ -67,7 +65,6 @@ public class NettyTcpServerProtobufCodec extends AbstractSimpleCodecInboundHandl
                         .build()).build();
 
         ConnectionModule connectionModule = getHost().getModule(ConnectionModule.class);
-
         if (Objects.nonNull(connectionModule)) {
             connectionModule
                     .saveConnection(connection)
@@ -79,8 +76,14 @@ public class NettyTcpServerProtobufCodec extends AbstractSimpleCodecInboundHandl
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         ConnectionModule connectionModule = getHost().getModule(ConnectionModule.class);
         if (Objects.nonNull(connectionModule)) {
-            connectionModule
-                    .removeConnection(ctx.channel());
+            long online = connectionModule
+                    .removeConnection(ctx.channel()).onLine();
+            log.info("当前连接数量 : {}", online);
         }
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        ctx.close();
     }
 }

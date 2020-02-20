@@ -23,7 +23,7 @@ public class SimpleServerInitializeModuleTest {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
         configuration.setHost("127.0.0.1");
-        configuration.setPort(1999);
+        configuration.setPort(1998);
 
         SimpleServerInitializeModule serverInitializeModule = new SimpleServerInitializeModule(configuration);
         serverInitializeModule

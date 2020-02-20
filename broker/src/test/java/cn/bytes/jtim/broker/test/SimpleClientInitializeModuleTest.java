@@ -6,6 +6,7 @@ import cn.bytes.jtim.core.module.cluster.SimpleRedisClusterModule;
 import cn.bytes.jtim.core.module.connection.SimpleConnectionModule;
 import cn.bytes.jtim.core.module.handler.SimpleChannelHandlerProtoBufModule;
 import cn.bytes.jtim.core.module.initialize.SimpleClientInitializeModule;
+import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
@@ -29,10 +30,10 @@ public class SimpleClientInitializeModuleTest {
         SimpleClientInitializeModule simpleClientInitializeModule = new SimpleClientInitializeModule(configuration);
 
         simpleClientInitializeModule
+                .then(SimpleRetryModule.builder().loop(true).delay(5).build())
                 .then(new SimpleChannelHandlerProtoBufModule().codec(new ProtobufClientHandler()))
                 .then(new SimpleConnectionModule())
-                .then(getClusterModule(configuration))
-        ;
+                .then(getClusterModule(configuration));
 
         simpleClientInitializeModule.open();
     }

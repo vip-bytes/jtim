@@ -1,7 +1,7 @@
 package cn.bytes.jtim.broker;
 
-import cn.bytes.jtim.broker.config.NettyTcpServerConfiguration;
 import cn.bytes.jtim.broker.config.NettyWebsocketServerConfiguration;
+import cn.bytes.jtim.broker.config.tcp.NettyTcpServerConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;

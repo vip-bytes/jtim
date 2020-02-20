@@ -79,7 +79,9 @@ public class SimpleRetryModule extends AbstractSimpleModule implements RetryModu
         final boolean loop = this.isLoop();
         if (retryMax > 0 || loop) {
             log.info("retry delay={} retryMax={},loop={} ", this.getDelay(), retryMax, loop);
-            this.decRetryMax();
+            if (!loop) {
+                this.decRetryMax();
+            }
             consumer.accept(RetryStatus.EXECUTE);
         } else {
             this.getScheduledThreadPoolExecutor().shutdown();
