@@ -10,4 +10,11 @@ import lombok.Getter;
 @Getter
 public abstract class AbstractSimpleClusterModule extends AbstractSimpleModule implements ClusterModule {
 
+    private ClusterServerContent content;
+
+    @Override
+    public ClusterModule content(ClusterServerContent content) {
+        this.content = content;
+        return this;
+    }
 }

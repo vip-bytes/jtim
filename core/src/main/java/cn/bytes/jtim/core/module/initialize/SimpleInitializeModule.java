@@ -43,7 +43,7 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
 
     private EventLoopGroup workerEventGroup;
 
-    private enum State {
+    public enum State {
         Created, Initialized, Failed, Completed
     }
 
@@ -137,6 +137,7 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
                 this.isRetry(retryModule);
             }
         });
+
     }
 
     /**
@@ -145,34 +146,35 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
      * @param retryModule
      */
     private void isRetry(RetryModule retryModule) {
+        this.close();
         if (Objects.nonNull(retryModule)) {
             retryModule.retry(retryStatus -> {
-                this.close();
                 if (SimpleRetryModule.RetryStatus.EXECUTE.equals(retryStatus)) {
                     this.open(retryModule);
                 }
             });
-        } else {
-            this.close();
         }
     }
 
     @Override
     public void close() {
-        log.info("closing {}", this.getClass().getSimpleName());
-        if (Objects.nonNull(bossEventGroup)) {
+        if (Objects.nonNull(bossEventGroup) && !bossEventGroup.isShutdown()) {
             bossEventGroup.shutdownGracefully();
         }
-        if (Objects.nonNull(workerEventGroup)) {
+        if (Objects.nonNull(workerEventGroup) && !workerEventGroup.isShutdown()) {
             workerEventGroup.shutdownGracefully();
         }
-        log.info("closed {}", this.getClass().getSimpleName());
     }
 
     @Override
     public void init() {
         state.compareAndSet(State.Created, State.Initialized);
         this.initializeEventLoopGroup();
+    }
+
+    @Override
+    public State getOpenState() {
+        return state.get();
     }
 
     public abstract Future<Void> openAsync(ChannelInitializer<Channel> channelInitializer);

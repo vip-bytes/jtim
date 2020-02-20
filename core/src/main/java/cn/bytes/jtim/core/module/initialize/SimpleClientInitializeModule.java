@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Getter
 @Slf4j
-public abstract class SimpleClientInitializeModule extends SimpleInitializeModule implements InitializeModule {
+public class SimpleClientInitializeModule extends SimpleInitializeModule implements InitializeModule {
 
     public SimpleClientInitializeModule(Configuration configuration) {
         super(configuration);

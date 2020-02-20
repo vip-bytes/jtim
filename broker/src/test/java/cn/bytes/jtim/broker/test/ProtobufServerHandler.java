@@ -1,4 +1,4 @@
-package cn.bytes.jtim.test;
+package cn.bytes.jtim.broker.test;
 
 import cn.bytes.jtim.core.module.connection.Connection;
 import cn.bytes.jtim.core.module.connection.ConnectionModule;
@@ -74,6 +74,7 @@ public class ProtobufServerHandler extends AbstractSimpleCodecInboundHandler<Mes
                     .saveConnection(connection)
                     .writeAndFlush(connection, message);
         }
+
     }
 
     @Override

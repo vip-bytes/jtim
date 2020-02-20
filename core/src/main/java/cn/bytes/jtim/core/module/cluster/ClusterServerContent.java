@@ -3,6 +3,7 @@ package cn.bytes.jtim.core.module.cluster;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @version 1.0
@@ -13,8 +14,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @ToString
-@EqualsAndHashCode(of = {"host", "port", "tag"})
+@EqualsAndHashCode(of = {"id", "host", "port", "tag"})
 public class ClusterServerContent implements Serializable {
+
+    private String id = UUID.randomUUID().toString();
 
     private String host;
 

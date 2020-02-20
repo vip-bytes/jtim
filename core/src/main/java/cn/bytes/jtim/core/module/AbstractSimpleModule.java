@@ -1,7 +1,6 @@
 package cn.bytes.jtim.core.module;
 
 import cn.bytes.jtim.core.config.Configuration;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,7 +11,6 @@ import java.util.Objects;
  * @date 2020/2/16 21:23
  */
 @Slf4j
-@Getter
 public abstract class AbstractSimpleModule extends HashMap<String, Module> implements Module {
 
     private Module host;
@@ -20,12 +18,11 @@ public abstract class AbstractSimpleModule extends HashMap<String, Module> imple
     private Configuration configuration;
 
     @Override
-    public <T extends Module> Module then(Class<T> key, Module module) {
-        if (Objects.nonNull(key) && Objects.nonNull(module)) {
+    public <T extends Module> Module then(Module module) {
+        if (Objects.nonNull(module)) {
             module.host(this);
             module.configuration(this.configuration);
-
-            final String moduleKey = key.getSimpleName();
+            final String moduleKey = module.key();
             log.info("add module: this=[{}] key=[{}],value=[{}]",
                     this.getClass().getSimpleName(), moduleKey, module.getClass().getSimpleName());
             this.put(moduleKey, module);
@@ -36,14 +33,6 @@ public abstract class AbstractSimpleModule extends HashMap<String, Module> imple
     @Override
     public <T extends Module> T getModule(String key) {
         return this.getModule(this, key);
-    }
-
-    @Override
-    public <T extends Module> T getModule(Class<T> key) {
-        if (Objects.isNull(key)) {
-            return null;
-        }
-        return this.getModule(key.getSimpleName());
     }
 
     private <T extends Module> T getModule(Module module, String key) {
@@ -68,4 +57,13 @@ public abstract class AbstractSimpleModule extends HashMap<String, Module> imple
         this.configuration = configuration;
     }
 
+    @Override
+    public <T extends Module> T getHost() {
+        return (T) this.host;
+    }
+
+    @Override
+    public Configuration getConfiguration() {
+        return this.configuration;
+    }
 }

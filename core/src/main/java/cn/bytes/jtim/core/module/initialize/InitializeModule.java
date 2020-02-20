@@ -16,7 +16,7 @@ public interface InitializeModule extends Module {
      * 默认使用自己模块子模块的重试模块，如果没有再使用全局的重试
      */
     default void open() {
-        this.open(null);
+        this.open(getModule(RetryModule.class));
     }
 
     void open(RetryModule retryModule);
@@ -27,4 +27,10 @@ public interface InitializeModule extends Module {
 
     Configuration getConfiguration();
 
+    SimpleInitializeModule.State getOpenState();
+
+    @Override
+    default String key() {
+        return InitializeModule.class.getSimpleName();
+    }
 }

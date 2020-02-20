@@ -22,4 +22,9 @@ public interface ConnectionModule extends Module {
 
     ConnectionModule writeAndFlush(Connection connection, Message body);
 
+    @Override
+    default String key() {
+        return ConnectionModule.class.getSimpleName();
+    }
+
 }

@@ -1,8 +1,7 @@
-package cn.bytes.jtim.test;
+package cn.bytes.jtim.broker.test;
 
 import cn.bytes.jtim.core.module.handler.codec.AbstractSimpleCodecInboundHandler;
 import cn.bytes.jtim.core.module.initialize.InitializeModule;
-import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import com.google.protobuf.ByteString;
@@ -10,7 +9,7 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Objects;
 
 /**
  * @version 1.0
@@ -38,10 +37,11 @@ public class ProtobufClientHandler extends AbstractSimpleCodecInboundHandler<Mes
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("【客户端】连接断开:{}", ctx);
-        InitializeModule initializeModule = getHost().getModule(InitializeModule.class);
-        initializeModule.open(SimpleRetryModule.builder()
-                .retryMax(new AtomicInteger(Integer.MAX_VALUE))
-                .build());
+        InitializeModule initializeModule = getHost().getHost();
+        if (Objects.isNull(initializeModule)) {
+            return;
+        }
+        initializeModule.open();
     }
 
     @Override

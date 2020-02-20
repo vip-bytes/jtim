@@ -3,7 +3,6 @@ package cn.bytes.jtim.broker.config;
 import cn.bytes.jtim.broker.module.connection.SimpleConnectionTcpServerModule;
 import cn.bytes.jtim.broker.module.handler.SimpleChannelHandlerTcpModule;
 import cn.bytes.jtim.broker.module.handler.codec.NettyTcpServerProtobufCodec;
-import cn.bytes.jtim.core.module.server.NettyTcpServer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
@@ -38,17 +37,17 @@ public class NettyTcpServerConfiguration extends InitializingConfiguration {
         return new SimpleConnectionTcpServerModule();
     }
 
-    @Bean
-    public NettyTcpServer nettyTcpServer(
-            SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
-            SimpleConnectionTcpServerModule simpleConnectionTcpServerModule) {
-        NettyTcpServer nettyTcpServer = new NettyTcpServer(super.getTcpConfiguration());
-        nettyTcpServer
-                .then(simpleChannelHandlerTcpModule)
-                .then(simpleConnectionTcpServerModule);
-        nettyTcpServer.open();
-        return nettyTcpServer;
-    }
+//    @Bean
+//    public NettyTcpServer nettyTcpServer(
+//            SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
+//            SimpleConnectionTcpServerModule simpleConnectionTcpServerModule) {
+//        NettyTcpServer nettyTcpServer = new NettyTcpServer(super.getTcpConfiguration());
+//        nettyTcpServer
+//                .then(simpleChannelHandlerTcpModule)
+//                .then(simpleConnectionTcpServerModule);
+//        nettyTcpServer.open();
+//        return nettyTcpServer;
+//    }
 
 
 }

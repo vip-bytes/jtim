@@ -1,4 +1,4 @@
-package cn.bytes.jtim.test.cluster;
+package cn.bytes.jtim.broker.test;
 
 import cn.bytes.jtim.core.module.cluster.ClusterServerContent;
 import cn.bytes.jtim.core.module.cluster.SimpleRedisClusterModule;
@@ -32,7 +32,7 @@ public class SimpleRedisClusterModuleTest {
                 .port(1999)
                 .tag("tcp")
                 .build();
-        simpleRedisClusterModule.register(clusterServerContent);
+        simpleRedisClusterModule.content(clusterServerContent).register();
         while (true) {
         }
     }

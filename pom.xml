@@ -12,7 +12,6 @@
         <module>core</module>
         <module>broker</module>
         <module>common</module>
-        <module>test</module>
     </modules>
 
 

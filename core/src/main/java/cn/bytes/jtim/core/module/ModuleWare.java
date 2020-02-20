@@ -7,7 +7,6 @@ import cn.bytes.jtim.core.config.Configuration;
  * @date 2020/2/16 21:09
  */
 public interface ModuleWare {
-
     /**
      * 绑定容器模块
      *

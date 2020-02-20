@@ -46,4 +46,8 @@ public interface RetryModule extends Module {
 
     void reset(int retryMax, boolean loop, TimeUnit suspendTimeUnit, int suspendStep);
 
+    @Override
+    default String key() {
+        return RetryModule.class.getSimpleName();
+    }
 }

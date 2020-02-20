@@ -16,4 +16,8 @@ public interface ChannelHandlerModule extends Module {
 
     ChannelHandlerModule codec(DefineCodecHandler defineCodecHandler);
 
+    @Override
+    default String key() {
+        return ChannelHandlerModule.class.getSimpleName();
+    }
 }

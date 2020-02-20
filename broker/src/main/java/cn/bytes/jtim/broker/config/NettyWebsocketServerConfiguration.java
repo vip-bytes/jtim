@@ -3,7 +3,6 @@ package cn.bytes.jtim.broker.config;
 import cn.bytes.jtim.broker.module.connection.SimpleConnectionWebsocketServerModule;
 import cn.bytes.jtim.broker.module.handler.SimpleChannelHandlerWebsocketModule;
 import cn.bytes.jtim.broker.module.handler.codec.NettyWebsocketServerProtobufCodec;
-import cn.bytes.jtim.core.module.server.NettyWebsocketServer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
@@ -38,17 +37,17 @@ public class NettyWebsocketServerConfiguration extends InitializingConfiguration
         return new SimpleConnectionWebsocketServerModule();
     }
 
-    @Bean
-    public NettyWebsocketServer websocketServer(
-            SimpleChannelHandlerWebsocketModule simpleChannelHandlerWebsocketModule,
-            SimpleConnectionWebsocketServerModule simpleConnectionWebsocketServerModule) {
-        NettyWebsocketServer nettyWebsocketServer = new NettyWebsocketServer(super.getWebsocketConfiguration());
-        nettyWebsocketServer
-                .then(simpleChannelHandlerWebsocketModule)
-                .then(simpleConnectionWebsocketServerModule);
-        nettyWebsocketServer.open();
-        return nettyWebsocketServer;
-    }
+//    @Bean
+//    public NettyWebsocketServer websocketServer(
+//            SimpleChannelHandlerWebsocketModule simpleChannelHandlerWebsocketModule,
+//            SimpleConnectionWebsocketServerModule simpleConnectionWebsocketServerModule) {
+//        NettyWebsocketServer nettyWebsocketServer = new NettyWebsocketServer(super.getWebsocketConfiguration());
+//        nettyWebsocketServer
+//                .then(simpleChannelHandlerWebsocketModule)
+//                .then(simpleConnectionWebsocketServerModule);
+//        nettyWebsocketServer.open();
+//        return nettyWebsocketServer;
+//    }
 
 
 }

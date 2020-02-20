@@ -1,9 +1,8 @@
 package cn.bytes.jtim.core.module.cluster;
 
 import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.retry.RetryModule;
 
-import java.util.Set;
+import java.util.Collection;
 import java.util.function.Consumer;
 
 /**
@@ -12,36 +11,30 @@ import java.util.function.Consumer;
  */
 public interface ClusterModule extends Module {
 
-    /**
-     * 服务注册
-     *
-     * @param clusterServerContent
-     */
-    default void register(ClusterServerContent clusterServerContent) {
-        this.register(null, clusterServerContent);
-    }
+    ClusterModule content(ClusterServerContent content);
 
-    void register(RetryModule retryModule, ClusterServerContent clusterServerContent);
+    ClusterModule register();
 
-    default void unRegister(ClusterServerContent clusterServerContent) {
-        this.unRegister(null, clusterServerContent);
-    }
-
-    void unRegister(RetryModule retryModule, ClusterServerContent clusterServerContent);
+    ClusterModule unRegister();
 
     /**
      * 获取当前注册的服务列表
      *
      * @return
      */
-    Set<ClusterServerContent> getClusterContent();
+    Collection<ClusterServerContent> getClusterContent();
 
     /**
      * 监听实通知
      *
      * @param consumer
      */
-    void listener(Consumer<Set<ClusterServerContent>> consumer);
+    ClusterModule listener(Consumer<Collection<ClusterServerContent>> consumer);
+
+    @Override
+    default String key() {
+        return ClusterModule.class.getSimpleName();
+    }
 
 
 }
