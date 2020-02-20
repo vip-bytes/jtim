@@ -6,18 +6,12 @@ import cn.bytes.jtim.broker.module.connection.SimpleConnectionTcpServerModule;
 import cn.bytes.jtim.broker.module.handler.SimpleChannelHandlerTcpModule;
 import cn.bytes.jtim.broker.module.handler.codec.ProtobufServerCodec;
 import cn.bytes.jtim.core.module.cluster.ClusterModule;
-import cn.bytes.jtim.core.module.cluster.ClusterServerContent;
-import cn.bytes.jtim.core.module.cluster.SimpleRedisClusterModule;
 import cn.bytes.jtim.core.module.initialize.SimpleServerInitializeModule;
-import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-import java.util.Objects;
-
-import static cn.bytes.jtim.common.constant.DefineConstant.NETTY_TCP_SERVER_CLUSTER_KEY;
 import static cn.bytes.jtim.common.constant.DefineConstant.PROPER_TCP_ENABLE;
 
 /**
@@ -42,28 +36,19 @@ public class NettyTcpServerConfiguration extends InitializingConfiguration {
         return new SimpleConnectionTcpServerModule();
     }
 
-    @Bean("server-cluster")
-    public ClusterModule clusterModule(RedissonClient redissonClient) {
-        ClusterModule clusterModule = new SimpleRedisClusterModule(NETTY_TCP_SERVER_CLUSTER_KEY, redissonClient);
-        clusterModule.content(ClusterServerContent.builder()
-                .host(super.getTcpConfiguration().getHost())
-                .port(super.getTcpConfiguration().getPort())
-                .id(getId())
-                .build());
-        return clusterModule;
-    }
-
-    private String getId() {
-        return String.valueOf(
-                Math.abs(Objects.hash(super.getTcpConfiguration().getHost(),
-                        super.getTcpConfiguration().getPort())));
-    }
-
-    @Bean("server")
+    /**
+     * 内部通信
+     *
+     * @param simpleChannelHandlerTcpModule
+     * @param simpleConnectionTcpServerModule
+     * @param clusterModule
+     * @return
+     */
+    @Bean("inside")
     public SimpleServerInitializeModule serverInitializeModule(
             SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
             @Qualifier("server-connection") SimpleConnectionTcpServerModule simpleConnectionTcpServerModule,
-            @Qualifier("server-cluster") ClusterModule clusterModule) {
+            ClusterModule clusterModule) {
 
         SimpleServerInitializeModule serverInitializeModule = new SimpleServerInitializeModule(super.getTcpConfiguration());
         serverInitializeModule
