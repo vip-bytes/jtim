@@ -26,7 +26,7 @@ public class Configuration {
     private boolean useLinuxNativeEpoll;
 
     @Builder.Default
-    private int heartReadTime = 30;
+    private int heartbeatTime = 30;
 
     @Builder.Default
     private int maxWebsocketFrameSize = 64 * 1024;
@@ -43,7 +43,7 @@ public class Configuration {
         setBossThreads(configuration.getBossThreads());
         setWorkerThreads(configuration.getWorkerThreads());
         setUseLinuxNativeEpoll(configuration.isUseLinuxNativeEpoll());
-        setHeartReadTime(configuration.getHeartReadTime());
+        setHeartbeatTime(configuration.getHeartbeatTime());
         setSocketConfig(configuration.getSocketConfig());
         setMaxWebsocketFrameSize(configuration.getMaxWebsocketFrameSize());
         setMaxHttpContentLength(configuration.getMaxHttpContentLength());

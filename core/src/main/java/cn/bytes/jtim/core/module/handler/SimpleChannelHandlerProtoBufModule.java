@@ -22,7 +22,7 @@ public class SimpleChannelHandlerProtoBufModule extends SimpleChannelHandlerModu
     @Override
     public void optionHandler0(ChannelPipeline channelPipeline) {
 
-        final int heartbeat = Objects.isNull(getConfiguration()) ? 30 : getConfiguration().getHeartReadTime();
+        final int heartbeat = Objects.isNull(getConfiguration()) ? 30 : getConfiguration().getHeartbeatTime();
         channelPipeline.addLast(new ProtobufVarint32FrameDecoder())
                 .addLast(new ProtobufDecoder(Message.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())

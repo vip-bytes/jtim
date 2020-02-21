@@ -29,6 +29,7 @@ public class SimpleClientInitializeModule extends SimpleInitializeModule impleme
                 .channel(getNioSocketChannelClass())
                 .handler(channelInitializer);
         this.options(bootstrap);
+
         return bootstrap.connect(getSocketAddress());
     }
 

@@ -33,6 +33,12 @@ public class Connection {
 
     private String tag;
 
+    private String remoteHost;
+
+    private int remotePort;
+
+    private String remoteId;
+
     /**
      * 连接来源
      * js,java,golang,android,ios
@@ -41,11 +47,23 @@ public class Connection {
 
     private long clientTime;
 
+    private long lastReadTime;
+
+    private long lastWriteTime;
+
     public void writeAndFlush(Object body) {
         if (Objects.nonNull(channel) && channel.isActive()) {
             channel.writeAndFlush(body);
         }
     }
 
+    public String getRemoteId() {
+        return String.valueOf(
+                Math.abs(Objects.hash(getRemoteHost(), getRemotePort())));
+    }
+
+    public boolean isActive() {
+        return this.channel.isOpen() && this.channel.isActive();
+    }
 
 }

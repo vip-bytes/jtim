@@ -1,11 +1,13 @@
 package cn.bytes.jtim.core.module;
 
 import cn.bytes.jtim.core.config.Configuration;
+import com.sinoiov.pay.common.util.ThreadPoolUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @date 2020/2/16 21:23
@@ -17,15 +19,19 @@ public abstract class AbstractSimpleModule extends HashMap<String, Module> imple
 
     private Configuration configuration;
 
+    private ThreadPoolExecutor threadPool = ThreadPoolUtils.newFixedThreadPool(1, AbstractSimpleModule.class.getSimpleName());
+
     @Override
     public <T extends Module> Module then(Module module) {
         if (Objects.nonNull(module)) {
-            module.host(this);
-            module.configuration(this.configuration);
-            final String moduleKey = module.key();
-            log.info("add module: this=[{}] key=[{}],value=[{}]",
-                    this.getClass().getSimpleName(), moduleKey, module.getClass().getSimpleName());
-            this.put(moduleKey, module);
+            threadPool.submit(() -> {
+                module.host(this);
+                module.configuration(this.configuration);
+                final String moduleKey = module.key();
+                log.info("add module: this=[{}] key=[{}],value=[{}]",
+                        this.getClass().getSimpleName(), moduleKey, module.getClass().getSimpleName());
+                this.put(moduleKey, module);
+            });
         }
         return this;
     }
@@ -66,4 +72,6 @@ public abstract class AbstractSimpleModule extends HashMap<String, Module> imple
     public Configuration getConfiguration() {
         return this.configuration;
     }
+
+
 }

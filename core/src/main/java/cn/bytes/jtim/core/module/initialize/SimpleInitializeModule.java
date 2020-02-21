@@ -35,8 +35,6 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 public abstract class SimpleInitializeModule extends AbstractSimpleModule implements InitializeModule {
 
-    private Configuration configuration;
-
     private final AtomicReference<State> state = new AtomicReference<>(State.Created);
 
     private EventLoopGroup bossEventGroup;
@@ -48,11 +46,11 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     }
 
     public SimpleInitializeModule(Configuration configuration) {
-        this.configuration = configuration;
+        super.configuration(configuration);
     }
 
     public void initializeEventLoopGroup() {
-        if (configuration.isUseLinuxNativeEpoll()) {
+        if (getConfiguration().isUseLinuxNativeEpoll()) {
             bossEventGroup = new EpollEventLoopGroup(getConfiguration().getBossThreads());
             workerEventGroup = new EpollEventLoopGroup(getConfiguration().getWorkerThreads());
         } else {
@@ -62,9 +60,9 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     }
 
     public InetSocketAddress getSocketAddress() {
-        return StringUtils.isNotBlank(configuration.getHost()) ?
-                new InetSocketAddress(configuration.getHost(), configuration.getPort()) :
-                new InetSocketAddress(configuration.getPort());
+        return StringUtils.isNotBlank(getConfiguration().getHost()) ?
+                new InetSocketAddress(getConfiguration().getHost(), getConfiguration().getPort()) :
+                new InetSocketAddress(getConfiguration().getPort());
     }
 
     public Class<? extends ServerChannel> getNioServerSocketChannelClass() {
@@ -84,7 +82,7 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     }
 
     protected void options(ServerBootstrap bootstrap) {
-        SocketConfig config = configuration.getSocketConfig();
+        SocketConfig config = getConfiguration().getSocketConfig();
         bootstrap.childOption(ChannelOption.TCP_NODELAY, config.isNoDelay());
         if (config.getSendBufferSize() > -1) {
             bootstrap.childOption(ChannelOption.SO_SNDBUF, config.getSendBufferSize());
@@ -106,7 +104,7 @@ public abstract class SimpleInitializeModule extends AbstractSimpleModule implem
     }
 
     protected void options(Bootstrap bootstrap) {
-        SocketConfig config = configuration.getSocketConfig();
+        SocketConfig config = getConfiguration().getSocketConfig();
         if (config.getReceiveBufferSize() > -1) {
             bootstrap.option(ChannelOption.SO_RCVBUF, config.getReceiveBufferSize());
             bootstrap.option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(config.getReceiveBufferSize()));

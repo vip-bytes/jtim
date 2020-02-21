@@ -12,5 +12,5 @@ public class DefineConstant {
 
     public static final String PROPER_WEBSOCKET_ENABLE = PREFIX_PROPER + ".websocket.enable";
 
-    public static final String NETTY_TCP_SERVER_CLUSTER_KEY = "netty:cluster:tcp";
+    public static final String BYTES_PUSH_SERVER_TCP = "bytes:push:server:tcp";
 }

@@ -5,6 +5,7 @@ import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -74,6 +75,19 @@ public class SimpleConnectionModule extends AbstractSimpleModule implements Conn
         }
         connection.writeAndFlush(body);
         return this;
+    }
+
+    @Override
+    public ConnectionModule writeAndFlush(Message body) {
+        this.store.values().parallelStream().forEach(connection -> {
+            this.writeAndFlush(connection, body);
+        });
+        return this;
+    }
+
+    @Override
+    public Collection<Connection> getConnections() {
+        return this.store.values();
     }
 
 }
