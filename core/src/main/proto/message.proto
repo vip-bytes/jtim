@@ -3,6 +3,11 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "cn.bytes.jtim.core.protocol.protobuf";
 option java_outer_classname = "MessageContent";
+
+import "auth.proto";
+import "transfer.proto";
+import "distribute.proto";
+
 //service Greeter {
 //    //注意：这里是returns 不是return
 //    rpc TestSomeThing (TestRequest) returns (TestResponse) {
@@ -67,138 +72,5 @@ message Message {
 
 }
 
-
-message AuthRequest {
-    //认证token
-    string token = 1;
-    //用户id
-    string uid = 2;
-    //发包时间
-    int64 timestamp = 3;
-}
-
-message AuthResponse {
-    enum Status {
-        OK = 0;
-        ERR = -1;
-    }
-
-    int32 status = 1;
-    //错误编码
-    string err_code = 2;
-    //错误描述
-    string err_msg = 3;
-}
-
-message LogoutRequest {
-    string token = 1;
-    string uid = 2;
-    int64 timestamp = 3;
-}
-
-message LogoutResponse {
-
-}
-
-//踢人
-message KichoutRequest {
-
-    enum Reasion {
-        OTHER_LOGIN = 0; //其他地方登录
-    }
-    //踢人原因
-    int32 reasion = 1;
-}
-
-message KichoutResponse {
-
-}
-
-message HeartbeatRequest {
-    bytes ping = 1;
-}
-
-message HeartbeatResponse {
-    bytes pong = 1;
-}
-
-//单聊
-message O2OSendRequest {
-    //自定义的消息标记,不能作为后期的查询条件
-    string msgKey = 1;
-    string from = 2;
-    string fromName = 3;
-    string to = 4;
-    string content = 5;
-    //发送时间
-    int64 timestamp = 6;
-}
-
-message O2OSendResponse {
-    string msgKey = 1;
-    //消息ID
-    string msgId = 2;
-    //收到单聊消息时间
-    int64 timestamp = 3;
-}
-
-//消息分发请求体
-message O2ODistributeRequest {
-    string msgId = 1;
-    string from = 2;
-    string fromName = 3;
-    string to = 4;
-    string content = 5;
-    string msgKey = 6;
-    //发送时间
-    int64 timestamp = 7;
-}
-
-//消息分发返回结果
-message O2ODistributeResponse {
-    string msgId = 1;
-    string msgKey = 2;
-}
-
-//群发消息
-message O2MSendRequest {
-    string from = 1;
-    string fromName = 2;
-    //群标识
-    string group = 3;
-    string content = 4;
-
-    string msgKey = 5;
-
-    //发送时间
-    int64 timestamp = 6;
-
-}
-
-message O2MSendResponse {
-    //消息ID
-    string msgId = 1;
-
-    string msgKey = 2;
-
-    int64 timestamp = 3;
-}
-
-message O2MDistributeRequest {
-    string msgId = 1;
-    string from = 2;
-    string fromName = 3;
-    string group = 4;
-    string content = 5;
-
-    string msgKey = 6;
-    //发送时间
-    int64 timestamp = 7;
-}
-
-message O2MDistributeResponse {
-    string msgId = 1;
-    string msgKey = 2;
-}
 
 

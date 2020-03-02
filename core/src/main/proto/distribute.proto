@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.bytes.jtim.core.protocol.protobuf";
+
+//消息分发请求体
+message O2ODistributeRequest {
+    string msgId = 1;
+    string from = 2;
+    string fromName = 3;
+    string to = 4;
+    string content = 5;
+    string msgKey = 6;
+    //发送时间
+    int64 timestamp = 7;
+}
+
+//消息分发返回结果
+message O2ODistributeResponse {
+    string msgId = 1;
+    string msgKey = 2;
+}
+
+message O2MDistributeRequest {
+    string msgId = 1;
+    string from = 2;
+    string fromName = 3;
+    string group = 4;
+    string content = 5;
+
+    string msgKey = 6;
+    //发送时间
+    int64 timestamp = 7;
+}
+
+message O2MDistributeResponse {
+    string msgId = 1;
+    string msgKey = 2;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.bytes.jtim.core.protocol.protobuf";
+
+//创建群
+message OperationGroupCreateRequest {
+    //群名称
+    string name = 1;
+    //群描述
+    string describe = 2;
+    //公告
+    string notice = 3;
+}
+
+//创建群返回信息
+message OperationGroupCreateResponse {
+    string groupNumber = 1;
+}
+
+//踢人
+message KichoutRequest {
+    enum Reasion {
+        OTHER_LOGIN = 0; //其他地方登录
+    }
+    //踢人原因
+    int32 reasion = 1;
+}
+
+message KichoutResponse {
+
+}

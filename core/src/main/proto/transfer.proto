@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.bytes.jtim.core.protocol.protobuf";
+
+
+message HeartbeatRequest {
+    bytes ping = 1;
+}
+
+message HeartbeatResponse {
+    bytes pong = 1;
+}
+
+//单聊
+message O2OSendRequest {
+    //自定义的消息标记,不能作为后期的查询条件
+    string msgKey = 1;
+    string from = 2;
+    string fromName = 3;
+    string to = 4;
+    string content = 5;
+    //发送时间
+    int64 timestamp = 6;
+}
+
+message O2OSendResponse {
+    string msgKey = 1;
+    //消息ID
+    string msgId = 2;
+    //收到单聊消息时间
+    int64 timestamp = 3;
+}
+
+//群发消息
+message O2MSendRequest {
+    string from = 1;
+    string fromName = 2;
+    //群标识
+    string group = 3;
+    string content = 4;
+
+    string msgKey = 5;
+
+    //发送时间
+    int64 timestamp = 6;
+
+}
+
+message O2MSendResponse {
+    //消息ID
+    string msgId = 1;
+
+    string msgKey = 2;
+
+    int64 timestamp = 3;
+}
