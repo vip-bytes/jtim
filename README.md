@@ -1,80 +1,20 @@
- #### 设计
-
- TODO
-
-#### 功能
-
-TODO
-
- #### [模块](docs\module\readme.md)
-
-* `InitializeModule`  初始模块，构建服务端跟客户端的基础模块
-* `ConnectionModule` 连接管理模块
-* `ChannelHandlerModule`  编解码处理器模块
-* `RetryModule` 重试模块
-* `ClusterModule` 集群模块
-
-#### 使用(v1.0)
-
-* 如下所示，使用模块构建服务端与客户端
-
-* 服务端
-
-  ```java
-   Configuration configuration = new Configuration();
-          configuration.setHost("127.0.0.1");
-          configuration.setPort(1999);
-          SimpleServerInitializeModule nettyTcpServer = new SimpleServerInitializeModule(configuration);
-          nettyTcpServer
-                  .then(new SimpleChannelHandlerProtoBufModule()
-                          .codec(new ProtobufServerHandler()))
-                  .then(new SimpleConnectionModule());
-          nettyTcpServer.open();
-  ```
-
-* 客户端
-
-  ```java
-  Configuration configuration = new Configuration();
-          configuration.setHost("127.0.0.1");
-          configuration.setPort(1999);
-          SimpleClientInitializeModule nettyTcpClient = new SimpleClientInitializeModule(configuration);
-          nettyTcpClient
-                  .then(new SimpleChannelHandlerProtoBufModule().codec(new ProtobufClientHandler()))
-                  .then(new SimpleConnectionModule());
-          nettyTcpClient.open();
-  ```
-
-* spring boot 
-
-  ```java
-  //构建处理器
-  @Bean
-  @ConditionalOnMissingBean
-  public ProtobufServerHandler protobufTcpServerHandler() {
-      return new ProtobufServerHandler();
-  }
-  
-  //构建处理器管理模块
-  @Bean
-  @ConditionalOnMissingBean
-  public ChannelHandlerModule channelHandlerModule(ProtobufServerHandler                                           protobufServerHandler) {
-      
-      return new SimpleChannelHandlerProtoBufModule().codec(protobufServerHandler);
-  }
-  
-  //创建服务端
-  @Bean
-  public SimpleServerInitializeModule nettyTcpServer(
-      SimpleChannelHandlerTcpModule simpleChannelHandlerTcpModule,
-      SimpleConnectionTcpServerModule simpleConnectionTcpServerModule) {
-      SimpleServerInitializeModule nettyTcpServer = new SimpleServerInitializeModule(super.getTcpConfiguration());
-      nettyTcpServer
-          .then(simpleChannelHandlerTcpModule)
-          .then(simpleConnectionTcpServerModule);
-      nettyTcpServer.open();
-      return nettyTcpServer;
-  }
-  ```
-
-  
+* 架构设计
+* 部署方案
+* 连接器
+  * connection 连接管理模块
+  * handler 编解码处理模块
+  * initialize 初始模块
+  * retry 重试模块
+* 逻辑处理
+  * 权限认证
+  * 连接处理
+  * 点对点单聊
+  * 群聊
+  * 消息分发
+* 内部通信
+  * RPC 
+    * dubbo
+    * grpc(TODO)
+  * 传输协议
+    * protobuf
+* 性能测试 TODO
