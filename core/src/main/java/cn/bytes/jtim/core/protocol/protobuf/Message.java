@@ -113,36 +113,8 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 50: {
-            cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder subBuilder = null;
-            if (bodyCase_ == 6) {
-              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_).toBuilder();
-            }
-            body_ =
-                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_);
-              body_ = subBuilder.buildPartial();
-            }
-            bodyCase_ = 6;
-            break;
-          }
-          case 58: {
-            cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder subBuilder = null;
-            if (bodyCase_ == 7) {
-              subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_).toBuilder();
-            }
-            body_ =
-                input.readMessage(cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_);
-              body_ = subBuilder.buildPartial();
-            }
-            bodyCase_ = 7;
-            break;
-          }
-          case 66: {
             cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder subBuilder = null;
-            if (bodyCase_ == 8) {
+            if (bodyCase_ == 6) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_).toBuilder();
             }
             body_ =
@@ -151,12 +123,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 8;
+            bodyCase_ = 6;
             break;
           }
-          case 74: {
+          case 58: {
             cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.Builder subBuilder = null;
-            if (bodyCase_ == 9) {
+            if (bodyCase_ == 7) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_).toBuilder();
             }
             body_ =
@@ -165,12 +137,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 9;
+            bodyCase_ = 7;
             break;
           }
-          case 82: {
+          case 66: {
             cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder subBuilder = null;
-            if (bodyCase_ == 10) {
+            if (bodyCase_ == 8) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_).toBuilder();
             }
             body_ =
@@ -179,12 +151,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 10;
+            bodyCase_ = 8;
             break;
           }
-          case 90: {
+          case 74: {
             cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder subBuilder = null;
-            if (bodyCase_ == 11) {
+            if (bodyCase_ == 9) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_).toBuilder();
             }
             body_ =
@@ -193,12 +165,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 11;
+            bodyCase_ = 9;
             break;
           }
-          case 98: {
+          case 82: {
             cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder subBuilder = null;
-            if (bodyCase_ == 12) {
+            if (bodyCase_ == 10) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_).toBuilder();
             }
             body_ =
@@ -207,12 +179,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 12;
+            bodyCase_ = 10;
             break;
           }
-          case 106: {
+          case 90: {
             cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder subBuilder = null;
-            if (bodyCase_ == 13) {
+            if (bodyCase_ == 11) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_).toBuilder();
             }
             body_ =
@@ -221,12 +193,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 13;
+            bodyCase_ = 11;
             break;
           }
-          case 114: {
+          case 98: {
             cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder subBuilder = null;
-            if (bodyCase_ == 14) {
+            if (bodyCase_ == 12) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_).toBuilder();
             }
             body_ =
@@ -235,12 +207,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 14;
+            bodyCase_ = 12;
             break;
           }
-          case 122: {
+          case 106: {
             cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder subBuilder = null;
-            if (bodyCase_ == 15) {
+            if (bodyCase_ == 13) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_).toBuilder();
             }
             body_ =
@@ -249,12 +221,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 15;
+            bodyCase_ = 13;
             break;
           }
-          case 130: {
+          case 114: {
             cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder subBuilder = null;
-            if (bodyCase_ == 16) {
+            if (bodyCase_ == 14) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_).toBuilder();
             }
             body_ =
@@ -263,12 +235,12 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 16;
+            bodyCase_ = 14;
             break;
           }
-          case 138: {
+          case 122: {
             cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder subBuilder = null;
-            if (bodyCase_ == 17) {
+            if (bodyCase_ == 15) {
               subBuilder = ((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_).toBuilder();
             }
             body_ =
@@ -277,7 +249,7 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
               body_ = subBuilder.buildPartial();
             }
-            bodyCase_ = 17;
+            bodyCase_ = 15;
             break;
           }
         }
@@ -536,18 +508,16 @@ private static final long serialVersionUID = 0L;
     AUTHRESPONSE(3),
     LOGOUTREQUEST(4),
     LOGOUTRESPONSE(5),
-    KICHOUTREQUEST(6),
-    KICHOUTRESPONSE(7),
-    HEARTBEATREQUEST(8),
-    HEARTBEATRESPONSE(9),
-    O2OSENDREQUEST(10),
-    O2OSENDRESPONSE(11),
-    O2ODISTRIBUTEREQUEST(12),
-    O2ODISTRIBUTERESPONSE(13),
-    O2MSENDREQUEST(14),
-    O2MSENDRESPONSE(15),
-    O2MDISTRIBUTEREQUEST(16),
-    O2MDISTRIBUTERESPONSE(17),
+    HEARTBEATREQUEST(6),
+    HEARTBEATRESPONSE(7),
+    O2OSENDREQUEST(8),
+    O2OSENDRESPONSE(9),
+    O2ODISTRIBUTEREQUEST(10),
+    O2ODISTRIBUTERESPONSE(11),
+    O2MSENDREQUEST(12),
+    O2MSENDRESPONSE(13),
+    O2MDISTRIBUTEREQUEST(14),
+    O2MDISTRIBUTERESPONSE(15),
     BODY_NOT_SET(0);
     private final int value;
     private BodyCase(int value) {
@@ -567,18 +537,16 @@ private static final long serialVersionUID = 0L;
         case 3: return AUTHRESPONSE;
         case 4: return LOGOUTREQUEST;
         case 5: return LOGOUTRESPONSE;
-        case 6: return KICHOUTREQUEST;
-        case 7: return KICHOUTRESPONSE;
-        case 8: return HEARTBEATREQUEST;
-        case 9: return HEARTBEATRESPONSE;
-        case 10: return O2OSENDREQUEST;
-        case 11: return O2OSENDRESPONSE;
-        case 12: return O2ODISTRIBUTEREQUEST;
-        case 13: return O2ODISTRIBUTERESPONSE;
-        case 14: return O2MSENDREQUEST;
-        case 15: return O2MSENDRESPONSE;
-        case 16: return O2MDISTRIBUTEREQUEST;
-        case 17: return O2MDISTRIBUTERESPONSE;
+        case 6: return HEARTBEATREQUEST;
+        case 7: return HEARTBEATRESPONSE;
+        case 8: return O2OSENDREQUEST;
+        case 9: return O2OSENDRESPONSE;
+        case 10: return O2ODISTRIBUTEREQUEST;
+        case 11: return O2ODISTRIBUTERESPONSE;
+        case 12: return O2MSENDREQUEST;
+        case 13: return O2MSENDRESPONSE;
+        case 14: return O2MDISTRIBUTEREQUEST;
+        case 15: return O2MDISTRIBUTERESPONSE;
         case 0: return BODY_NOT_SET;
         default: return null;
       }
@@ -714,313 +682,261 @@ private static final long serialVersionUID = 0L;
     return cn.bytes.jtim.core.protocol.protobuf.LogoutResponse.getDefaultInstance();
   }
 
-  public static final int KICHOUTREQUEST_FIELD_NUMBER = 6;
+  public static final int HEARTBEATREQUEST_FIELD_NUMBER = 6;
   /**
-   * <code>.KichoutRequest kichoutRequest = 6;</code>
+   * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
    */
-  public boolean hasKichoutRequest() {
+  public boolean hasHeartbeatRequest() {
     return bodyCase_ == 6;
   }
   /**
-   * <code>.KichoutRequest kichoutRequest = 6;</code>
+   * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.KichoutRequest getKichoutRequest() {
+  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest getHeartbeatRequest() {
     if (bodyCase_ == 6) {
-       return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
   }
   /**
-   * <code>.KichoutRequest kichoutRequest = 6;</code>
+   * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder getKichoutRequestOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder getHeartbeatRequestOrBuilder() {
     if (bodyCase_ == 6) {
-       return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
   }
 
-  public static final int KICHOUTRESPONSE_FIELD_NUMBER = 7;
+  public static final int HEARTBEATRESPONSE_FIELD_NUMBER = 7;
   /**
-   * <code>.KichoutResponse kichoutResponse = 7;</code>
+   * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
    */
-  public boolean hasKichoutResponse() {
+  public boolean hasHeartbeatResponse() {
     return bodyCase_ == 7;
   }
   /**
-   * <code>.KichoutResponse kichoutResponse = 7;</code>
+   * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.KichoutResponse getKichoutResponse() {
+  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse getHeartbeatResponse() {
     if (bodyCase_ == 7) {
-       return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
   }
   /**
-   * <code>.KichoutResponse kichoutResponse = 7;</code>
+   * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder getKichoutResponseOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponseOrBuilder getHeartbeatResponseOrBuilder() {
     if (bodyCase_ == 7) {
-       return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
   }
 
-  public static final int HEARTBEATREQUEST_FIELD_NUMBER = 8;
+  public static final int O2OSENDREQUEST_FIELD_NUMBER = 8;
   /**
-   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   * <code>.O2OSendRequest o2oSendRequest = 8;</code>
    */
-  public boolean hasHeartbeatRequest() {
+  public boolean hasO2OSendRequest() {
     return bodyCase_ == 8;
   }
   /**
-   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   * <code>.O2OSendRequest o2oSendRequest = 8;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest getHeartbeatRequest() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest getO2OSendRequest() {
     if (bodyCase_ == 8) {
-       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
   }
   /**
-   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   * <code>.O2OSendRequest o2oSendRequest = 8;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder getHeartbeatRequestOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder getO2OSendRequestOrBuilder() {
     if (bodyCase_ == 8) {
-       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
   }
 
-  public static final int HEARTBEATRESPONSE_FIELD_NUMBER = 9;
+  public static final int O2OSENDRESPONSE_FIELD_NUMBER = 9;
   /**
-   * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+   * <code>.O2OSendResponse o2oSendResponse = 9;</code>
    */
-  public boolean hasHeartbeatResponse() {
+  public boolean hasO2OSendResponse() {
     return bodyCase_ == 9;
   }
   /**
-   * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+   * <code>.O2OSendResponse o2oSendResponse = 9;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse getHeartbeatResponse() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse getO2OSendResponse() {
     if (bodyCase_ == 9) {
-       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
   }
   /**
-   * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+   * <code>.O2OSendResponse o2oSendResponse = 9;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponseOrBuilder getHeartbeatResponseOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder getO2OSendResponseOrBuilder() {
     if (bodyCase_ == 9) {
-       return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
   }
 
-  public static final int O2OSENDREQUEST_FIELD_NUMBER = 10;
+  public static final int O2ODISTRIBUTEREQUEST_FIELD_NUMBER = 10;
   /**
-   * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
    */
-  public boolean hasO2OSendRequest() {
+  public boolean hasO2ODistributeRequest() {
     return bodyCase_ == 10;
   }
   /**
-   * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest getO2OSendRequest() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getO2ODistributeRequest() {
     if (bodyCase_ == 10) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
   }
   /**
-   * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder getO2OSendRequestOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder getO2ODistributeRequestOrBuilder() {
     if (bodyCase_ == 10) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
   }
 
-  public static final int O2OSENDRESPONSE_FIELD_NUMBER = 11;
+  public static final int O2ODISTRIBUTERESPONSE_FIELD_NUMBER = 11;
   /**
-   * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
    */
-  public boolean hasO2OSendResponse() {
+  public boolean hasO2ODistributeResponse() {
     return bodyCase_ == 11;
   }
   /**
-   * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse getO2OSendResponse() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse getO2ODistributeResponse() {
     if (bodyCase_ == 11) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
   }
   /**
-   * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder getO2OSendResponseOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder getO2ODistributeResponseOrBuilder() {
     if (bodyCase_ == 11) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
   }
 
-  public static final int O2ODISTRIBUTEREQUEST_FIELD_NUMBER = 12;
+  public static final int O2MSENDREQUEST_FIELD_NUMBER = 12;
   /**
-   * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+   * <code>.O2MSendRequest o2mSendRequest = 12;</code>
    */
-  public boolean hasO2ODistributeRequest() {
+  public boolean hasO2MSendRequest() {
     return bodyCase_ == 12;
   }
   /**
-   * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+   * <code>.O2MSendRequest o2mSendRequest = 12;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getO2ODistributeRequest() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest getO2MSendRequest() {
     if (bodyCase_ == 12) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
   }
   /**
-   * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+   * <code>.O2MSendRequest o2mSendRequest = 12;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder getO2ODistributeRequestOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder getO2MSendRequestOrBuilder() {
     if (bodyCase_ == 12) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
   }
 
-  public static final int O2ODISTRIBUTERESPONSE_FIELD_NUMBER = 13;
+  public static final int O2MSENDRESPONSE_FIELD_NUMBER = 13;
   /**
-   * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+   * <code>.O2MSendResponse o2mSendResponse = 13;</code>
    */
-  public boolean hasO2ODistributeResponse() {
+  public boolean hasO2MSendResponse() {
     return bodyCase_ == 13;
   }
   /**
-   * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+   * <code>.O2MSendResponse o2mSendResponse = 13;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse getO2ODistributeResponse() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getO2MSendResponse() {
     if (bodyCase_ == 13) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
   }
   /**
-   * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+   * <code>.O2MSendResponse o2mSendResponse = 13;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder getO2ODistributeResponseOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder getO2MSendResponseOrBuilder() {
     if (bodyCase_ == 13) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
   }
 
-  public static final int O2MSENDREQUEST_FIELD_NUMBER = 14;
+  public static final int O2MDISTRIBUTEREQUEST_FIELD_NUMBER = 14;
   /**
-   * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
    */
-  public boolean hasO2MSendRequest() {
+  public boolean hasO2MDistributeRequest() {
     return bodyCase_ == 14;
   }
   /**
-   * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest getO2MSendRequest() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest getO2MDistributeRequest() {
     if (bodyCase_ == 14) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
   }
   /**
-   * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
    */
-  public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder getO2MSendRequestOrBuilder() {
+  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder getO2MDistributeRequestOrBuilder() {
     if (bodyCase_ == 14) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
+       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
     }
-    return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
+    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
   }
 
-  public static final int O2MSENDRESPONSE_FIELD_NUMBER = 15;
+  public static final int O2MDISTRIBUTERESPONSE_FIELD_NUMBER = 15;
   /**
-   * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
    */
-  public boolean hasO2MSendResponse() {
+  public boolean hasO2MDistributeResponse() {
     return bodyCase_ == 15;
   }
   /**
-   * <code>.O2MSendResponse o2mSendResponse = 15;</code>
-   */
-  public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getO2MSendResponse() {
-    if (bodyCase_ == 15) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
-    }
-    return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
-  }
-  /**
-   * <code>.O2MSendResponse o2mSendResponse = 15;</code>
-   */
-  public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder getO2MSendResponseOrBuilder() {
-    if (bodyCase_ == 15) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
-    }
-    return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
-  }
-
-  public static final int O2MDISTRIBUTEREQUEST_FIELD_NUMBER = 16;
-  /**
-   * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
-   */
-  public boolean hasO2MDistributeRequest() {
-    return bodyCase_ == 16;
-  }
-  /**
-   * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
-   */
-  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest getO2MDistributeRequest() {
-    if (bodyCase_ == 16) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
-    }
-    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
-  }
-  /**
-   * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
-   */
-  public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder getO2MDistributeRequestOrBuilder() {
-    if (bodyCase_ == 16) {
-       return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
-    }
-    return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
-  }
-
-  public static final int O2MDISTRIBUTERESPONSE_FIELD_NUMBER = 17;
-  /**
-   * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
-   */
-  public boolean hasO2MDistributeResponse() {
-    return bodyCase_ == 17;
-  }
-  /**
-   * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
    */
   public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse getO2MDistributeResponse() {
-    if (bodyCase_ == 17) {
+    if (bodyCase_ == 15) {
        return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
     }
     return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
   }
   /**
-   * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
    */
   public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder getO2MDistributeResponseOrBuilder() {
-    if (bodyCase_ == 17) {
+    if (bodyCase_ == 15) {
        return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
     }
     return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
@@ -1054,40 +970,34 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(5, (cn.bytes.jtim.core.protocol.protobuf.LogoutResponse) body_);
     }
     if (bodyCase_ == 6) {
-      output.writeMessage(6, (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_);
+      output.writeMessage(6, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
     }
     if (bodyCase_ == 7) {
-      output.writeMessage(7, (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_);
+      output.writeMessage(7, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_);
     }
     if (bodyCase_ == 8) {
-      output.writeMessage(8, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
+      output.writeMessage(8, (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
     }
     if (bodyCase_ == 9) {
-      output.writeMessage(9, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_);
+      output.writeMessage(9, (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
     }
     if (bodyCase_ == 10) {
-      output.writeMessage(10, (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
+      output.writeMessage(10, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
     }
     if (bodyCase_ == 11) {
-      output.writeMessage(11, (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
+      output.writeMessage(11, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
     }
     if (bodyCase_ == 12) {
-      output.writeMessage(12, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
+      output.writeMessage(12, (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
     }
     if (bodyCase_ == 13) {
-      output.writeMessage(13, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
+      output.writeMessage(13, (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
     }
     if (bodyCase_ == 14) {
-      output.writeMessage(14, (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
+      output.writeMessage(14, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
     }
     if (bodyCase_ == 15) {
-      output.writeMessage(15, (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
-    }
-    if (bodyCase_ == 16) {
-      output.writeMessage(16, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
-    }
-    if (bodyCase_ == 17) {
-      output.writeMessage(17, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
+      output.writeMessage(15, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
     }
     unknownFields.writeTo(output);
   }
@@ -1119,51 +1029,43 @@ private static final long serialVersionUID = 0L;
     }
     if (bodyCase_ == 6) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_);
+        .computeMessageSize(6, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
     }
     if (bodyCase_ == 7) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_);
+        .computeMessageSize(7, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_);
     }
     if (bodyCase_ == 8) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_);
+        .computeMessageSize(8, (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
     }
     if (bodyCase_ == 9) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_);
+        .computeMessageSize(9, (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
     }
     if (bodyCase_ == 10) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(10, (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_);
+        .computeMessageSize(10, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
     }
     if (bodyCase_ == 11) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(11, (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_);
+        .computeMessageSize(11, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
     }
     if (bodyCase_ == 12) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(12, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_);
+        .computeMessageSize(12, (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
     }
     if (bodyCase_ == 13) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(13, (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_);
+        .computeMessageSize(13, (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
     }
     if (bodyCase_ == 14) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(14, (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_);
+        .computeMessageSize(14, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
     }
     if (bodyCase_ == 15) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(15, (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_);
-    }
-    if (bodyCase_ == 16) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(16, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_);
-    }
-    if (bodyCase_ == 17) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(17, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
+        .computeMessageSize(15, (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -1203,50 +1105,42 @@ private static final long serialVersionUID = 0L;
             .equals(other.getLogoutResponse());
         break;
       case 6:
-        result = result && getKichoutRequest()
-            .equals(other.getKichoutRequest());
-        break;
-      case 7:
-        result = result && getKichoutResponse()
-            .equals(other.getKichoutResponse());
-        break;
-      case 8:
         result = result && getHeartbeatRequest()
             .equals(other.getHeartbeatRequest());
         break;
-      case 9:
+      case 7:
         result = result && getHeartbeatResponse()
             .equals(other.getHeartbeatResponse());
         break;
-      case 10:
+      case 8:
         result = result && getO2OSendRequest()
             .equals(other.getO2OSendRequest());
         break;
-      case 11:
+      case 9:
         result = result && getO2OSendResponse()
             .equals(other.getO2OSendResponse());
         break;
-      case 12:
+      case 10:
         result = result && getO2ODistributeRequest()
             .equals(other.getO2ODistributeRequest());
         break;
-      case 13:
+      case 11:
         result = result && getO2ODistributeResponse()
             .equals(other.getO2ODistributeResponse());
         break;
-      case 14:
+      case 12:
         result = result && getO2MSendRequest()
             .equals(other.getO2MSendRequest());
         break;
-      case 15:
+      case 13:
         result = result && getO2MSendResponse()
             .equals(other.getO2MSendResponse());
         break;
-      case 16:
+      case 14:
         result = result && getO2MDistributeRequest()
             .equals(other.getO2MDistributeRequest());
         break;
-      case 17:
+      case 15:
         result = result && getO2MDistributeResponse()
             .equals(other.getO2MDistributeResponse());
         break;
@@ -1284,50 +1178,42 @@ private static final long serialVersionUID = 0L;
         hash = (53 * hash) + getLogoutResponse().hashCode();
         break;
       case 6:
-        hash = (37 * hash) + KICHOUTREQUEST_FIELD_NUMBER;
-        hash = (53 * hash) + getKichoutRequest().hashCode();
-        break;
-      case 7:
-        hash = (37 * hash) + KICHOUTRESPONSE_FIELD_NUMBER;
-        hash = (53 * hash) + getKichoutResponse().hashCode();
-        break;
-      case 8:
         hash = (37 * hash) + HEARTBEATREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getHeartbeatRequest().hashCode();
         break;
-      case 9:
+      case 7:
         hash = (37 * hash) + HEARTBEATRESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getHeartbeatResponse().hashCode();
         break;
-      case 10:
+      case 8:
         hash = (37 * hash) + O2OSENDREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getO2OSendRequest().hashCode();
         break;
-      case 11:
+      case 9:
         hash = (37 * hash) + O2OSENDRESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getO2OSendResponse().hashCode();
         break;
-      case 12:
+      case 10:
         hash = (37 * hash) + O2ODISTRIBUTEREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getO2ODistributeRequest().hashCode();
         break;
-      case 13:
+      case 11:
         hash = (37 * hash) + O2ODISTRIBUTERESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getO2ODistributeResponse().hashCode();
         break;
-      case 14:
+      case 12:
         hash = (37 * hash) + O2MSENDREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getO2MSendRequest().hashCode();
         break;
-      case 15:
+      case 13:
         hash = (37 * hash) + O2MSENDRESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getO2MSendResponse().hashCode();
         break;
-      case 16:
+      case 14:
         hash = (37 * hash) + O2MDISTRIBUTEREQUEST_FIELD_NUMBER;
         hash = (53 * hash) + getO2MDistributeRequest().hashCode();
         break;
-      case 17:
+      case 15:
         hash = (37 * hash) + O2MDISTRIBUTERESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getO2MDistributeResponse().hashCode();
         break;
@@ -1519,83 +1405,69 @@ private static final long serialVersionUID = 0L;
         }
       }
       if (bodyCase_ == 6) {
-        if (kichoutRequestBuilder_ == null) {
-          result.body_ = body_;
-        } else {
-          result.body_ = kichoutRequestBuilder_.build();
-        }
-      }
-      if (bodyCase_ == 7) {
-        if (kichoutResponseBuilder_ == null) {
-          result.body_ = body_;
-        } else {
-          result.body_ = kichoutResponseBuilder_.build();
-        }
-      }
-      if (bodyCase_ == 8) {
         if (heartbeatRequestBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = heartbeatRequestBuilder_.build();
         }
       }
-      if (bodyCase_ == 9) {
+      if (bodyCase_ == 7) {
         if (heartbeatResponseBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = heartbeatResponseBuilder_.build();
         }
       }
-      if (bodyCase_ == 10) {
+      if (bodyCase_ == 8) {
         if (o2OSendRequestBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2OSendRequestBuilder_.build();
         }
       }
-      if (bodyCase_ == 11) {
+      if (bodyCase_ == 9) {
         if (o2OSendResponseBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2OSendResponseBuilder_.build();
         }
       }
-      if (bodyCase_ == 12) {
+      if (bodyCase_ == 10) {
         if (o2ODistributeRequestBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2ODistributeRequestBuilder_.build();
         }
       }
-      if (bodyCase_ == 13) {
+      if (bodyCase_ == 11) {
         if (o2ODistributeResponseBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2ODistributeResponseBuilder_.build();
         }
       }
-      if (bodyCase_ == 14) {
+      if (bodyCase_ == 12) {
         if (o2MSendRequestBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2MSendRequestBuilder_.build();
         }
       }
-      if (bodyCase_ == 15) {
+      if (bodyCase_ == 13) {
         if (o2MSendResponseBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2MSendResponseBuilder_.build();
         }
       }
-      if (bodyCase_ == 16) {
+      if (bodyCase_ == 14) {
         if (o2MDistributeRequestBuilder_ == null) {
           result.body_ = body_;
         } else {
           result.body_ = o2MDistributeRequestBuilder_.build();
         }
       }
-      if (bodyCase_ == 17) {
+      if (bodyCase_ == 15) {
         if (o2MDistributeResponseBuilder_ == null) {
           result.body_ = body_;
         } else {
@@ -1662,14 +1534,6 @@ private static final long serialVersionUID = 0L;
         }
         case LOGOUTRESPONSE: {
           mergeLogoutResponse(other.getLogoutResponse());
-          break;
-        }
-        case KICHOUTREQUEST: {
-          mergeKichoutRequest(other.getKichoutRequest());
-          break;
-        }
-        case KICHOUTRESPONSE: {
-          mergeKichoutResponse(other.getKichoutResponse());
           break;
         }
         case HEARTBEATREQUEST: {
@@ -2347,303 +2211,31 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        cn.bytes.jtim.core.protocol.protobuf.KichoutRequest, cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder> kichoutRequestBuilder_;
+        cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder> heartbeatRequestBuilder_;
     /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
-    public boolean hasKichoutRequest() {
+    public boolean hasHeartbeatRequest() {
       return bodyCase_ == 6;
     }
     /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public cn.bytes.jtim.core.protocol.protobuf.KichoutRequest getKichoutRequest() {
-      if (kichoutRequestBuilder_ == null) {
-        if (bodyCase_ == 6) {
-          return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
-        }
-        return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
-      } else {
-        if (bodyCase_ == 6) {
-          return kichoutRequestBuilder_.getMessage();
-        }
-        return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public Builder setKichoutRequest(cn.bytes.jtim.core.protocol.protobuf.KichoutRequest value) {
-      if (kichoutRequestBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        body_ = value;
-        onChanged();
-      } else {
-        kichoutRequestBuilder_.setMessage(value);
-      }
-      bodyCase_ = 6;
-      return this;
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public Builder setKichoutRequest(
-        cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder builderForValue) {
-      if (kichoutRequestBuilder_ == null) {
-        body_ = builderForValue.build();
-        onChanged();
-      } else {
-        kichoutRequestBuilder_.setMessage(builderForValue.build());
-      }
-      bodyCase_ = 6;
-      return this;
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public Builder mergeKichoutRequest(cn.bytes.jtim.core.protocol.protobuf.KichoutRequest value) {
-      if (kichoutRequestBuilder_ == null) {
-        if (bodyCase_ == 6 &&
-            body_ != cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance()) {
-          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          body_ = value;
-        }
-        onChanged();
-      } else {
-        if (bodyCase_ == 6) {
-          kichoutRequestBuilder_.mergeFrom(value);
-        }
-        kichoutRequestBuilder_.setMessage(value);
-      }
-      bodyCase_ = 6;
-      return this;
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public Builder clearKichoutRequest() {
-      if (kichoutRequestBuilder_ == null) {
-        if (bodyCase_ == 6) {
-          bodyCase_ = 0;
-          body_ = null;
-          onChanged();
-        }
-      } else {
-        if (bodyCase_ == 6) {
-          bodyCase_ = 0;
-          body_ = null;
-        }
-        kichoutRequestBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder getKichoutRequestBuilder() {
-      return getKichoutRequestFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    public cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder getKichoutRequestOrBuilder() {
-      if ((bodyCase_ == 6) && (kichoutRequestBuilder_ != null)) {
-        return kichoutRequestBuilder_.getMessageOrBuilder();
-      } else {
-        if (bodyCase_ == 6) {
-          return (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_;
-        }
-        return cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.KichoutRequest kichoutRequest = 6;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.bytes.jtim.core.protocol.protobuf.KichoutRequest, cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder> 
-        getKichoutRequestFieldBuilder() {
-      if (kichoutRequestBuilder_ == null) {
-        if (!(bodyCase_ == 6)) {
-          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.getDefaultInstance();
-        }
-        kichoutRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.bytes.jtim.core.protocol.protobuf.KichoutRequest, cn.bytes.jtim.core.protocol.protobuf.KichoutRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder>(
-                (cn.bytes.jtim.core.protocol.protobuf.KichoutRequest) body_,
-                getParentForChildren(),
-                isClean());
-        body_ = null;
-      }
-      bodyCase_ = 6;
-      onChanged();;
-      return kichoutRequestBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.bytes.jtim.core.protocol.protobuf.KichoutResponse, cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder> kichoutResponseBuilder_;
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public boolean hasKichoutResponse() {
-      return bodyCase_ == 7;
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public cn.bytes.jtim.core.protocol.protobuf.KichoutResponse getKichoutResponse() {
-      if (kichoutResponseBuilder_ == null) {
-        if (bodyCase_ == 7) {
-          return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
-        }
-        return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
-      } else {
-        if (bodyCase_ == 7) {
-          return kichoutResponseBuilder_.getMessage();
-        }
-        return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public Builder setKichoutResponse(cn.bytes.jtim.core.protocol.protobuf.KichoutResponse value) {
-      if (kichoutResponseBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        body_ = value;
-        onChanged();
-      } else {
-        kichoutResponseBuilder_.setMessage(value);
-      }
-      bodyCase_ = 7;
-      return this;
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public Builder setKichoutResponse(
-        cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder builderForValue) {
-      if (kichoutResponseBuilder_ == null) {
-        body_ = builderForValue.build();
-        onChanged();
-      } else {
-        kichoutResponseBuilder_.setMessage(builderForValue.build());
-      }
-      bodyCase_ = 7;
-      return this;
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public Builder mergeKichoutResponse(cn.bytes.jtim.core.protocol.protobuf.KichoutResponse value) {
-      if (kichoutResponseBuilder_ == null) {
-        if (bodyCase_ == 7 &&
-            body_ != cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance()) {
-          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          body_ = value;
-        }
-        onChanged();
-      } else {
-        if (bodyCase_ == 7) {
-          kichoutResponseBuilder_.mergeFrom(value);
-        }
-        kichoutResponseBuilder_.setMessage(value);
-      }
-      bodyCase_ = 7;
-      return this;
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public Builder clearKichoutResponse() {
-      if (kichoutResponseBuilder_ == null) {
-        if (bodyCase_ == 7) {
-          bodyCase_ = 0;
-          body_ = null;
-          onChanged();
-        }
-      } else {
-        if (bodyCase_ == 7) {
-          bodyCase_ = 0;
-          body_ = null;
-        }
-        kichoutResponseBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder getKichoutResponseBuilder() {
-      return getKichoutResponseFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    public cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder getKichoutResponseOrBuilder() {
-      if ((bodyCase_ == 7) && (kichoutResponseBuilder_ != null)) {
-        return kichoutResponseBuilder_.getMessageOrBuilder();
-      } else {
-        if (bodyCase_ == 7) {
-          return (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_;
-        }
-        return cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.KichoutResponse kichoutResponse = 7;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.bytes.jtim.core.protocol.protobuf.KichoutResponse, cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder> 
-        getKichoutResponseFieldBuilder() {
-      if (kichoutResponseBuilder_ == null) {
-        if (!(bodyCase_ == 7)) {
-          body_ = cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.getDefaultInstance();
-        }
-        kichoutResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.bytes.jtim.core.protocol.protobuf.KichoutResponse, cn.bytes.jtim.core.protocol.protobuf.KichoutResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder>(
-                (cn.bytes.jtim.core.protocol.protobuf.KichoutResponse) body_,
-                getParentForChildren(),
-                isClean());
-        body_ = null;
-      }
-      bodyCase_ = 7;
-      onChanged();;
-      return kichoutResponseBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder> heartbeatRequestBuilder_;
-    /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
-     */
-    public boolean hasHeartbeatRequest() {
-      return bodyCase_ == 8;
-    }
-    /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest getHeartbeatRequest() {
       if (heartbeatRequestBuilder_ == null) {
-        if (bodyCase_ == 8) {
+        if (bodyCase_ == 6) {
           return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
       } else {
-        if (bodyCase_ == 8) {
+        if (bodyCase_ == 6) {
           return heartbeatRequestBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public Builder setHeartbeatRequest(cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest value) {
       if (heartbeatRequestBuilder_ == null) {
@@ -2655,11 +2247,11 @@ private static final long serialVersionUID = 0L;
       } else {
         heartbeatRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 8;
+      bodyCase_ = 6;
       return this;
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public Builder setHeartbeatRequest(
         cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder builderForValue) {
@@ -2669,15 +2261,15 @@ private static final long serialVersionUID = 0L;
       } else {
         heartbeatRequestBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 8;
+      bodyCase_ = 6;
       return this;
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public Builder mergeHeartbeatRequest(cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest value) {
       if (heartbeatRequestBuilder_ == null) {
-        if (bodyCase_ == 8 &&
+        if (bodyCase_ == 6 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_)
               .mergeFrom(value).buildPartial();
@@ -2686,26 +2278,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 8) {
+        if (bodyCase_ == 6) {
           heartbeatRequestBuilder_.mergeFrom(value);
         }
         heartbeatRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 8;
+      bodyCase_ = 6;
       return this;
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public Builder clearHeartbeatRequest() {
       if (heartbeatRequestBuilder_ == null) {
-        if (bodyCase_ == 8) {
+        if (bodyCase_ == 6) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 8) {
+        if (bodyCase_ == 6) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -2714,32 +2306,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder getHeartbeatRequestBuilder() {
       return getHeartbeatRequestFieldBuilder().getBuilder();
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder getHeartbeatRequestOrBuilder() {
-      if ((bodyCase_ == 8) && (heartbeatRequestBuilder_ != null)) {
+      if ((bodyCase_ == 6) && (heartbeatRequestBuilder_ != null)) {
         return heartbeatRequestBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 8) {
+        if (bodyCase_ == 6) {
           return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+     * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder> 
         getHeartbeatRequestFieldBuilder() {
       if (heartbeatRequestBuilder_ == null) {
-        if (!(bodyCase_ == 8)) {
+        if (!(bodyCase_ == 6)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest.getDefaultInstance();
         }
         heartbeatRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2749,7 +2341,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 8;
+      bodyCase_ = 6;
       onChanged();;
       return heartbeatRequestBuilder_;
     }
@@ -2757,29 +2349,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse, cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponseOrBuilder> heartbeatResponseBuilder_;
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public boolean hasHeartbeatResponse() {
-      return bodyCase_ == 9;
+      return bodyCase_ == 7;
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse getHeartbeatResponse() {
       if (heartbeatResponseBuilder_ == null) {
-        if (bodyCase_ == 9) {
+        if (bodyCase_ == 7) {
           return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
       } else {
-        if (bodyCase_ == 9) {
+        if (bodyCase_ == 7) {
           return heartbeatResponseBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public Builder setHeartbeatResponse(cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse value) {
       if (heartbeatResponseBuilder_ == null) {
@@ -2791,11 +2383,11 @@ private static final long serialVersionUID = 0L;
       } else {
         heartbeatResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 9;
+      bodyCase_ = 7;
       return this;
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public Builder setHeartbeatResponse(
         cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.Builder builderForValue) {
@@ -2805,15 +2397,15 @@ private static final long serialVersionUID = 0L;
       } else {
         heartbeatResponseBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 9;
+      bodyCase_ = 7;
       return this;
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public Builder mergeHeartbeatResponse(cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse value) {
       if (heartbeatResponseBuilder_ == null) {
-        if (bodyCase_ == 9 &&
+        if (bodyCase_ == 7 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_)
               .mergeFrom(value).buildPartial();
@@ -2822,26 +2414,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 9) {
+        if (bodyCase_ == 7) {
           heartbeatResponseBuilder_.mergeFrom(value);
         }
         heartbeatResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 9;
+      bodyCase_ = 7;
       return this;
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public Builder clearHeartbeatResponse() {
       if (heartbeatResponseBuilder_ == null) {
-        if (bodyCase_ == 9) {
+        if (bodyCase_ == 7) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 9) {
+        if (bodyCase_ == 7) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -2850,32 +2442,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.Builder getHeartbeatResponseBuilder() {
       return getHeartbeatResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponseOrBuilder getHeartbeatResponseOrBuilder() {
-      if ((bodyCase_ == 9) && (heartbeatResponseBuilder_ != null)) {
+      if ((bodyCase_ == 7) && (heartbeatResponseBuilder_ != null)) {
         return heartbeatResponseBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 9) {
+        if (bodyCase_ == 7) {
           return (cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+     * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse, cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponseOrBuilder> 
         getHeartbeatResponseFieldBuilder() {
       if (heartbeatResponseBuilder_ == null) {
-        if (!(bodyCase_ == 9)) {
+        if (!(bodyCase_ == 7)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse.getDefaultInstance();
         }
         heartbeatResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2885,7 +2477,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 9;
+      bodyCase_ = 7;
       onChanged();;
       return heartbeatResponseBuilder_;
     }
@@ -2893,29 +2485,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder> o2OSendRequestBuilder_;
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public boolean hasO2OSendRequest() {
-      return bodyCase_ == 10;
+      return bodyCase_ == 8;
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest getO2OSendRequest() {
       if (o2OSendRequestBuilder_ == null) {
-        if (bodyCase_ == 10) {
+        if (bodyCase_ == 8) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
       } else {
-        if (bodyCase_ == 10) {
+        if (bodyCase_ == 8) {
           return o2OSendRequestBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public Builder setO2OSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest value) {
       if (o2OSendRequestBuilder_ == null) {
@@ -2927,11 +2519,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2OSendRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 10;
+      bodyCase_ = 8;
       return this;
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public Builder setO2OSendRequest(
         cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder builderForValue) {
@@ -2941,15 +2533,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2OSendRequestBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 10;
+      bodyCase_ = 8;
       return this;
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public Builder mergeO2OSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest value) {
       if (o2OSendRequestBuilder_ == null) {
-        if (bodyCase_ == 10 &&
+        if (bodyCase_ == 8 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_)
               .mergeFrom(value).buildPartial();
@@ -2958,26 +2550,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 10) {
+        if (bodyCase_ == 8) {
           o2OSendRequestBuilder_.mergeFrom(value);
         }
         o2OSendRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 10;
+      bodyCase_ = 8;
       return this;
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public Builder clearO2OSendRequest() {
       if (o2OSendRequestBuilder_ == null) {
-        if (bodyCase_ == 10) {
+        if (bodyCase_ == 8) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 10) {
+        if (bodyCase_ == 8) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -2986,32 +2578,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder getO2OSendRequestBuilder() {
       return getO2OSendRequestFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder getO2OSendRequestOrBuilder() {
-      if ((bodyCase_ == 10) && (o2OSendRequestBuilder_ != null)) {
+      if ((bodyCase_ == 8) && (o2OSendRequestBuilder_ != null)) {
         return o2OSendRequestBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 10) {
+        if (bodyCase_ == 8) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+     * <code>.O2OSendRequest o2oSendRequest = 8;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder> 
         getO2OSendRequestFieldBuilder() {
       if (o2OSendRequestBuilder_ == null) {
-        if (!(bodyCase_ == 10)) {
+        if (!(bodyCase_ == 8)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest.getDefaultInstance();
         }
         o2OSendRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3021,7 +2613,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 10;
+      bodyCase_ = 8;
       onChanged();;
       return o2OSendRequestBuilder_;
     }
@@ -3029,29 +2621,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder> o2OSendResponseBuilder_;
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public boolean hasO2OSendResponse() {
-      return bodyCase_ == 11;
+      return bodyCase_ == 9;
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse getO2OSendResponse() {
       if (o2OSendResponseBuilder_ == null) {
-        if (bodyCase_ == 11) {
+        if (bodyCase_ == 9) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
       } else {
-        if (bodyCase_ == 11) {
+        if (bodyCase_ == 9) {
           return o2OSendResponseBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public Builder setO2OSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse value) {
       if (o2OSendResponseBuilder_ == null) {
@@ -3063,11 +2655,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2OSendResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 11;
+      bodyCase_ = 9;
       return this;
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public Builder setO2OSendResponse(
         cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder builderForValue) {
@@ -3077,15 +2669,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2OSendResponseBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 11;
+      bodyCase_ = 9;
       return this;
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public Builder mergeO2OSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse value) {
       if (o2OSendResponseBuilder_ == null) {
-        if (bodyCase_ == 11 &&
+        if (bodyCase_ == 9 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_)
               .mergeFrom(value).buildPartial();
@@ -3094,26 +2686,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 11) {
+        if (bodyCase_ == 9) {
           o2OSendResponseBuilder_.mergeFrom(value);
         }
         o2OSendResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 11;
+      bodyCase_ = 9;
       return this;
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public Builder clearO2OSendResponse() {
       if (o2OSendResponseBuilder_ == null) {
-        if (bodyCase_ == 11) {
+        if (bodyCase_ == 9) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 11) {
+        if (bodyCase_ == 9) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3122,32 +2714,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder getO2OSendResponseBuilder() {
       return getO2OSendResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder getO2OSendResponseOrBuilder() {
-      if ((bodyCase_ == 11) && (o2OSendResponseBuilder_ != null)) {
+      if ((bodyCase_ == 9) && (o2OSendResponseBuilder_ != null)) {
         return o2OSendResponseBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 11) {
+        if (bodyCase_ == 9) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+     * <code>.O2OSendResponse o2oSendResponse = 9;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder> 
         getO2OSendResponseFieldBuilder() {
       if (o2OSendResponseBuilder_ == null) {
-        if (!(bodyCase_ == 11)) {
+        if (!(bodyCase_ == 9)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse.getDefaultInstance();
         }
         o2OSendResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3157,7 +2749,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 11;
+      bodyCase_ = 9;
       onChanged();;
       return o2OSendResponseBuilder_;
     }
@@ -3165,29 +2757,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder> o2ODistributeRequestBuilder_;
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public boolean hasO2ODistributeRequest() {
-      return bodyCase_ == 12;
+      return bodyCase_ == 10;
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getO2ODistributeRequest() {
       if (o2ODistributeRequestBuilder_ == null) {
-        if (bodyCase_ == 12) {
+        if (bodyCase_ == 10) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
       } else {
-        if (bodyCase_ == 12) {
+        if (bodyCase_ == 10) {
           return o2ODistributeRequestBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public Builder setO2ODistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest value) {
       if (o2ODistributeRequestBuilder_ == null) {
@@ -3199,11 +2791,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2ODistributeRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 12;
+      bodyCase_ = 10;
       return this;
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public Builder setO2ODistributeRequest(
         cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder builderForValue) {
@@ -3213,15 +2805,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2ODistributeRequestBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 12;
+      bodyCase_ = 10;
       return this;
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public Builder mergeO2ODistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest value) {
       if (o2ODistributeRequestBuilder_ == null) {
-        if (bodyCase_ == 12 &&
+        if (bodyCase_ == 10 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_)
               .mergeFrom(value).buildPartial();
@@ -3230,26 +2822,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 12) {
+        if (bodyCase_ == 10) {
           o2ODistributeRequestBuilder_.mergeFrom(value);
         }
         o2ODistributeRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 12;
+      bodyCase_ = 10;
       return this;
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public Builder clearO2ODistributeRequest() {
       if (o2ODistributeRequestBuilder_ == null) {
-        if (bodyCase_ == 12) {
+        if (bodyCase_ == 10) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 12) {
+        if (bodyCase_ == 10) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3258,32 +2850,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder getO2ODistributeRequestBuilder() {
       return getO2ODistributeRequestFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder getO2ODistributeRequestOrBuilder() {
-      if ((bodyCase_ == 12) && (o2ODistributeRequestBuilder_ != null)) {
+      if ((bodyCase_ == 10) && (o2ODistributeRequestBuilder_ != null)) {
         return o2ODistributeRequestBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 12) {
+        if (bodyCase_ == 10) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+     * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder> 
         getO2ODistributeRequestFieldBuilder() {
       if (o2ODistributeRequestBuilder_ == null) {
-        if (!(bodyCase_ == 12)) {
+        if (!(bodyCase_ == 10)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest.getDefaultInstance();
         }
         o2ODistributeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3293,7 +2885,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 12;
+      bodyCase_ = 10;
       onChanged();;
       return o2ODistributeRequestBuilder_;
     }
@@ -3301,29 +2893,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder> o2ODistributeResponseBuilder_;
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public boolean hasO2ODistributeResponse() {
-      return bodyCase_ == 13;
+      return bodyCase_ == 11;
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse getO2ODistributeResponse() {
       if (o2ODistributeResponseBuilder_ == null) {
-        if (bodyCase_ == 13) {
+        if (bodyCase_ == 11) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
       } else {
-        if (bodyCase_ == 13) {
+        if (bodyCase_ == 11) {
           return o2ODistributeResponseBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public Builder setO2ODistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse value) {
       if (o2ODistributeResponseBuilder_ == null) {
@@ -3335,11 +2927,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2ODistributeResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 13;
+      bodyCase_ = 11;
       return this;
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public Builder setO2ODistributeResponse(
         cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder builderForValue) {
@@ -3349,15 +2941,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2ODistributeResponseBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 13;
+      bodyCase_ = 11;
       return this;
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public Builder mergeO2ODistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse value) {
       if (o2ODistributeResponseBuilder_ == null) {
-        if (bodyCase_ == 13 &&
+        if (bodyCase_ == 11 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_)
               .mergeFrom(value).buildPartial();
@@ -3366,26 +2958,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 13) {
+        if (bodyCase_ == 11) {
           o2ODistributeResponseBuilder_.mergeFrom(value);
         }
         o2ODistributeResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 13;
+      bodyCase_ = 11;
       return this;
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public Builder clearO2ODistributeResponse() {
       if (o2ODistributeResponseBuilder_ == null) {
-        if (bodyCase_ == 13) {
+        if (bodyCase_ == 11) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 13) {
+        if (bodyCase_ == 11) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3394,32 +2986,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder getO2ODistributeResponseBuilder() {
       return getO2ODistributeResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder getO2ODistributeResponseOrBuilder() {
-      if ((bodyCase_ == 13) && (o2ODistributeResponseBuilder_ != null)) {
+      if ((bodyCase_ == 11) && (o2ODistributeResponseBuilder_ != null)) {
         return o2ODistributeResponseBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 13) {
+        if (bodyCase_ == 11) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+     * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder> 
         getO2ODistributeResponseFieldBuilder() {
       if (o2ODistributeResponseBuilder_ == null) {
-        if (!(bodyCase_ == 13)) {
+        if (!(bodyCase_ == 11)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse.getDefaultInstance();
         }
         o2ODistributeResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3429,7 +3021,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 13;
+      bodyCase_ = 11;
       onChanged();;
       return o2ODistributeResponseBuilder_;
     }
@@ -3437,29 +3029,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder> o2MSendRequestBuilder_;
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public boolean hasO2MSendRequest() {
-      return bodyCase_ == 14;
+      return bodyCase_ == 12;
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest getO2MSendRequest() {
       if (o2MSendRequestBuilder_ == null) {
-        if (bodyCase_ == 14) {
+        if (bodyCase_ == 12) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
       } else {
-        if (bodyCase_ == 14) {
+        if (bodyCase_ == 12) {
           return o2MSendRequestBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public Builder setO2MSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest value) {
       if (o2MSendRequestBuilder_ == null) {
@@ -3471,11 +3063,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MSendRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 14;
+      bodyCase_ = 12;
       return this;
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public Builder setO2MSendRequest(
         cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder builderForValue) {
@@ -3485,15 +3077,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MSendRequestBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 14;
+      bodyCase_ = 12;
       return this;
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public Builder mergeO2MSendRequest(cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest value) {
       if (o2MSendRequestBuilder_ == null) {
-        if (bodyCase_ == 14 &&
+        if (bodyCase_ == 12 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_)
               .mergeFrom(value).buildPartial();
@@ -3502,26 +3094,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 14) {
+        if (bodyCase_ == 12) {
           o2MSendRequestBuilder_.mergeFrom(value);
         }
         o2MSendRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 14;
+      bodyCase_ = 12;
       return this;
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public Builder clearO2MSendRequest() {
       if (o2MSendRequestBuilder_ == null) {
-        if (bodyCase_ == 14) {
+        if (bodyCase_ == 12) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 14) {
+        if (bodyCase_ == 12) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3530,32 +3122,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder getO2MSendRequestBuilder() {
       return getO2MSendRequestFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder getO2MSendRequestOrBuilder() {
-      if ((bodyCase_ == 14) && (o2MSendRequestBuilder_ != null)) {
+      if ((bodyCase_ == 12) && (o2MSendRequestBuilder_ != null)) {
         return o2MSendRequestBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 14) {
+        if (bodyCase_ == 12) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+     * <code>.O2MSendRequest o2mSendRequest = 12;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder> 
         getO2MSendRequestFieldBuilder() {
       if (o2MSendRequestBuilder_ == null) {
-        if (!(bodyCase_ == 14)) {
+        if (!(bodyCase_ == 12)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest.getDefaultInstance();
         }
         o2MSendRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3565,7 +3157,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 14;
+      bodyCase_ = 12;
       onChanged();;
       return o2MSendRequestBuilder_;
     }
@@ -3573,29 +3165,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder> o2MSendResponseBuilder_;
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public boolean hasO2MSendResponse() {
-      return bodyCase_ == 15;
+      return bodyCase_ == 13;
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getO2MSendResponse() {
       if (o2MSendResponseBuilder_ == null) {
-        if (bodyCase_ == 15) {
+        if (bodyCase_ == 13) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
       } else {
-        if (bodyCase_ == 15) {
+        if (bodyCase_ == 13) {
           return o2MSendResponseBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public Builder setO2MSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse value) {
       if (o2MSendResponseBuilder_ == null) {
@@ -3607,11 +3199,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MSendResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 15;
+      bodyCase_ = 13;
       return this;
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public Builder setO2MSendResponse(
         cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder builderForValue) {
@@ -3621,15 +3213,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MSendResponseBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 15;
+      bodyCase_ = 13;
       return this;
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public Builder mergeO2MSendResponse(cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse value) {
       if (o2MSendResponseBuilder_ == null) {
-        if (bodyCase_ == 15 &&
+        if (bodyCase_ == 13 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_)
               .mergeFrom(value).buildPartial();
@@ -3638,26 +3230,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 15) {
+        if (bodyCase_ == 13) {
           o2MSendResponseBuilder_.mergeFrom(value);
         }
         o2MSendResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 15;
+      bodyCase_ = 13;
       return this;
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public Builder clearO2MSendResponse() {
       if (o2MSendResponseBuilder_ == null) {
-        if (bodyCase_ == 15) {
+        if (bodyCase_ == 13) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 15) {
+        if (bodyCase_ == 13) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3666,32 +3258,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder getO2MSendResponseBuilder() {
       return getO2MSendResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder getO2MSendResponseOrBuilder() {
-      if ((bodyCase_ == 15) && (o2MSendResponseBuilder_ != null)) {
+      if ((bodyCase_ == 13) && (o2MSendResponseBuilder_ != null)) {
         return o2MSendResponseBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 15) {
+        if (bodyCase_ == 13) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+     * <code>.O2MSendResponse o2mSendResponse = 13;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder> 
         getO2MSendResponseFieldBuilder() {
       if (o2MSendResponseBuilder_ == null) {
-        if (!(bodyCase_ == 15)) {
+        if (!(bodyCase_ == 13)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse.getDefaultInstance();
         }
         o2MSendResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3701,7 +3293,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 15;
+      bodyCase_ = 13;
       onChanged();;
       return o2MSendResponseBuilder_;
     }
@@ -3709,29 +3301,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder> o2MDistributeRequestBuilder_;
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public boolean hasO2MDistributeRequest() {
-      return bodyCase_ == 16;
+      return bodyCase_ == 14;
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest getO2MDistributeRequest() {
       if (o2MDistributeRequestBuilder_ == null) {
-        if (bodyCase_ == 16) {
+        if (bodyCase_ == 14) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
       } else {
-        if (bodyCase_ == 16) {
+        if (bodyCase_ == 14) {
           return o2MDistributeRequestBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public Builder setO2MDistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest value) {
       if (o2MDistributeRequestBuilder_ == null) {
@@ -3743,11 +3335,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MDistributeRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 16;
+      bodyCase_ = 14;
       return this;
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public Builder setO2MDistributeRequest(
         cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder builderForValue) {
@@ -3757,15 +3349,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MDistributeRequestBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 16;
+      bodyCase_ = 14;
       return this;
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public Builder mergeO2MDistributeRequest(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest value) {
       if (o2MDistributeRequestBuilder_ == null) {
-        if (bodyCase_ == 16 &&
+        if (bodyCase_ == 14 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_)
               .mergeFrom(value).buildPartial();
@@ -3774,26 +3366,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 16) {
+        if (bodyCase_ == 14) {
           o2MDistributeRequestBuilder_.mergeFrom(value);
         }
         o2MDistributeRequestBuilder_.setMessage(value);
       }
-      bodyCase_ = 16;
+      bodyCase_ = 14;
       return this;
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public Builder clearO2MDistributeRequest() {
       if (o2MDistributeRequestBuilder_ == null) {
-        if (bodyCase_ == 16) {
+        if (bodyCase_ == 14) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 16) {
+        if (bodyCase_ == 14) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3802,32 +3394,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder getO2MDistributeRequestBuilder() {
       return getO2MDistributeRequestFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder getO2MDistributeRequestOrBuilder() {
-      if ((bodyCase_ == 16) && (o2MDistributeRequestBuilder_ != null)) {
+      if ((bodyCase_ == 14) && (o2MDistributeRequestBuilder_ != null)) {
         return o2MDistributeRequestBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 16) {
+        if (bodyCase_ == 14) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+     * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder> 
         getO2MDistributeRequestFieldBuilder() {
       if (o2MDistributeRequestBuilder_ == null) {
-        if (!(bodyCase_ == 16)) {
+        if (!(bodyCase_ == 14)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest.getDefaultInstance();
         }
         o2MDistributeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3837,7 +3429,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 16;
+      bodyCase_ = 14;
       onChanged();;
       return o2MDistributeRequestBuilder_;
     }
@@ -3845,29 +3437,29 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder> o2MDistributeResponseBuilder_;
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public boolean hasO2MDistributeResponse() {
-      return bodyCase_ == 17;
+      return bodyCase_ == 15;
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse getO2MDistributeResponse() {
       if (o2MDistributeResponseBuilder_ == null) {
-        if (bodyCase_ == 17) {
+        if (bodyCase_ == 15) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
       } else {
-        if (bodyCase_ == 17) {
+        if (bodyCase_ == 15) {
           return o2MDistributeResponseBuilder_.getMessage();
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public Builder setO2MDistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse value) {
       if (o2MDistributeResponseBuilder_ == null) {
@@ -3879,11 +3471,11 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MDistributeResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 17;
+      bodyCase_ = 15;
       return this;
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public Builder setO2MDistributeResponse(
         cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder builderForValue) {
@@ -3893,15 +3485,15 @@ private static final long serialVersionUID = 0L;
       } else {
         o2MDistributeResponseBuilder_.setMessage(builderForValue.build());
       }
-      bodyCase_ = 17;
+      bodyCase_ = 15;
       return this;
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public Builder mergeO2MDistributeResponse(cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse value) {
       if (o2MDistributeResponseBuilder_ == null) {
-        if (bodyCase_ == 17 &&
+        if (bodyCase_ == 15 &&
             body_ != cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance()) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.newBuilder((cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_)
               .mergeFrom(value).buildPartial();
@@ -3910,26 +3502,26 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (bodyCase_ == 17) {
+        if (bodyCase_ == 15) {
           o2MDistributeResponseBuilder_.mergeFrom(value);
         }
         o2MDistributeResponseBuilder_.setMessage(value);
       }
-      bodyCase_ = 17;
+      bodyCase_ = 15;
       return this;
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public Builder clearO2MDistributeResponse() {
       if (o2MDistributeResponseBuilder_ == null) {
-        if (bodyCase_ == 17) {
+        if (bodyCase_ == 15) {
           bodyCase_ = 0;
           body_ = null;
           onChanged();
         }
       } else {
-        if (bodyCase_ == 17) {
+        if (bodyCase_ == 15) {
           bodyCase_ = 0;
           body_ = null;
         }
@@ -3938,32 +3530,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder getO2MDistributeResponseBuilder() {
       return getO2MDistributeResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     public cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder getO2MDistributeResponseOrBuilder() {
-      if ((bodyCase_ == 17) && (o2MDistributeResponseBuilder_ != null)) {
+      if ((bodyCase_ == 15) && (o2MDistributeResponseBuilder_ != null)) {
         return o2MDistributeResponseBuilder_.getMessageOrBuilder();
       } else {
-        if (bodyCase_ == 17) {
+        if (bodyCase_ == 15) {
           return (cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse) body_;
         }
         return cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+     * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.Builder, cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder> 
         getO2MDistributeResponseFieldBuilder() {
       if (o2MDistributeResponseBuilder_ == null) {
-        if (!(bodyCase_ == 17)) {
+        if (!(bodyCase_ == 15)) {
           body_ = cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse.getDefaultInstance();
         }
         o2MDistributeResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3973,7 +3565,7 @@ private static final long serialVersionUID = 0L;
                 isClean());
         body_ = null;
       }
-      bodyCase_ = 17;
+      bodyCase_ = 15;
       onChanged();;
       return o2MDistributeResponseBuilder_;
     }

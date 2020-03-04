@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.bytes.jtim.core.protocol.protobuf";
+
+//创建群
+message CreateRequest {
+    string name = 1;
+    string describe = 2; //描述
+    string notice = 3; //公告
+    int32 maxMember = 4; //群最大人数
+    int32 maxManage = 5; //最大管理人数
+}
+
+//删除群
+message RemoveRequest {
+    string groupNumber = 1;
+    string from = 2;
+}
+
+//禁言群
+//目标id是针对的禁言目标，如果为空标识禁言所有
+message ForbiddenRequest {
+    string groupNumber = 1;
+    string from = 2;
+    repeated string targets = 3; //禁言目标，如果没有指定目标全员禁言
+    string time = 4; //1s,1m,1h,1d 根据单位设置
+}
+
+//取消禁言
+message UnForbiddenRequest {
+    string groupNumber = 1;
+    string from = 2;
+    repeated string targets = 3;
+}
+
+//加入群
+message JoinRequest {
+    string groupNumber = 1;
+    string from = 2;
+}
+
+//离开群
+message LeaveRequest {
+    string groupNumber = 1;
+    string from = 2;
+}
+
+//踢出群
+message KickRequest {
+    string groupNumber = 1;
+    string from = 2;
+    string target = 3;
+}
+
+

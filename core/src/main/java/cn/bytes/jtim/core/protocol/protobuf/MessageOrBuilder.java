@@ -69,158 +69,132 @@ public interface MessageOrBuilder extends
   cn.bytes.jtim.core.protocol.protobuf.LogoutResponseOrBuilder getLogoutResponseOrBuilder();
 
   /**
-   * <code>.KichoutRequest kichoutRequest = 6;</code>
-   */
-  boolean hasKichoutRequest();
-  /**
-   * <code>.KichoutRequest kichoutRequest = 6;</code>
-   */
-  cn.bytes.jtim.core.protocol.protobuf.KichoutRequest getKichoutRequest();
-  /**
-   * <code>.KichoutRequest kichoutRequest = 6;</code>
-   */
-  cn.bytes.jtim.core.protocol.protobuf.KichoutRequestOrBuilder getKichoutRequestOrBuilder();
-
-  /**
-   * <code>.KichoutResponse kichoutResponse = 7;</code>
-   */
-  boolean hasKichoutResponse();
-  /**
-   * <code>.KichoutResponse kichoutResponse = 7;</code>
-   */
-  cn.bytes.jtim.core.protocol.protobuf.KichoutResponse getKichoutResponse();
-  /**
-   * <code>.KichoutResponse kichoutResponse = 7;</code>
-   */
-  cn.bytes.jtim.core.protocol.protobuf.KichoutResponseOrBuilder getKichoutResponseOrBuilder();
-
-  /**
-   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
    */
   boolean hasHeartbeatRequest();
   /**
-   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest getHeartbeatRequest();
   /**
-   * <code>.HeartbeatRequest heartbeatRequest = 8;</code>
+   * <code>.HeartbeatRequest heartbeatRequest = 6;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequestOrBuilder getHeartbeatRequestOrBuilder();
 
   /**
-   * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+   * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
    */
   boolean hasHeartbeatResponse();
   /**
-   * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+   * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponse getHeartbeatResponse();
   /**
-   * <code>.HeartbeatResponse heartbeatResponse = 9;</code>
+   * <code>.HeartbeatResponse heartbeatResponse = 7;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.HeartbeatResponseOrBuilder getHeartbeatResponseOrBuilder();
 
   /**
-   * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+   * <code>.O2OSendRequest o2oSendRequest = 8;</code>
    */
   boolean hasO2OSendRequest();
   /**
-   * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+   * <code>.O2OSendRequest o2oSendRequest = 8;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2OSendRequest getO2OSendRequest();
   /**
-   * <code>.O2OSendRequest o2oSendRequest = 10;</code>
+   * <code>.O2OSendRequest o2oSendRequest = 8;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2OSendRequestOrBuilder getO2OSendRequestOrBuilder();
 
   /**
-   * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+   * <code>.O2OSendResponse o2oSendResponse = 9;</code>
    */
   boolean hasO2OSendResponse();
   /**
-   * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+   * <code>.O2OSendResponse o2oSendResponse = 9;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2OSendResponse getO2OSendResponse();
   /**
-   * <code>.O2OSendResponse o2oSendResponse = 11;</code>
+   * <code>.O2OSendResponse o2oSendResponse = 9;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2OSendResponseOrBuilder getO2OSendResponseOrBuilder();
 
   /**
-   * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
    */
   boolean hasO2ODistributeRequest();
   /**
-   * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequest getO2ODistributeRequest();
   /**
-   * <code>.O2ODistributeRequest o2oDistributeRequest = 12;</code>
+   * <code>.O2ODistributeRequest o2oDistributeRequest = 10;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2ODistributeRequestOrBuilder getO2ODistributeRequestOrBuilder();
 
   /**
-   * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
    */
   boolean hasO2ODistributeResponse();
   /**
-   * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse getO2ODistributeResponse();
   /**
-   * <code>.O2ODistributeResponse o2oDistributeResponse = 13;</code>
+   * <code>.O2ODistributeResponse o2oDistributeResponse = 11;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponseOrBuilder getO2ODistributeResponseOrBuilder();
 
   /**
-   * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+   * <code>.O2MSendRequest o2mSendRequest = 12;</code>
    */
   boolean hasO2MSendRequest();
   /**
-   * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+   * <code>.O2MSendRequest o2mSendRequest = 12;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MSendRequest getO2MSendRequest();
   /**
-   * <code>.O2MSendRequest o2mSendRequest = 14;</code>
+   * <code>.O2MSendRequest o2mSendRequest = 12;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MSendRequestOrBuilder getO2MSendRequestOrBuilder();
 
   /**
-   * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+   * <code>.O2MSendResponse o2mSendResponse = 13;</code>
    */
   boolean hasO2MSendResponse();
   /**
-   * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+   * <code>.O2MSendResponse o2mSendResponse = 13;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MSendResponse getO2MSendResponse();
   /**
-   * <code>.O2MSendResponse o2mSendResponse = 15;</code>
+   * <code>.O2MSendResponse o2mSendResponse = 13;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MSendResponseOrBuilder getO2MSendResponseOrBuilder();
 
   /**
-   * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
    */
   boolean hasO2MDistributeRequest();
   /**
-   * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequest getO2MDistributeRequest();
   /**
-   * <code>.O2MDistributeRequest o2mDistributeRequest = 16;</code>
+   * <code>.O2MDistributeRequest o2mDistributeRequest = 14;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MDistributeRequestOrBuilder getO2MDistributeRequestOrBuilder();
 
   /**
-   * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
    */
   boolean hasO2MDistributeResponse();
   /**
-   * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponse getO2MDistributeResponse();
   /**
-   * <code>.O2MDistributeResponse o2mDistributeResponse = 17;</code>
+   * <code>.O2MDistributeResponse o2mDistributeResponse = 15;</code>
    */
   cn.bytes.jtim.core.protocol.protobuf.O2MDistributeResponseOrBuilder getO2MDistributeResponseOrBuilder();
 

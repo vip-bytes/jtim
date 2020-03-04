@@ -51,23 +51,20 @@ message Message {
         LogoutRequest logoutRequest = 4;
         LogoutResponse logoutResponse = 5;
 
-        KichoutRequest kichoutRequest = 6;
-        KichoutResponse kichoutResponse = 7;
+        HeartbeatRequest heartbeatRequest = 6;
+        HeartbeatResponse heartbeatResponse = 7;
 
-        HeartbeatRequest heartbeatRequest = 8;
-        HeartbeatResponse heartbeatResponse = 9;
+        O2OSendRequest o2oSendRequest = 8;
+        O2OSendResponse o2oSendResponse = 9;
 
-        O2OSendRequest o2oSendRequest = 10;
-        O2OSendResponse o2oSendResponse = 11;
+        O2ODistributeRequest o2oDistributeRequest = 10;
+        O2ODistributeResponse o2oDistributeResponse = 11;
 
-        O2ODistributeRequest o2oDistributeRequest = 12;
-        O2ODistributeResponse o2oDistributeResponse = 13;
+        O2MSendRequest o2mSendRequest = 12;
+        O2MSendResponse o2mSendResponse = 13;
 
-        O2MSendRequest o2mSendRequest = 14;
-        O2MSendResponse o2mSendResponse = 15;
-
-        O2MDistributeRequest o2mDistributeRequest = 16;
-        O2MDistributeResponse o2mDistributeResponse = 17;
+        O2MDistributeRequest o2mDistributeRequest = 14;
+        O2MDistributeResponse o2mDistributeResponse = 15;
     }
 
 }
