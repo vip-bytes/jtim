@@ -1,0 +1,49 @@
+package cn.bytes.jtim.logic.rpc;
+
+import cn.bytes.jtim.core.protocol.protobuf.*;
+import cn.bytes.jtim.core.service.GroupService;
+
+/**
+ * 群操作处理
+ *
+ * @version 1.0
+ * @date 2020/3/9 10:30
+ */
+public class GroupServiceImpl implements GroupService {
+
+    @Override
+    public DefineResponse create(CreateRequest createRequest) {
+        return null;
+    }
+
+    @Override
+    public DefineResponse remove(RemoveRequest removeRequest) {
+        return null;
+    }
+
+    @Override
+    public DefineResponse forbidden(ForbiddenRequest forbiddenRequest) {
+        return null;
+    }
+
+    @Override
+    public DefineResponse unForbidden(UnForbiddenRequest unForbiddenRequest) {
+        return null;
+    }
+
+    @Override
+    public DefineResponse join(JoinRequest joinRequest) {
+        return null;
+    }
+
+    @Override
+    public DefineResponse leave(LeaveRequest leaveRequest) {
+        return null;
+    }
+
+    @Override
+    public DefineResponse kick(KickRequest kickRequest) {
+        return null;
+    }
+
+}

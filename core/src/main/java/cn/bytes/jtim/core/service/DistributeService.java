@@ -11,6 +11,7 @@ import cn.bytes.jtim.core.protocol.protobuf.O2ODistributeResponse;
  * @version 1.0
  * @date 2020/3/2 16:47
  */
+@Deprecated
 public interface DistributeService {
 
     /**
