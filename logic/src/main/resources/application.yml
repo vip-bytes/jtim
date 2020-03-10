@@ -21,4 +21,12 @@ dubbo:
     protocol: zookeeper
     address: 127.0.0.1:2182
 
-#spring datasource
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    lazy-loading-enabled: true
+  type-enums-package:
+  type-aliases-package: com.bytes.jtim.logic.domain

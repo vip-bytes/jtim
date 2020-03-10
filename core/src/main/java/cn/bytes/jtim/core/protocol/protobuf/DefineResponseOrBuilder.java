@@ -13,9 +13,9 @@ public interface DefineResponseOrBuilder extends
   boolean getResult();
 
   /**
-   * <code>int32 ts = 2;</code>
+   * <code>int64 ts = 2;</code>
    */
-  int getTs();
+  long getTs();
 
   /**
    * <code>string message = 3;</code>

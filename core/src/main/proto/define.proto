@@ -6,7 +6,7 @@ option java_package = "cn.bytes.jtim.core.protocol.protobuf";
 //默认的返回信息
 message DefineResponse {
     bool result = 1;
-    int32 ts = 2;
+    int64 ts = 2;
     string message = 3;
 }
 

@@ -34,7 +34,7 @@ public final class Define {
   static {
     java.lang.String[] descriptorData = {
       "\n\014define.proto\"=\n\016DefineResponse\022\016\n\006resu" +
-      "lt\030\001 \001(\010\022\n\n\002ts\030\002 \001(\005\022\017\n\007message\030\003 \001(\t\"\033\n" +
+      "lt\030\001 \001(\010\022\n\n\002ts\030\002 \001(\003\022\017\n\007message\030\003 \001(\t\"\033\n" +
       "\nAckRequest\022\r\n\005msgId\030\001 \001(\tB(\n$cn.bytes.j" +
       "tim.core.protocol.protobufP\001b\006proto3"
     };

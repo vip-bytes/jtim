@@ -1,17 +1,7 @@
-package cn.bytes.jtim.logic.rpc;
+package cn.bytes.jtim.logic.service.rpc;
 
-import cn.bytes.jtim.core.protocol.protobuf.DefineResponse;
+import cn.bytes.jtim.logic.service.BasicService;
 
-/**
- *
- */
-public class BasicRpcService {
+public class BasicRpcService extends BasicService {
 
-    public DefineResponse responseOK() {
-        return DefineResponse.newBuilder()
-                .setResult(true)
-                .setTs(System.currentTimeMillis())
-                .setMessage("操作成功")
-                .build();
-    }
 }

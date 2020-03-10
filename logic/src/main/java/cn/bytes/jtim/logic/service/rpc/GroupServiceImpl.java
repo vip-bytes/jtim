@@ -1,4 +1,4 @@
-package cn.bytes.jtim.logic.rpc;
+package cn.bytes.jtim.logic.service.rpc;
 
 import cn.bytes.jtim.core.protocol.protobuf.*;
 import cn.bytes.jtim.core.service.GroupService;
