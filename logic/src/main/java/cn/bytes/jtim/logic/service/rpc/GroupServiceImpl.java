@@ -9,11 +9,11 @@ import cn.bytes.jtim.core.service.GroupService;
  * @version 1.0
  * @date 2020/3/9 10:30
  */
-public class GroupServiceImpl implements GroupService {
+public class GroupServiceImpl extends BasicRpcService implements GroupService {
 
     @Override
     public DefineResponse create(CreateRequest createRequest) {
-        return null;
+        return responseOK();
     }
 
     @Override
