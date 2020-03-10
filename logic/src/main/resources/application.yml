@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: jtim-logic-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    hikari:
+      maximum-pool-size: 50
+      idle-timeout: 30000
+    type: com.zaxxer.hikari.HikariDataSource
+
+dubbo:
+  scan:
+    base-packages: cn.bytes.jtim.logic.rpc
+  protocol:
+    port: -1
+  provider:
+    filter: dubboExceptionFileter
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2182
+
+#spring datasource
