@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module;
 
-import cn.bytes.jtim.core.config.Configuration;
+import cn.bytes.jtim.core.channel.config.Configuration;
 
 /**
  * @version 1.0

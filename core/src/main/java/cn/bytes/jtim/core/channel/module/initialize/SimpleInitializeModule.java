@@ -1,11 +1,11 @@
 package cn.bytes.jtim.core.channel.module.initialize;
 
-import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.config.SocketConfig;
-import cn.bytes.jtim.core.module.AbstractSimpleModule;
-import cn.bytes.jtim.core.module.handler.ChannelHandlerModule;
-import cn.bytes.jtim.core.module.retry.RetryModule;
-import cn.bytes.jtim.core.module.retry.SimpleRetryModule;
+import cn.bytes.jtim.core.channel.config.Configuration;
+import cn.bytes.jtim.core.channel.config.SocketConfig;
+import cn.bytes.jtim.core.channel.module.AbstractSimpleModule;
+import cn.bytes.jtim.core.channel.module.handler.ChannelHandlerModule;
+import cn.bytes.jtim.core.channel.module.retry.RetryModule;
+import cn.bytes.jtim.core.channel.module.retry.SimpleRetryModule;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;

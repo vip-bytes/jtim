@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.channel.module;
 
-import cn.bytes.jtim.core.config.Configuration;
-import com.sinoiov.pay.common.util.ThreadPoolUtils;
+import cn.bytes.jtim.core.channel.config.Configuration;
+import cn.bytes.jtim.core.utils.ThreadPoolUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module.retry;
 
-import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.channel.module.Module;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;

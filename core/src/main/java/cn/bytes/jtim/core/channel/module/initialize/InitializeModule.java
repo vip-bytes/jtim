@@ -1,8 +1,8 @@
 package cn.bytes.jtim.core.channel.module.initialize;
 
-import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.module.Module;
-import cn.bytes.jtim.core.module.retry.RetryModule;
+import cn.bytes.jtim.core.channel.config.Configuration;
+import cn.bytes.jtim.core.channel.module.Module;
+import cn.bytes.jtim.core.channel.module.retry.RetryModule;
 
 /**
  * 初始模块

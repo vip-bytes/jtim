@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module.initialize;
 
-import cn.bytes.jtim.core.config.Configuration;
+import cn.bytes.jtim.core.channel.config.Configuration;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
