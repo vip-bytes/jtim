@@ -1,6 +1,6 @@
 package cn.bytes.jtim.connector.validator.annotation;
 
-import com.sinoiov.pay.core.validator.configuration.AutoEnableParamValidatorImportSelector;
+import cn.bytes.jtim.connector.validator.configuration.AutoEnableParamValidatorImportSelector;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

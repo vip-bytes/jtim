@@ -23,8 +23,8 @@ message Message {
         LogoutRequest = 2;
         LogoutResponse = 3;
 
-        KichoutRequest = 4;
-        KichoutResponse = 5;
+        //        KichoutRequest = 4;
+        //        KichoutResponse = 5;
 
         HeartbeatRequest = 6;
         HeartbeatResponse = 7;

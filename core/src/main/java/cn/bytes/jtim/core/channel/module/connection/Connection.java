@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module.connection;
 
-import cn.bytes.jtim.common.enums.ConnectionSource;
+import ch.qos.logback.core.db.ConnectionSource;
 import io.netty.channel.Channel;
 import lombok.Builder;
 import lombok.Data;

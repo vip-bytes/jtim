@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.channel.module.handler.codec;
 
-import cn.bytes.jtim.core.config.Configuration;
-import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.channel.config.Configuration;
+import cn.bytes.jtim.core.channel.module.Module;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.SimpleChannelInboundHandler;
 

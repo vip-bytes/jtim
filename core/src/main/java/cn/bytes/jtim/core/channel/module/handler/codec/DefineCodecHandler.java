@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module.handler.codec;
 
-import cn.bytes.jtim.core.module.ModuleWare;
+import cn.bytes.jtim.core.channel.module.ModuleWare;
 import io.netty.channel.ChannelHandler;
 
 /**

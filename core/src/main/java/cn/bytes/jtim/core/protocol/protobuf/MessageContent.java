@@ -29,7 +29,7 @@ public final class MessageContent {
   static {
     java.lang.String[] descriptorData = {
       "\n\rmessage.proto\032\nauth.proto\032\016transfer.pr" +
-      "oto\032\020distribute.proto\"\240\010\n\007Message\022\031\n\003cmd" +
+      "oto\032\020distribute.proto\"\367\007\n\007Message\022\031\n\003cmd" +
       "\030\001 \001(\0162\014.Message.Cmd\022#\n\013authRequest\030\002 \001(" +
       "\0132\014.AuthRequestH\000\022%\n\014authResponse\030\003 \001(\0132" +
       "\r.AuthResponseH\000\022\'\n\rlogoutRequest\030\004 \001(\0132" +
@@ -46,18 +46,17 @@ public final class MessageContent {
       "+\n\017o2mSendResponse\030\r \001(\0132\020.O2MSendRespon" +
       "seH\000\0225\n\024o2mDistributeRequest\030\016 \001(\0132\025.O2M" +
       "DistributeRequestH\000\0227\n\025o2mDistributeResp" +
-      "onse\030\017 \001(\0132\026.O2MDistributeResponseH\000\"\341\002\n" +
+      "onse\030\017 \001(\0132\026.O2MDistributeResponseH\000\"\270\002\n" +
       "\003Cmd\022\017\n\013AuthRequest\020\000\022\020\n\014AuthResponse\020\001\022" +
-      "\021\n\rLogoutRequest\020\002\022\022\n\016LogoutResponse\020\003\022\022" +
-      "\n\016KichoutRequest\020\004\022\023\n\017KichoutResponse\020\005\022" +
-      "\024\n\020HeartbeatRequest\020\006\022\025\n\021HeartbeatRespon" +
-      "se\020\007\022\022\n\016O2OSendRequest\020\010\022\023\n\017O2OSendRespo" +
-      "nse\020\t\022\030\n\024O2ODistributeRequest\020\n\022\031\n\025O2ODi" +
-      "stributeResponse\020\013\022\022\n\016O2MSendRequest\020\014\022\023" +
-      "\n\017O2MSendResponse\020\r\022\030\n\024O2MDistributeRequ" +
-      "est\020\016\022\031\n\025O2MDistributeResponse\020\017B\006\n\004Body" +
-      "B8\n$cn.bytes.jtim.core.protocol.protobuf" +
-      "B\016MessageContentP\001b\006proto3"
+      "\021\n\rLogoutRequest\020\002\022\022\n\016LogoutResponse\020\003\022\024" +
+      "\n\020HeartbeatRequest\020\006\022\025\n\021HeartbeatRespons" +
+      "e\020\007\022\022\n\016O2OSendRequest\020\010\022\023\n\017O2OSendRespon" +
+      "se\020\t\022\030\n\024O2ODistributeRequest\020\n\022\031\n\025O2ODis" +
+      "tributeResponse\020\013\022\022\n\016O2MSendRequest\020\014\022\023\n" +
+      "\017O2MSendResponse\020\r\022\030\n\024O2MDistributeReque" +
+      "st\020\016\022\031\n\025O2MDistributeResponse\020\017B\006\n\004BodyB" +
+      "8\n$cn.bytes.jtim.core.protocol.protobufB" +
+      "\016MessageContentP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

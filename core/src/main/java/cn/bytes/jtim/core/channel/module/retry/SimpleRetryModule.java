@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.channel.module.retry;
 
-import cn.bytes.jtim.core.module.AbstractSimpleModule;
-import com.sinoiov.pay.common.util.ThreadPoolUtils;
+import cn.bytes.jtim.core.channel.module.AbstractSimpleModule;
+import cn.bytes.jtim.core.utils.ThreadPoolUtils;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

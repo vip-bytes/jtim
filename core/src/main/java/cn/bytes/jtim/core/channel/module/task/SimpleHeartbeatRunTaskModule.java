@@ -1,7 +1,7 @@
 package cn.bytes.jtim.core.channel.module.task;
 
-import cn.bytes.jtim.core.module.connection.Connection;
-import cn.bytes.jtim.core.module.connection.ConnectionModule;
+import cn.bytes.jtim.core.channel.module.connection.Connection;
+import cn.bytes.jtim.core.channel.module.connection.ConnectionModule;
 import cn.bytes.jtim.core.protocol.protobuf.HeartbeatRequest;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import com.google.protobuf.ByteString;

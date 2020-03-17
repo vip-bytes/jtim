@@ -298,14 +298,6 @@ private static final long serialVersionUID = 0L;
      */
     LogoutResponse(3),
     /**
-     * <code>KichoutRequest = 4;</code>
-     */
-    KichoutRequest(4),
-    /**
-     * <code>KichoutResponse = 5;</code>
-     */
-    KichoutResponse(5),
-    /**
      * <code>HeartbeatRequest = 6;</code>
      */
     HeartbeatRequest(6),
@@ -364,14 +356,6 @@ private static final long serialVersionUID = 0L;
      * <code>LogoutResponse = 3;</code>
      */
     public static final int LogoutResponse_VALUE = 3;
-    /**
-     * <code>KichoutRequest = 4;</code>
-     */
-    public static final int KichoutRequest_VALUE = 4;
-    /**
-     * <code>KichoutResponse = 5;</code>
-     */
-    public static final int KichoutResponse_VALUE = 5;
     /**
      * <code>HeartbeatRequest = 6;</code>
      */
@@ -436,8 +420,6 @@ private static final long serialVersionUID = 0L;
         case 1: return AuthResponse;
         case 2: return LogoutRequest;
         case 3: return LogoutResponse;
-        case 4: return KichoutRequest;
-        case 5: return KichoutResponse;
         case 6: return HeartbeatRequest;
         case 7: return HeartbeatResponse;
         case 8: return O2OSendRequest;

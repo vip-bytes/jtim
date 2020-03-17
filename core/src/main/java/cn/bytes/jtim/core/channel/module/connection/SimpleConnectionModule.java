@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module.connection;
 
-import cn.bytes.jtim.core.module.AbstractSimpleModule;
+import cn.bytes.jtim.core.channel.module.AbstractSimpleModule;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package cn.bytes.jtim.connector.validator.configuration;
 
-import com.sinoiov.pay.core.validator.Intercept;
-import com.sinoiov.pay.core.validator.ValidatorHelper;
+import cn.bytes.jtim.connector.validator.Intercept;
+import cn.bytes.jtim.connector.validator.ValidatorHelper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

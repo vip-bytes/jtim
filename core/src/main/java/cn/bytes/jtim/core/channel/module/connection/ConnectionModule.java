@@ -1,6 +1,6 @@
 package cn.bytes.jtim.core.channel.module.connection;
 
-import cn.bytes.jtim.core.module.Module;
+import cn.bytes.jtim.core.channel.module.Module;
 import cn.bytes.jtim.core.protocol.protobuf.Message;
 import io.netty.channel.Channel;
 
