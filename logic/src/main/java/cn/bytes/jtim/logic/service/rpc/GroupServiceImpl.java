@@ -2,6 +2,7 @@ package cn.bytes.jtim.logic.service.rpc;
 
 import cn.bytes.jtim.core.protocol.protobuf.*;
 import cn.bytes.jtim.core.service.GroupService;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * 群操作处理
@@ -9,6 +10,7 @@ import cn.bytes.jtim.core.service.GroupService;
  * @version 1.0
  * @date 2020/3/9 10:30
  */
+@Service
 public class GroupServiceImpl extends BasicRpcService implements GroupService {
 
     @Override
