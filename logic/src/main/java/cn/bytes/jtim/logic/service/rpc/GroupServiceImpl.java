@@ -2,6 +2,7 @@ package cn.bytes.jtim.logic.service.rpc;
 
 import cn.bytes.jtim.core.protocol.protobuf.*;
 import cn.bytes.jtim.core.service.GroupService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 
 /**
@@ -10,6 +11,7 @@ import org.apache.dubbo.config.annotation.Service;
  * @version 1.0
  * @date 2020/3/9 10:30
  */
+@Slf4j
 @Service
 public class GroupServiceImpl extends BasicRpcService implements GroupService {
 
