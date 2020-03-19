@@ -30,7 +30,7 @@ public class WebsocketHttpRequestCodecInboundHandler extends AbstractSimpleCodec
 
     private static final String TOKEN = "token";
 
-    private static final String WEBSOCKET_PATH = "/ws";
+    public static final String WEBSOCKET_PATH = "/ws";
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpRequest request) throws Exception {
