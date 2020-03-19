@@ -11,8 +11,11 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketServerCompressionHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @version 1.0
@@ -50,7 +53,8 @@ public class WebsocketServer implements InitializingBean {
             super(configuration);
             this.then(
                     new WebsocketServerChannelHandler(configuration)
-                            .codec(new WebsocketCodecInboundHandler())
+                            .codec(new WebsocketHttpRequestCodecInboundHandler())
+                            .codec(new WebsocketFrameCodecInboundHandler())
             );
         }
     }
@@ -72,7 +76,8 @@ public class WebsocketServer implements InitializingBean {
                     .addLast(new HttpServerCodec())
                     .addLast(new HttpObjectAggregator(this.configuration.getMaxHttpContentLength()))
                     .addLast(new WebSocketServerCompressionHandler())
-                    .addLast(new WebSocketServerProtocolHandler("/ws", null, true, this.configuration.getMaxWebsocketFrameSize()));
+                    .addLast(new WebSocketServerProtocolHandler("/ws", null, true, this.configuration.getMaxWebsocketFrameSize()))
+                    .addLast(new IdleStateHandler(this.configuration.getHeartbeatTime(), 0, 0, TimeUnit.SECONDS));
         }
     }
 

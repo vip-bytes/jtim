@@ -10,11 +10,17 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
  * @date 2020/3/19 9:20
  */
 @ChannelHandler.Sharable
-public class WebsocketCodecInboundHandler extends AbstractSimpleCodecInboundHandler<WebSocketFrame> {
+public class WebsocketFrameCodecInboundHandler extends AbstractSimpleCodecInboundHandler<WebSocketFrame> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, WebSocketFrame webSocketFrame) throws Exception {
 
     }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        super.userEventTriggered(ctx, evt);
+    }
+
 
 }

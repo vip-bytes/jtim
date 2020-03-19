@@ -22,6 +22,9 @@ public abstract class SimpleChannelHandlerModule extends AbstractSimpleModule im
 
     private final Deque<DefineCodecHandler> defineCodecHandlers = new LinkedList<>();
 
+    public SimpleChannelHandlerModule() {
+    }
+
     @Override
     public void optionHandler(ChannelPipeline channelPipeline) {
         this.optionHandler0(channelPipeline);
