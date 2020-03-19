@@ -3,8 +3,14 @@ package cn.bytes.jtim.connector.websocket;
 import cn.bytes.jtim.connector.configuration.WebsocketConfigurationProperties;
 import cn.bytes.jtim.core.channel.config.Configuration;
 import cn.bytes.jtim.core.channel.config.SocketConfig;
+import cn.bytes.jtim.core.channel.module.handler.SimpleChannelHandlerModule;
 import cn.bytes.jtim.core.channel.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.channel.module.initialize.SimpleServerInitializeModule;
+import io.netty.channel.ChannelPipeline;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
+import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketServerCompressionHandler;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
@@ -26,11 +32,55 @@ public class WebsocketServer implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
 
         Configuration configuration = getConfiguration();
-
         InitializeModule websocketServerInitialize = new WebsocketServerInitialize(configuration);
         websocketServerInitialize.open();
     }
 
+    private boolean isLinux() {
+        String osName = System.getProperty("os.name");
+        return osName.toLowerCase().contains("linux");
+    }
+
+    /**
+     * websocket服务
+     */
+    static class WebsocketServerInitialize extends SimpleServerInitializeModule {
+
+        public WebsocketServerInitialize(Configuration configuration) {
+            super(configuration);
+            this.then(
+                    new WebsocketServerChannelHandler(configuration)
+                            .codec(new WebsocketCodecInboundHandler())
+            );
+        }
+    }
+
+    /**
+     * websocket处理
+     */
+    static class WebsocketServerChannelHandler extends SimpleChannelHandlerModule {
+
+        private Configuration configuration;
+
+        public WebsocketServerChannelHandler(Configuration configuration) {
+            this.configuration = configuration;
+        }
+
+        @Override
+        public void optionHandler0(ChannelPipeline channelPipeline) {
+            channelPipeline
+                    .addLast(new HttpServerCodec())
+                    .addLast(new HttpObjectAggregator(this.configuration.getMaxHttpContentLength()))
+                    .addLast(new WebSocketServerCompressionHandler())
+                    .addLast(new WebSocketServerProtocolHandler("/ws", null, true, this.configuration.getMaxWebsocketFrameSize()));
+        }
+    }
+
+    /**
+     * 配置信息
+     *
+     * @return
+     */
     private Configuration getConfiguration() {
 
         Configuration configuration = new Configuration();
@@ -56,19 +106,5 @@ public class WebsocketServer implements InitializingBean {
         return configuration;
 
     }
-
-    private boolean isLinux() {
-        String osName = System.getProperty("os.name");
-        return osName.toLowerCase().contains("linux");
-    }
-
-    static class WebsocketServerInitialize extends SimpleServerInitializeModule {
-
-        public WebsocketServerInitialize(Configuration configuration) {
-            super(configuration);
-        }
-
-    }
-
 
 }

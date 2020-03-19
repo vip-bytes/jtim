@@ -1,6 +1,5 @@
 package cn.bytes.jtim.logic;
 
-import cn.bytes.jtim.core.service.TestService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1")
 public class TestCon {
 
-    private final TestService testService;
-
-    public TestCon(TestService testService) {
-        this.testService = testService;
-    }
-
-    @RequestMapping("/vds")
-    public String print() {
-
-
-        System.out.println(testService.sayHello("调用2") + "========>>.");
-        return "123";
-    }
+//    private final TestService testService;
+//
+//    public TestCon(TestService testService) {
+//        this.testService = testService;
+//    }
+//
+//    @RequestMapping("/vds")
+//    public String print() {
+//
+//
+//        System.out.println(testService.sayHello("调用2") + "========>>.");
+//        return "123";
+//    }
 }
