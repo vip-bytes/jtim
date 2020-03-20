@@ -9,7 +9,6 @@ import java.lang.annotation.*;
  * All rights Reserved
  * <p>标识是否开启参数校验</p>
  *
- * @author maliang
  * @version V1.0
  */
 @Documented
