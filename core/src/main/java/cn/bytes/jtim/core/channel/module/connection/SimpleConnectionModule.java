@@ -28,19 +28,15 @@ public class SimpleConnectionModule extends AbstractSimpleModule implements Conn
             return this;
         }
         store.putIfAbsent(connection.getChannelId(), connection);
-        log.info("保存连接:connection={} 当前连接数:{}",
-                connection,
-                this.onLine());
+        log.info("保存连接,当前连接数:{} connection={}",
+                this.onLine(),
+                connection);
         return this;
     }
 
     @Override
     public ConnectionModule removeConnection(Connection connection) {
-        if (Objects.isNull(connection)) {
-            log.debug(" removeConnection 连接信息为空");
-            return this;
-        }
-        store.remove(connection.getChannelId());
+        this.removeConnection(connection.getChannel());
         return this;
     }
 
@@ -50,9 +46,9 @@ public class SimpleConnectionModule extends AbstractSimpleModule implements Conn
             return this;
         }
         Connection delConnection = store.remove(channel.id().asLongText());
-        log.info("删除连接:connection={} 当前连接数:{}",
-                delConnection,
-                this.onLine());
+        log.info("删除连接,当前连接数:{} connection={}",
+                this.onLine(),
+                delConnection);
         return this;
     }
 

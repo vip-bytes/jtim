@@ -7,6 +7,7 @@ import cn.bytes.jtim.core.channel.module.connection.SimpleConnectionModule;
 import cn.bytes.jtim.core.channel.module.handler.SimpleChannelHandlerModule;
 import cn.bytes.jtim.core.channel.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.channel.module.initialize.SimpleServerInitializeModule;
+import cn.bytes.jtim.core.constant.DefineConstant;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
@@ -78,7 +79,7 @@ public class WebsocketServer implements InitializingBean {
                     .addLast(new HttpServerCodec())
                     .addLast(new HttpObjectAggregator(this.configuration.getMaxHttpContentLength()))
                     .addLast(new WebSocketServerCompressionHandler())
-                    .addLast(new WebSocketServerProtocolHandler("/ws", null, true, this.configuration.getMaxWebsocketFrameSize()))
+                    .addLast(new WebSocketServerProtocolHandler(DefineConstant.WEBSOCKET_PATH, null, true, this.configuration.getMaxWebsocketFrameSize()))
                     .addLast(new IdleStateHandler(this.configuration.getHeartbeatTime(), 0, 0, TimeUnit.SECONDS));
 
         }

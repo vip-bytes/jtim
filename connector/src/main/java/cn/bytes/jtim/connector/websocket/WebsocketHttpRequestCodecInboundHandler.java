@@ -3,6 +3,7 @@ package cn.bytes.jtim.connector.websocket;
 import cn.bytes.jtim.core.channel.module.connection.Connection;
 import cn.bytes.jtim.core.channel.module.connection.ConnectionModule;
 import cn.bytes.jtim.core.channel.module.handler.codec.AbstractSimpleCodecInboundHandler;
+import cn.bytes.jtim.core.constant.DefineConstant;
 import com.google.common.collect.Lists;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -31,63 +32,71 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 @Slf4j
 public class WebsocketHttpRequestCodecInboundHandler extends AbstractSimpleCodecInboundHandler<FullHttpRequest> {
 
-    private static final String TOKEN = "token";
-
-    private static final String SOURCE = "source";
-
-    public static final String WEBSOCKET_PATH = "/ws";
-
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpRequest request) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
         boolean decoderResult = request.decoderResult().isSuccess();
         if (!decoderResult) {
-            sendHttpResponse(channelHandlerContext, request, new DefaultFullHttpResponse(HTTP_1_1, BAD_REQUEST));
+            sendHttpResponse(ctx, request, new DefaultFullHttpResponse(HTTP_1_1, BAD_REQUEST));
             return;
         }
 
         // method  = get,post
         HttpMethod method = request.method();
         if (!method.equals(HttpMethod.GET) && !method.equals(HttpMethod.POST)) {
-            sendHttpResponse(channelHandlerContext, request, new DefaultFullHttpResponse(HTTP_1_1, FORBIDDEN));
+            sendHttpResponse(ctx, request, new DefaultFullHttpResponse(HTTP_1_1, FORBIDDEN));
             return;
         }
 
         //token 验证
-        final String token = getParam(request, TOKEN);
+        final String token = getParam(request, DefineConstant.TOKEN);
         if (StringUtils.isBlank(token)) {
-            sendHttpResponse(channelHandlerContext, request, new DefaultFullHttpResponse(HTTP_1_1, UNAUTHORIZED));
+            sendHttpResponse(ctx, request, new DefaultFullHttpResponse(HTTP_1_1, UNAUTHORIZED));
             return;
         }
 
         // TODO: 2020/3/19 验证对于的token信息
         WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(getWebSocketLocation(request), null, true);
         WebSocketServerHandshaker webSocketServerHandshaker = wsFactory.newHandshaker(request);
+
+        final Channel channel = ctx.channel();
+
         if (Objects.isNull(webSocketServerHandshaker)) {
-            WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(channelHandlerContext.channel());
+            WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(channel);
         } else {
-            ChannelFuture channelFuture = webSocketServerHandshaker.handshake(channelHandlerContext.channel(), request);
+            ChannelFuture channelFuture = webSocketServerHandshaker.handshake(channel, request);
 
-            final Channel channel = channelHandlerContext.channel();
             if (channelFuture.isSuccess()) {
-                log.info("[{}]连接握手成功!", channel);
-
                 // TODO: 2020/3/20  完善信息
-                ConnectionModule connectionModule = this.getHost().getModule(ConnectionModule.class);
-                connectionModule.saveConnection(Connection.builder()
+                Connection connection = Connection.builder()
                         .channel(channel)
                         .channelId(channel.id().asLongText())
                         .clientTime(System.currentTimeMillis())
                         .token(token)
-                        .source(getParam(request, SOURCE))
-                        .build());
+                        .source(getParam(request, DefineConstant.SOURCE))
+                        .build();
+
+                channel.attr(DefineConstant.ATTRIBUTE_CONNECTION).set(connection);
+                log.info("认证成功 {}", connection);
+                ConnectionModule connectionModule = this.getHost().getModule(ConnectionModule.class);
+                connectionModule.saveConnection(connection);
+            } else {
+                log.info("认证失败 {}", ctx);
+                ctx.close();
             }
         }
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        final Channel channel = ctx.channel();
         ConnectionModule connectionModule = this.getHost().getModule(ConnectionModule.class);
-        connectionModule.removeConnection(ctx.channel());
+        Connection connection = channel.attr(DefineConstant.ATTRIBUTE_CONNECTION).get();
+        connectionModule.removeConnection(connection);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        log.info("连接成功 {}", ctx);
     }
 
     @Override
@@ -108,7 +117,7 @@ public class WebsocketHttpRequestCodecInboundHandler extends AbstractSimpleCodec
      * @return
      */
     private static String getWebSocketLocation(FullHttpRequest request) {
-        String location = request.headers().get(HttpHeaderNames.HOST) + WEBSOCKET_PATH;
+        String location = request.headers().get(HttpHeaderNames.HOST) + DefineConstant.WEBSOCKET_PATH;
         return "ws://" + location;
     }
 
