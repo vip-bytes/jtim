@@ -1,6 +1,5 @@
 package cn.bytes.jtim.core.channel.module.connection;
 
-import ch.qos.logback.core.db.ConnectionSource;
 import io.netty.channel.Channel;
 import lombok.Builder;
 import lombok.Data;
@@ -43,7 +42,7 @@ public class Connection {
      * 连接来源
      * js,java,golang,android,ios
      */
-    private ConnectionSource connectionSource;
+    private String source;
 
     private long clientTime;
 

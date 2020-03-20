@@ -1,9 +1,12 @@
 package cn.bytes.jtim.connector.websocket;
 
+import cn.bytes.jtim.core.channel.module.connection.Connection;
+import cn.bytes.jtim.core.channel.module.connection.ConnectionModule;
 import cn.bytes.jtim.core.channel.module.handler.codec.AbstractSimpleCodecInboundHandler;
 import com.google.common.collect.Lists;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -30,6 +33,8 @@ public class WebsocketHttpRequestCodecInboundHandler extends AbstractSimpleCodec
 
     private static final String TOKEN = "token";
 
+    private static final String SOURCE = "source";
+
     public static final String WEBSOCKET_PATH = "/ws";
 
     @Override
@@ -47,20 +52,8 @@ public class WebsocketHttpRequestCodecInboundHandler extends AbstractSimpleCodec
             return;
         }
 
-        //request uri
-        if ("/favicon.ico".equals(request.uri()) || ("/".equals(request.uri()))) {
-            sendHttpResponse(channelHandlerContext, request, new DefaultFullHttpResponse(HTTP_1_1, NOT_FOUND));
-            return;
-        }
-
         //token 验证
-        QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.uri());
-        Map<String, List<String>> params = queryStringDecoder.parameters();
-        if (params == null || !params.containsKey(TOKEN)) {
-            sendHttpResponse(channelHandlerContext, request, new DefaultFullHttpResponse(HTTP_1_1, NOT_FOUND));
-            return;
-        }
-        final String token = params.getOrDefault(TOKEN, Lists.newArrayList()).get(0);
+        final String token = getParam(request, TOKEN);
         if (StringUtils.isBlank(token)) {
             sendHttpResponse(channelHandlerContext, request, new DefaultFullHttpResponse(HTTP_1_1, UNAUTHORIZED));
             return;
@@ -73,10 +66,39 @@ public class WebsocketHttpRequestCodecInboundHandler extends AbstractSimpleCodec
             WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(channelHandlerContext.channel());
         } else {
             ChannelFuture channelFuture = webSocketServerHandshaker.handshake(channelHandlerContext.channel(), request);
+
+            final Channel channel = channelHandlerContext.channel();
             if (channelFuture.isSuccess()) {
-                log.info("[{}]连接握手成功!", channelHandlerContext.channel());
+                log.info("[{}]连接握手成功!", channel);
+
+                // TODO: 2020/3/20  完善信息
+                ConnectionModule connectionModule = this.getHost().getModule(ConnectionModule.class);
+                connectionModule.saveConnection(Connection.builder()
+                        .channel(channel)
+                        .channelId(channel.id().asLongText())
+                        .clientTime(System.currentTimeMillis())
+                        .token(token)
+                        .source(getParam(request, SOURCE))
+                        .build());
             }
         }
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        ConnectionModule connectionModule = this.getHost().getModule(ConnectionModule.class);
+        connectionModule.removeConnection(ctx.channel());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        ctx.close();
+    }
+
+    private String getParam(FullHttpRequest request, String key) {
+        QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.uri());
+        Map<String, List<String>> params = queryStringDecoder.parameters();
+        return params.getOrDefault(key, Lists.newArrayList()).get(0);
     }
 
     /**

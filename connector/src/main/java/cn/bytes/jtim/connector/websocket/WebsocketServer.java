@@ -3,6 +3,7 @@ package cn.bytes.jtim.connector.websocket;
 import cn.bytes.jtim.connector.configuration.WebsocketConfigurationProperties;
 import cn.bytes.jtim.core.channel.config.Configuration;
 import cn.bytes.jtim.core.channel.config.SocketConfig;
+import cn.bytes.jtim.core.channel.module.connection.SimpleConnectionModule;
 import cn.bytes.jtim.core.channel.module.handler.SimpleChannelHandlerModule;
 import cn.bytes.jtim.core.channel.module.initialize.InitializeModule;
 import cn.bytes.jtim.core.channel.module.initialize.SimpleServerInitializeModule;
@@ -51,11 +52,12 @@ public class WebsocketServer implements InitializingBean {
 
         public WebsocketServerInitialize(Configuration configuration) {
             super(configuration);
-            this.then(
-                    new WebsocketServerChannelHandler(configuration)
-                            .codec(new WebsocketHttpRequestCodecInboundHandler())
-                            .codec(new WebsocketFrameCodecInboundHandler())
-            );
+            this.then(new SimpleConnectionModule())
+                    .then(
+                            new WebsocketServerChannelHandler(configuration)
+                                    .codec(new WebsocketCodecInboundHandler())
+                                    .codec(new WebsocketHttpRequestCodecInboundHandler())
+                    );
         }
     }
 
@@ -78,6 +80,7 @@ public class WebsocketServer implements InitializingBean {
                     .addLast(new WebSocketServerCompressionHandler())
                     .addLast(new WebSocketServerProtocolHandler("/ws", null, true, this.configuration.getMaxWebsocketFrameSize()))
                     .addLast(new IdleStateHandler(this.configuration.getHeartbeatTime(), 0, 0, TimeUnit.SECONDS));
+
         }
     }
 
