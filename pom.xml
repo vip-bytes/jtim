@@ -26,7 +26,7 @@
         <logback.classic.version>1.2.3</logback.classic.version>
         <guava.version>27.1-jre</guava.version>
         <spring-boot-dependencies.version>2.2.4.RELEASE</spring-boot-dependencies.version>
-        <dubbo.version>2.7.5</dubbo.version>
+        <dubbo.version>2.7.13</dubbo.version>
         <mybatis.spring.boot.starter.version>2.0.0</mybatis.spring.boot.starter.version>
         <mysql.version>8.0.15</mysql.version>
         <mybatis.plus.version>3.1.0</mybatis.plus.version>
