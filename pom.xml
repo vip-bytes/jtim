@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <deploy.skip>true</deploy.skip>
-        <log4j.api.version>2.11.1</log4j.api.version>
+        <log4j.api.version>2.15.0</log4j.api.version>
         <logback.classic.version>1.2.3</logback.classic.version>
         <guava.version>27.1-jre</guava.version>
         <spring-boot-dependencies.version>2.2.4.RELEASE</spring-boot-dependencies.version>
